@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>teste</h1>
     <p>Ana </p>
+    <h1>teste123</h1>
+
 </body>
 </html>
+</html> 
