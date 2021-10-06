@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>G4_Receitas</title>
 </head>
 <body>
-<<<<<<< HEAD
-    <h1>teste</h1>
-    <p>Ana </p>
-    <h1>teste123</h1>
+
+  
 
 </body>
 </html>
