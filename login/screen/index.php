@@ -1,4 +1,5 @@
-<?php include('D:\xampp\htdocs\aulas\G4_receitas/model/conexao.php');
+<?php include('C:\xampp\htdocs\GitHub\G4_receitas\model\conexao.php');
+    session_start();
 
 ?>
 <!DOCTYPE html>
@@ -24,27 +25,23 @@
                <div class="txt">
                 <span>LOGIN</span>   
                 </div>
-                <form action="">
-                    <div class="">
+                <form action="../actions/login.php" method="POST">
+                    <div class="cont-form">
                         <div class="login_form_quadrado">
-                            <label for="email">E-mail</label>
-                            <input id="email" name="email" placeholder="Insira seu e-mail" type="email" maxlength="35" value="" required>
+                            <label for="funcionario">ID Funcionário</label>
+                            <input id="funcionario" name="funcionario" placeholder="Digite seu ID" type="text" maxlength="35" value="" required>
                         </div>
-                        <div class="login_form_quadrado">
+                        <div class="login_form_quadrado1">
                             <label for="senha">Senha</label>
-                            <input id="senha" name="senha" placeholder="Insira sua senha" type="password" maxlength="15" minlength="6" value="" required>
+                            <input id="senha" name="senha" placeholder="Digite sua senha" type="password" maxlength="15" minlength="6" value="" required>
                         </div>  
                     </div>
                     <div class="esqueceu_senha">
                         <a class="link" href="">Esqueci minha senha</a>
-                       
-                    </div>
-                    <div class="entrar" >
-                        <button type="submit" id="btn-entrar" class="btn btn-entrar">Entrar</button> 
+                        <button type="submit" id="btn-entrar" class="btn-entrar">ENTRAR</button>
                     </div>
                 </form>
-                
-           </div>
+            </div>
            
         </section>
     </div>
