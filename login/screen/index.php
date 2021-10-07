@@ -1,4 +1,4 @@
-<?php include('D:\xampp\htdocs\aulas\G4_receitas\model/conexao.php');
+<?php include('D:\xampp\htdocs\aulas\G4_receitas/model/conexao.php');
 
 ?>
 <!DOCTYPE html>
@@ -37,9 +37,13 @@
                     </div>
                     <div class="esqueceu_senha">
                         <a class="link" href="">Esqueci minha senha</a>
+                       
+                    </div>
+                    <div class="entrar" >
                         <button type="submit" id="btn-entrar" class="btn btn-entrar">Entrar</button> 
                     </div>
                 </form>
+                
            </div>
            
         </section>

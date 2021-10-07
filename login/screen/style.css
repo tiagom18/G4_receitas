@@ -60,3 +60,10 @@ top: calc(50% - 250px/2 - 387px);
     position: absolute;
 
 }
+.entrar{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    height: 42px;
+    position: absolute;
+}
