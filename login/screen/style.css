@@ -52,18 +52,63 @@ top: calc(50% - 250px/2 - 387px);
     line-height: 28px;
     color: #841C08;
 }
+.cont-form {
+    position: absolute;
+    top: 136px;
+    left: 164px;
+    width: 185px;
+    height: 145px;
+}
 .esqueceu_senha{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    position: relative;
+    top: 181px;
     width: 497px;
     height: 42px;
-    position: absolute;
-
 }
-.entrar{
-    display: flex;
-    justify-content: space-between;
-    width: 600px;
+.btn-entrar{
+    width: 100px;
     height: 42px;
-    position: absolute;
+    border: none;
+    background-image: linear-gradient(0deg, #2940D3 50%, rgba(41, 64, 211, 0) 180.95%);
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
+
+.cont-form label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #841C08;
+}
+
+input {
+    width: 185px;
+    height: 42px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.25);
+    padding-left: 9px;
+}
+
+.login_form_quadrado1 {
+    position: relative;
+    width: 100%;
+    margin-top: 23px;
+}
+
+.link {
+    color: #841C08;
+    text-decoration: none;
 }

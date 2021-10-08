@@ -1,18 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="../includes/style.css"> 
     <title>Header</title>
 </head>
 <body>
     <div class="container" >
-        <div class="posicao_logo">
-            <img src="../login/images/LOGO-G4-RECEITAS-BRANCO.png">
-            <h1>teste</h1>
-         </div>
+        <div class="barra-superior">
+            <div class="posicao_logo">
+                <img class="logo" src="../login/images/LOGO-G4-RECEITAS-BRANCO.png">
+                <button class="btn">
+                    <img class="btn-img" src="https://i.ibb.co/jG7CH9q/sair-2.png" alt="sair-2" border="0">
+                    <span class="btn-txt">Sair</span>
+                </button>
+            </div>
+            <div class="categorias">
+                <table class="cont-table">
+                    <thead>
+                        <tr>
+                            <th class="txt-categorias">Cargo</th>
+                            <th class="txt-categorias">Categoria</th>
+                            <th class="txt-categorias">Medida</th>
+                            <th class="txt-categorias">Ingrediente</th>
+                            <th class="txt-categorias">Restaurante</th>
+                            <th class="txt-categorias">Funcionário</th>
+                            <th class="txt-categorias">Referência</th>
+                            <th class="txt-categorias">Receita</th>
+                            <th class="txt-categorias">Degustação</th>
+                            <th class="txt-categorias">Edição do livro</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>
