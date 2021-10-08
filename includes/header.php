@@ -15,10 +15,10 @@
         <div class="barra-superior">
             <div class="posicao_logo">
                 <img class="logo" src="../login/images/LOGO-G4-RECEITAS-BRANCO.png">
-                <button class="btn">
+                <a href="../../login/actions/logout.php"><button class="btn">
                     <img class="btn-img" src="https://i.ibb.co/jG7CH9q/sair-2.png" alt="sair-2" border="0">
                     <span class="btn-txt">Sair</span>
-                </button>
+                </button></a>
             </div>
             <div class="categorias">
                 <table class="cont-table">
