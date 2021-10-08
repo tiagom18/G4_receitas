@@ -21,31 +21,29 @@ include ('..\includes\header.php');
                     </tr>
                 </thead>
                 <tbody>
-                <?php
-                    try {$stmt = $conexao->prepare("SELECT * FROM g4_cargo");
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                ?>
-                                <tr>
-                                <td><?php echo $rs->id_Cargo; ?></td>
-                                <td><?php echo $rs->nome; ?></td>
-                                <td><center>
-                                <a href="?act=upd&id=<?php echo $rs->id; ?>" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
-                                <a href="?act=del&id=<?php echo $rs->id; ?>" class="btn btn-danger btn-xs" ><span class="glyphicon glyphicon-remove"></span> Excluir</a>
-                                </center>
-                                </td>
-                                </tr>
-                                <?php
+                    <?php
+                     try{
+                        $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                        if($stmt->execute()){
+                            while($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                echo "<tr>";
+                                echo "<td>".rs->id_Cargo."</td> 
+                                    <td>".rs->nome."</td> 
+                                    <td><center>
+                                    <a href=\"?act=upd$id=".$rs->id_Cargo."\">Alterar</a>"
+                                    ."&nbsp;&nbsp;&nbsp;&nbsp;"
+                                     ."<a href=\"?act=del$id=".$rs->id_Cargo."\">Exluir</a>
+                                    </center>
+                                    </td>";
+                                echo "</tr>";
                             }
-                        } else {
-                            echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                        }else{
+                            echo "Erro: Não foi possivel recuperar os dados do banco de dados";
                         }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
+                    } catch (PDOException $erro){
+                        echo "Erro: " .$erro->getMensage();
                     }
-
-                        ?>
-                </tbody>
+                ?>
             </table>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<?php include('C:\xampp\htdocs\GitHub\G4_receitas\model\conexao.php');
+<?php include('..\..\model\conexao.php');
     session_start();
 
 ?>

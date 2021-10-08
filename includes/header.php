@@ -24,7 +24,7 @@
                 <table class="cont-table">
                     <thead>
                         <tr>
-                            <th class="txt-categorias">Cargo</th>
+                            <th class="txt-categorias"><a href="../cargo/index.php">Cargo</a></th>
                             <th class="txt-categorias">Categoria</th>
                             <th class="txt-categorias">Medida</th>
                             <th class="txt-categorias">Ingrediente</th>
