@@ -13,6 +13,26 @@ include ('..\includes\header.php');
 <body>
     <div class="row">
         <div class="panel panel-default">
+            <div class="row">
+                <form action="?act=save" method="POST" name="form1" class="form-horizontal" >
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span class="panel-title">Cargo</span>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="descricao" class="col-sm-1 control-label">Descrição</label>
+                                <div class="col-md-5">
+                                    <input type="text" name="descricao" placeholder="Inserir" value="<?php
+                                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+                                    ?>" class="form-control"/>
+                                </div>
+                                <button type="submit">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
