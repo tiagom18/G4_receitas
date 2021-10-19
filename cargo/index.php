@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //SAVE
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
-        if ($id != "") {
+        if ($id_Cargo != "") {
             $stmt = $conexão->prepare("UPDATE g4_cargo SET nome=? WHERE id_Cargo = ?");
             $stmt->bindParam(2, $id_Cargo);
         } else {
@@ -32,7 +32,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
         $stmt->bindParam(1, $nome);
         
 
-        if(stmt->execute())  {
+        if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
                 echo "<p> Cargo cadastrado com sucesso!!</p>";
                 $id_Cargo = null;
@@ -92,10 +92,10 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                             <span class="">Cargo</span>
                         <div class="">
                             <div class="">
-                                <label for="descricao" class="">Descrição</label>
+                                <label for="nome" class="">Descrição</label>
                                 <div class="">
-                                    <input type="text" name="descricao" placeholder="Inserir" value="<?php
-                                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+                                    <input type="text" name="nome" placeholder="Inserir" value="<?php
+                                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
                                     ?>" class="form-control"/>
                                 </div>
                                 <div>
@@ -128,8 +128,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                                     <td>$rs->nome</td>
                                     <td>
                                     <center>
-                                    <a href='?act=upd&id='$rs->id_Cargo>Editar</a>
-                                    <a href='?act=del&id='$rs->id_Cargo>Excluir</a>
+                                    <a href='?act=upd&id=' .$rs->id_Cargo.>Editar</a>
+                                    <a href='?act=del&id=' .$rs->id_Cargo. >Excluir</a>
                                     </center>
                                     </td>
                                 </tr>";
