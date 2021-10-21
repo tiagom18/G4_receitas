@@ -123,16 +123,14 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                         $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>
-                                    <td>$rs->id_Cargo</td>
-                                    <td>$rs->nome</td>
-                                    <td>
-                                    <center>
-                                    <a href='?act=upd&id=' .$rs->id_Cargo.>Editar</a>
-                                    <a href='?act=del&id=' .$rs->id_Cargo. >Excluir</a>
-                                    </center>
-                                    </td>
-                                </tr>";
+                                echo "<tr>";
+                                echo "<td>$rs->id_Cargo</td>";
+                                echo "<td>$rs->nome</td>";
+                                //Alterar 
+                                echo '<td><a href="alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                //excluir
+                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
+                                echo "</tr>";
                             }
                         } else {
                        echo "Erro: Não foi possível recuperar os dados do banco de dados";
