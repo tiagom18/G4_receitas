@@ -14,7 +14,7 @@
     <div class="container" >
         <div class="barra-superior">
             <div class="posicao_logo">
-                <img class="logo" src="../login/images/LOGO-G4-RECEITAS-BRANCO.png">
+                <img class="logo" src="../includes/LOGO-G4-RECEITAS-BRANCO.png">
                 <a href="../../login/actions/logout.php"><button class="btn">
                     <img class="btn-img" src="https://i.ibb.co/jG7CH9q/sair-2.png" alt="sair-2" border="0">
                     <span class="btn-txt">Sair</span>

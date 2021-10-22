@@ -127,7 +127,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                                 echo "<td>$rs->id_Cargo</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
                                 //excluir
                                 echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                 echo "</tr>";
@@ -141,5 +141,6 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                 ?>
             </tbody>
         </table>
+    <!-- Fim - Read-->
 </body>
 </html>
