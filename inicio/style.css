@@ -63,3 +63,12 @@ body {
     color: white;
     cursor: pointer;
 }
+.posicao_logo1 {
+   position: absolute;
+   width: 900px;
+   height: 900px;
+   left: 750px;
+   top: 80px;
+   opacity: 0.15;
+}   
+ 
