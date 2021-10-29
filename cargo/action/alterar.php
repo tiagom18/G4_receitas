@@ -13,8 +13,25 @@
             include ('..\..\includes\header.php');
         //conexão
             include('..\..\model\conexao.php');
-    ?>
-    <p>Aqui vai ser a pagina de alteração </p>
+        //buscar cargo a ser alterado
+            try {
+                $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= ?");
+                $stmt->bindParam(1, $id_Cargo, PDO::PARAM_INT);
+                if ($stmt->execute()) {
+                    $rs = $stmt->fetch(PDO::FETCH_OBJ);
+                    $id_Cargo = $rs->$id_Cargo;
+                    $nome = $rs->$nome;
+                } else {echo "<p>Não foi possível executar a declaração sql</p>";
+                }
+            } catch (PDOException $erro) {
+                echo "<p>Erro".$erro->getMessage()."</p>";
+            }
+        ?>
+    <h1>Alterar</h1>
+    <form action="" method="GET">
+    
+
+    </form>
     <br>
     <a href="../cargo/../index.php">Voltar</a>
 </body>
