@@ -26,9 +26,9 @@
                         <tr>
                             <th class="txt-categorias"><a href="../cargo/index.php">Cargo</a></th>
                             <th class="txt-categorias">Categoria</th>
-                            <th class="txt-categorias">Medida</th>
+                            <th class="txt-categorias"><a href="../medida/index.php">Medida</a></th>
                             <th class="txt-categorias">Ingrediente</th>
-                            <th class="txt-categorias">Restaurante</th>
+                            <th class="txt-categorias"><a href="../restaurante/index.php">Restaurante</a></th>
                             <th class="txt-categorias">Funcionário</th>
                             <th class="txt-categorias">Referência</th>
                             <th class="txt-categorias">Receita</th>
