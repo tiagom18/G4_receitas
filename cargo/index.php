@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
     $nome = filter_input(INPUT_POST,'nome');
 } else if (!isset($id_Cargo)){
-    $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["is_Cargo"] != null) ? $_GET["id_Cargo"] : "";
+    $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["id_Cargo"] != null) ? $_GET["id_Cargo"] : "";
 }
 
 //SAVE
@@ -52,8 +52,8 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 //UPD
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     try {
-        $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= ?");
-        $stmt->bindParam(1, $id_Cargo, PDO::PARAM_INT);
+        $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
+        $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_Cargo = $rs->$id_Cargo;
@@ -66,20 +66,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     }
 }
 
-//DEL
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
-    try {
-        $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= ?");
-        $stmt->bindParam(1, $id_Cargo, PDO::PARAM_INT); 
-        if($stmt->execute()) {
-            echo "<p>Registro excluido com sucesso!!</p>";
-        } else {
-            echo "<p>Erro: Não foi possível executar a declaração sql</p>";
-        }
-    } catch (PDOException $erro) {
-        echo "<p>Erro:".$erro->getMessage()."</p>";
-    }
-}
+
 ?>
 <body>
     <!--Inicio - Insert form-->
@@ -127,7 +114,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                                 echo "<td>$rs->id_Cargo</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="?act=upd&id='.$rs->id_Cargo.'">Alterar</a></td>';
                                 //excluir
                                 echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                 echo "</tr>";
