@@ -1,0 +1,19 @@
+.cargo1{
+  position: absolute;
+  width: 1152px;
+  height: 800px;
+  top: 189px;
+  left: 1230px;
+  font-family: 'Roboto', sans-serif;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+body {
+  width: 100%;
+  height: auto;
+}
