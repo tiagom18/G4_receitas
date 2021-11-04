@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -91,8 +90,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                     ?>" class="form-control"/>
                                 </div>
                                 <div>
-                                    <button type="submit">Salvar</button>
-                                    <button type="submit">Cancelar</button>
+                                    <button type="submit" class = "button">Salvar</button>
+                                    <button type="reset" class = "button">Cancelar</button>
                                 </div>
                             </div>
                         </div>

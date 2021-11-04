@@ -5,10 +5,10 @@
   top: 189px;
   left: 1230px;
   font-family: 'Roboto', sans-serif;
-font-style: normal;
-font-weight: bold;
-font-size: 20px;
-line-height: 23px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
 
 color: #000000;
 }
@@ -17,7 +17,67 @@ body {
   width: 100%;
   height: auto;
 }
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
+button {
+  /* Rectangle 160 */
+  position: center;
+  width: 89px;
+  height: 29px;
+  left: 1219px;
+  top: 386px;
+  
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  
+  
+  /* Salvar */
+  position: center;
+  width: 57px;
+  height: 23px;
+  left: 1245px;
+  top: 389px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  
+  color: #000000;
+  
+  
+  
+  /* Vector */
+  position: center;
+  width: 14.67px;
+  height: 10.08px;
+  left: calc(50% - 14.67px/2 + 513px);
+  top: calc(50% - 10.08px/2 - 273.96px);
+  
+  border: 2px solid #000000;
+  
+  
+  /* Rectangle 197 */
+  position: center;
+  width: 107px;
+  height: 29px;
+  left: 1097px;
+  top: 386px;
+  
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  
+  
+  /* Cancelar */
+  position: center;
+  width: 80px;
+  height: 23px;
+  left: 1118px;
+  top: 389px;
+  
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 23px;
+  }
