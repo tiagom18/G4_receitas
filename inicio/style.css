@@ -71,3 +71,23 @@ body {
    top: 80px;
    opacity: 0.15;
 }   
+<<<<<<< Updated upstream
+=======
+
+.cargo {
+    position: absolute;
+    width: 54px;
+    height: 23px;
+    left: 679px;
+    top: 189px;
+}
+
+.btn-txt {
+    font-family:'Roboto', sans-serif, bold;
+    font-size: 20px;
+    line-height: 23px;
+    
+    color: #000000;
+}
+ 
+>>>>>>> Stashed changes

@@ -81,6 +81,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                             <span class="">Cargo</span>
                         <div class="">
                             <div class="">
+                            <div class="">
+                                <label for="nome" class="">Incluir</label>
+                                <div class="">
                                 <label for="nome" class="">Descrição</label>
                                 <div class="">
                                     <input type="text" name="nome" placeholder="Inserir" value="<?php
