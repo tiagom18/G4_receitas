@@ -53,6 +53,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 //UPD
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     try {
+        echo "id_Cargo :",  $id;
         $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
         $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
         if ($stmt->execute()) {
@@ -116,7 +117,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                 echo "<td>$rs->id_Cargo</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="?act=upd&id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="./action/alterar.php?act=upd&id='.$rs->id_Cargo.'">Alterar</a></td>';
                                 //excluir
                                 echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                 echo "</tr>";
@@ -127,7 +128,35 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                     } catch (PDOException $erro) {
                         echo "Erro: " . $erro->getMessage();
                     }
+
+                    //pegar as opções do banco 
+                    
+                        $sql = " SELECT * FROM g4_cargo";
+                        try {
+                            $stmt = $conexao -> prepare($sql);
+                            $stmt -> execute();
+                            $results = $stmt -> fetchAll();
+                        }
+                        catch(Exception $ex){
+                            echo ($ex -> getMessage());
+                        
+                        }
+                    //dropbox
                 ?>
+                    <select id="cargo" name="cargo">
+                        <option>Cargo</option>
+                        <?php foreach($results as $output) {?>
+                    <option value="<?php $output["id_Cargo"]?>"><?php echo $output["nome"];?></option>
+                        <?php } ?>
+                    </select>
+
+                    <select id="id" name="cargo">
+                        <option>Cargo</option>
+                        <?php foreach($results as $output) {?>
+                        <option><?php echo $output["id_Cargo"];?></option>
+                        <?php } ?>
+                    </select>
+
             </tbody>
         </table>
     <!-- Fim - Read-->

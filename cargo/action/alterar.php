@@ -15,6 +15,7 @@
             include('..\..\model\conexao.php');
         //buscar cargo a ser alterado
             try {
+                echo "id_Cargo :",  $id_Cargo;
                 $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= ?");
                 $stmt->bindParam(1, $id_Cargo, PDO::PARAM_INT);
                 if ($stmt->execute()) {
@@ -26,6 +27,10 @@
             } catch (PDOException $erro) {
                 echo "<p>Erro".$erro->getMessage()."</p>";
             }
+
+        //select -> apresenta lista
+        //recerber
+        //update
         ?>
     <h1>Alterar</h1>
     <form action="" method="GET">
