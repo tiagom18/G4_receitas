@@ -28,12 +28,14 @@
                             <th class="txt-categorias"><a href="../categoria/index.php">Categoria</a></th>
                             <th class="txt-categorias"><a href="../medida/index.php">Medida</a></th>
                             <th class="txt-categorias"><a href="../ingrediente/index.php">Ingrediente</a></th>
-                            <th class="txt-categorias">Restaurante</th>
-                            <th class="txt-categorias">Funcionário</th>
-                            <th class="txt-categorias">Referência</th>
-                            <th class="txt-categorias">Receita</th>
-                            <th class="txt-categorias">Degustação</th>
-                            <th class="txt-categorias">Edição do livro</th>
+                            <th class="txt-categorias"><a href="../restaurante/index.php">Restaurante</th>
+                            <th class="txt-categorias"><a href="../funcionario/index.php">Funcionário</th>
+                            <th class="txt-categorias"><a href="../referencia/index.php">Referência</th>
+                            <th class="txt-categorias"><a href="../receita/index.php">Receita</th>
+                            <th class="txt-categorias"><a href="../degustacao/index.php">Degustação</th>
+                            <th class="txt-categorias"><a href="../livro/index.php">livro</th>
+                            <th class="txt-categorias"><a href="../edicao_livro/index.php">Edição do livro</th>
+
                         </tr>
                     </thead>
                 </table>
