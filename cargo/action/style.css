@@ -18,66 +18,171 @@ body {
   height: auto;
 }
 
+.rectangle1 {
+/* Rectangle 1 */
+position: absolute;
+width: 1134px;
+height: 41px;
+left: 178px;
+top: 237px;
+
+background: #C4C4C4;
+}
+
+.incluir {
+/* Incluir */
+position: absolute;
+width: 93px;
+height: 23px;
+left: 197px;
+top: 246px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+.descricao {
+/* Descrição */
+position: absolute;
+width: 90px;
+height: 23px;
+left: 185px;
+top: 302px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+.rectangle2 {
+/* Rectangle 2*/
+position: absolute;
+width: 1127px;
+height: 29px;
+left: 185px;
+top: 332px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+}
+
+.xcancelar {
+/* X botão cancelar */
+position: absolute;
+width: 10px;
+height: 11px;
+left: 1104px;
+top: 395px;
+}
+
 button {
-  /* Rectangle 160 */
-  position: center;
-  width: 89px;
-  height: 29px;
-  left: 1219px;
-  top: 386px;
-  
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  
-  
-  /* Salvar */
-  position: center;
-  width: 57px;
-  height: 23px;
-  left: 1245px;
-  top: 389px;
-  
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  
-  color: #000000;
-  
-  
-  
-  /* Vector */
-  position: center;
-  width: 14.67px;
-  height: 10.08px;
-  left: calc(50% - 14.67px/2 + 513px);
-  top: calc(50% - 10.08px/2 - 273.96px);
-  
-  border: 2px solid #000000;
-  
-  
-  /* Rectangle 197 */
-  position: center;
-  width: 107px;
-  height: 29px;
-  left: 1097px;
-  top: 386px;
-  
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  
-  
-  /* Cancelar */
-  position: center;
-  width: 80px;
-  height: 23px;
-  left: 1118px;
-  top: 389px;
-  
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 23px;
-  }
+/* Cancelar */
+position: absolute;
+width: 80px;
+height: 23px;
+left: 1118px;
+top: 389px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+.rectangle3 { 
+/* Rectangle 3 */
+position: absolute;
+width: 107px;
+height: 29px;
+left: 1097px;
+top: 386px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+}
+
+.vectorsalvar {
+/* Vector Salvaar */
+position: absolute;
+width: 14.67px;
+height: 10.08px;
+left: calc(50% - 14.67px/2 + 513px);
+top: calc(50% - 10.08px/2 - 273.96px);
+
+border: 2px solid #000000;
+}
+
+.button {
+/* Salvar */
+position: absolute;
+width: 57px;
+height: 23px;
+left: 1245px;
+top: 389px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+.rectangle4 {
+/* Rectangle 4 */
+position: absolute;
+width: 89px;
+height: 29px;
+left: 1219px;
+top: 386px;
+
+border: 1px solid #000000;
+box-sizing: border-box;
+}
+
+.id {
+/* ID */
+position: absolute;
+width: 19px;
+height: 46px;
+left: 230px;
+top: 603px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
+
+.descricao {
+/* Descrição 1 */
+position: absolute;
+width: 90px;
+height: 23px;
+left: 338px;
+top: 603px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: bold;
+font-size: 20px;
+line-height: 23px;
+
+color: #000000;
+}
