@@ -71,35 +71,21 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
 ?>
 <body>
     <!--Inicio - Insert form-->
-    <div class="row">
-        <div class="cargo1">
-            <div class="row">
-                <form action="?act=save" method="POST" name="form" class="" >
-                    <div class="">
-                        <div class="cargo">
-                            <span class="">Cargo</span>
-                        <div class="">
-                            <div class="">
-                            <div class="">
-                                <label for="nome" class="">Incluir</label>
-                                <div class="">
-                                <label for="nome" class="">Descrição</label>
-                                <div class="">
-                                    <input type="text" name="nome" placeholder="Inserir" value="<?php
-                                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-                                    ?>" class="form-control"/>
-                                </div>
-                                <div>
-                                    <button type="submit" class = "button">Salvar</button>
-                                    <button type="reset" class = "button">Cancelar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
+    <form action="?act=save" method="POST" name="form" class="" >
+        <span class="">Cargo</span>
+
+        <label for="nome" class="">Incluir</label>
+        <label for="nome" class="">Descrição</label>
+        
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+
+        <button type="submit" class = "button">Salvar</button>
+        <button type="reset" class = "button">Cancelar</button>
+    </form>
+    
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
         <table class="table table-striped">
@@ -130,35 +116,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                     } catch (PDOException $erro) {
                         echo "Erro: " . $erro->getMessage();
                     }
-
-                    //pegar as opções do banco 
-                    
-                        $sql = " SELECT * FROM g4_cargo";
-                        try {
-                            $stmt = $conexao -> prepare($sql);
-                            $stmt -> execute();
-                            $results = $stmt -> fetchAll();
-                        }
-                        catch(Exception $ex){
-                            echo ($ex -> getMessage());
-                        
-                        }
-                    //dropbox
                 ?>
-                    <select id="cargo" name="cargo">
-                        <option>Cargo</option>
-                        <?php foreach($results as $output) {?>
-                    <option value="<?php $output["id_Cargo"]?>"><?php echo $output["nome"];?></option>
-                        <?php } ?>
-                    </select>
-
-                    <select id="id" name="cargo">
-                        <option>Cargo</option>
-                        <?php foreach($results as $output) {?>
-                        <option><?php echo $output["id_Cargo"];?></option>
-                        <?php } ?>
-                    </select>
-
             </tbody>
         </table>
     <!-- Fim - Read-->
