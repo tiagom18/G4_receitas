@@ -88,7 +88,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
-        <table class="table table-striped">
+        <table>
             <thead>
                 <tr>
                     <th>Id</th>

@@ -13,31 +13,72 @@
             include ('..\..\includes\header.php');
         //conexão
             include('..\..\model\conexao.php');
-        //buscar cargo a ser alterado
+        //recuperando as informações salvas no save do index.php
+            $id_Cargo = $_GET["id_Cargo"];
+
             try {
-                echo "id_Cargo :",  $id_Cargo;
-                $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= ?");
-                $stmt->bindParam(1, $id_Cargo, PDO::PARAM_INT);
+                $stmt = $conexao->prepare("SELECT * FROM g4_Cargo WHERE id_Cargo = :id");
+                $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                     $rs = $stmt->fetch(PDO::FETCH_OBJ);
-                    $id_Cargo = $rs->$id_Cargo;
-                    $nome = $rs->$nome;
-                } else {echo "<p>Não foi possível executar a declaração sql</p>";
+                    $id_Cargo = $rs->id_Cargo;
+                    $nome = $rs->nome;
+                } else {
+                    echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                 }
             } catch (PDOException $erro) {
-                echo "<p>Erro".$erro->getMessage()."</p>";
+                echo "<p>Erro: " . $erro->getMessage() . "</p>";
             }
 
-        //select -> apresenta lista
-        //recerber
-        //update
-        ?>
+        //verificando o POST
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
+                $nome = filter_input(INPUT_POST,'nome');
+            } else if (!isset($id_Cargo)){
+                $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["id_Cargo"] != null) ? $_GET["id_Cargo"] : "";
+            }
+        //    
+    ?>
     <h1>Alterar</h1>
-    <form action="" method="GET">
-    
+    <!--form-alteração-->
+    <form action="?act=upd" method="POST">
+        <input type="hidden" name="id_Cargo" value="<?php echo (isset($id_Cargo) && ($id_Cargo != null || $id_Cargo != "")) ? $id_Cargo : ''; ?>"/>
 
+        <label for="nome">Cargo</label>
+        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+
+        <button type="submit" >Salvar</button>
     </form>
-    <br>
-    <a href="../cargo/../index.php">Voltar</a>
+    <hr/>
+    <!--apresenta um consultar -->
+    <h3>Cargos cadastrados</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                try {
+                    $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                    if ($stmt->execute()) {
+                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<td>$rs->id_Cargo</td>";
+                            echo "<td>$rs->nome</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    }
+                } catch (PDOException $erro) {
+                    echo "Erro: " . $erro->getMessage();
+                }
+            ?>
+        </tbody>
+    </table>
+
 </body>
 </html>
