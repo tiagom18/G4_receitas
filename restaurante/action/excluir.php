@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../includes/style.css"> 
-    <title>Restaurante</title>
+    <title>Cargo</title>
 </head>
 <body>
     <?php
@@ -14,19 +14,19 @@
         //conexão
             include('..\..\model\conexao.php');
     
-        //Aprensentar dados do restaurante selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
-        $id_Restaurante=$_GET["id"];
+        //Aprensentar dados do cargo selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
+        $id_Cargo=$_GET["id"];
         try {
-            $stmt = $conexao->prepare("SELECT * FROM g4_restaurante WHERE id_Restaurante= :id");
-            $stmt->bindParam(":id", $id_Restaurante, PDO::PARAM_INT); 
+            $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
+            $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                     echo "<tr>";
-                    echo "<td>$rs->id_Restaurante</td>";
+                    echo "<td>$rs->id_Cargo</td>";
                     echo "<td>$rs->nome</td>";
                     echo "<br>";
                     //excluir
-                    echo '<td><a href="?act=del&id='.$rs->id_Restaurante.'">Excluir</a></td>';
+                    echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
                     echo "</tr>";
                 }
             } else {
@@ -37,10 +37,10 @@
         }
         // ação de exclusão
         //DEL
-            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Restaurante != ""){
+            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
                 try {
-                    $stmt = $conexao->prepare("DELETE FROM g4_restaurante WHERE id_Restaurante= :id");
-                    $stmt->bindParam(":id", $id_Restaurante, PDO::PARAM_INT); 
+                    $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= :id");
+                    $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
                     if($stmt->execute()) {
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
@@ -52,6 +52,6 @@
             }
     ?>
     <br>
-    <a href="../restaurante/../index.php">Voltar</a>
+    <a href="../cargo/../index.php">Voltar</a>
 </body>
 </html>

@@ -8,7 +8,7 @@
       
 	</head>
 	<body>
-    <!-- centralizar tudo e cria um botão bonito de voltar -->
+    <!-- centralizar tudo e cria um botão bonito de voltar-->
 <?php 
 // efetua alteração do curso informado em form_alteracao.php
     $id_Cargo = $_GET["id"];
