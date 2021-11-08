@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="action/style.css">
+    <!--<link rel="stylesheet" href="action/style.css">-->
     <title>Cargo</title>
 </head>
 <?php 
@@ -74,16 +74,14 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
 
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Cargo</span>
-
-        <label for="nome" class="">Incluir</label>
-        <label for="nome" class="">Descrição</label>
-        
+        </br>
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
-
-        <button type="submit" class = "button">Salvar</button>
-        <button type="reset" class = "button">Cancelar</button>
+        </br>
+        <button type="submit">Salvar</button>
+        <button type="reset">Cancelar</button>
+        <hr>
     </form>
     
     <!--Fim - Insert form-->
@@ -105,7 +103,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                 echo "<td>$rs->id_Cargo</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?act=upd&id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
                                 //excluir
                                 echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                 echo "</tr>";
