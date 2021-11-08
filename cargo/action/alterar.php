@@ -14,15 +14,16 @@
         //conexão
             include('..\..\model\conexao.php');
         //recuperando as informações salvas no save do index.php
-            $id_Cargo = $_GET["id_Cargo"];
+            $id_Cargo = $_GET["id"];
 
             try {
                 $stmt = $conexao->prepare("SELECT * FROM g4_Cargo WHERE id_Cargo = :id");
                 $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
                 if ($stmt->execute()) {
-                    $rs = $stmt->fetch(PDO::FETCH_OBJ);
+                   while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
                     $id_Cargo = $rs->id_Cargo;
                     $nome = $rs->nome;
+                   }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                 }
@@ -41,8 +42,8 @@
     ?>
     <h1>Alterar</h1>
     <!--form-alteração-->
-    <form action="?act=upd" method="POST">
-        <input type="hidden" name="id_Cargo" value="<?php echo (isset($id_Cargo) && ($id_Cargo != null || $id_Cargo != "")) ? $id_Cargo : ''; ?>"/>
+    <form action="acaoalterar.php" method="GET">
+        <input type="hidden" name="id" value="<?php echo (isset($id_Cargo) && ($id_Cargo != null || $id_Cargo != "")) ? $id_Cargo : ''; ?>"/>
 
         <label for="nome">Cargo</label>
         <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />

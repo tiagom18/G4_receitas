@@ -82,8 +82,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
 
-        <button type="submit" class = "button">Salvar</button>
-        <button type="reset" class = "button">Cancelar</button>
+        <button type="submit" class = "">Salvar</button>
+        <button type="reset" class = "">Cancelar</button>
     </form>
     
     <!--Fim - Insert form-->
@@ -105,7 +105,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                 echo "<td>$rs->id_Cargo</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?act=upd&id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
                                 //excluir
                                 echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                 echo "</tr>";
