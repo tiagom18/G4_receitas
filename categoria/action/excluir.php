@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../includes/style.css"> 
-    <title>Cargo</title>
+    <title>Categoria</title>
 </head>
 <body>
     <?php
@@ -14,7 +14,7 @@
         //conexão
             include('..\..\model\conexao.php');
     
-        //Aprensentar dados do cargo selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
+        //Aprensentar dados do Categoria selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
         $id_Categoria=$_GET["id"];
         try {
             $stmt = $conexao->prepare("SELECT * FROM g4_categoria WHERE id_Categoria= :id");
@@ -52,6 +52,6 @@
             }
     ?>
     <br>
-    <a href="../cargo/../index.php">Voltar</a>
+    <a href="../Categoria/../index.php">Voltar</a>
 </body>
 </html>

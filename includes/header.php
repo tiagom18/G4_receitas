@@ -33,7 +33,7 @@
                             <th class="txt-categorias"><a href="../referencia/index.php">Referência</th>
                             <th class="txt-categorias"><a href="../receita/index.php">Receita</th>
                             <th class="txt-categorias"><a href="../degustacao/index.php">Degustação</th>
-                            <th class="txt-categorias"><a href="../livro/index.php">livro</th>
+                            <th class="txt-categorias"><a href="../livro/index.php">Livro</th>
                             <th class="txt-categorias"><a href="../edicao_livro/index.php">Edição do livro</th>
 
                         </tr>

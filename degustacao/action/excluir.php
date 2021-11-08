@@ -15,18 +15,18 @@
             include('..\..\model\conexao.php');
     
         //Aprensentar dados do cargo selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
-        $id_Cargo=$_GET["id"];
+        $id_Degustacao=$_GET["id"];
         try {
-            $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
-            $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
+            $stmt = $conexao->prepare("SELECT * FROM g4_degustacao WHERE id_Degustacao= :id");
+            $stmt->bindParam(":id", $id_Degustacao, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                     echo "<tr>";
-                    echo "<td>$rs->id_Cargo</td>";
+                    echo "<td>$rs->id_Degustacao</td>";
                     echo "<td>$rs->nome</td>";
                     echo "<br>";
                     //excluir
-                    echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
+                    echo '<td><a href="?act=del&id='.$rs->id_Degustacao.'">Excluir</a></td>';
                     echo "</tr>";
                 }
             } else {
@@ -37,10 +37,10 @@
         }
         // ação de exclusão
         //DEL
-            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
+            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Degustacao != ""){
                 try {
-                    $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= :id");
-                    $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
+                    $stmt = $conexao->prepare("DELETE FROM g4_degustacao WHERE id_Degustacao= :id");
+                    $stmt->bindParam(":id", $id_Degustacao, PDO::PARAM_INT); 
                     if($stmt->execute()) {
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
