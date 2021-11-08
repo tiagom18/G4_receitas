@@ -95,8 +95,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Degustacao != ""
             </thead>
             <tbody>
                 <?php
+                    //f.id_Funcionario, id_cozinheiro, r.nome, d.data-nota, d.nota
                     try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
+                        $stmt = $conexao->prepare("SELECT  FROM g4_degustacao");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
