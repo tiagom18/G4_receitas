@@ -74,16 +74,14 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
 
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Cargo</span>
-
-        <label for="nome" class="">Incluir</label>
-        <label for="nome" class="">Descrição</label>
-        
+        </br>
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
-
+        </br>
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
+        <hr>
     </form>
     
     <!--Fim - Insert form-->
