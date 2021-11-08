@@ -11,20 +11,20 @@
     <!-- centralizar tudo e cria um botão bonito de voltar -->
 <?php 
 // efetua alteração do curso informado em form_alteracao.php
-    $id_Cargo = $_GET["id"];
+    $id_Restaurante = $_GET["id"];
     $nome = $_GET["nome"];
     include('..\..\model\conexao.php');
     include ('..\..\includes\header.php');
 
   try{
-    $query = "UPDATE g4_cargo
+    $query = "UPDATE g4_restaurante
     SET nome = :nome
-    WHERE id_Cargo = :id;";
+    WHERE id_Restaurante = :id;";
 
     $stmt=$conexao->prepare($query);
 
     $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
-    $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
+    $stmt->bindParam(":id", $id_Restaurante, PDO::PARAM_INT);
 
     $stmt->execute();
 

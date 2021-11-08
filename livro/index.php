@@ -14,29 +14,29 @@ include('../model/conexao.php');
 include ('..\includes\header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
-    $nome = filter_input(INPUT_POST,'nome');
-} else if (!isset($id_Cargo)){
-    $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["id_Cargo"] != null) ? $_GET["id_Cargo"] : "";
+    $id_Livro = filter_input(INPUT_POST,'id_Livro');
+    $titulo = filter_input(INPUT_POST,'titulo');
+} else if (!isset($id_Livro)){
+    $id_Livro = (isset($_GET["id_Livro"]) && $_GET["id_Livro"] != null) ? $_GET["id_Livro"] : "";
 }
 
 //SAVE
-if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
+if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $titulo != "") {
     try{
-        if ($id_Cargo != "") {
-            $stmt = $conexão->prepare("UPDATE g4_cargo SET nome=? WHERE id_Cargo = ?");
-            $stmt->bindParam(2, $id_Cargo);
+        if ($id_Livro != "") {
+            $stmt = $conexão->prepare("UPDATE g4_livro SET titulo=? WHERE id_Livro = ?");
+            $stmt->bindParam(2, $id_Livro);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_cargo(nome) VALUES (?)");
+            $stmt = $conexao->prepare("INSERT INTO g4_livro(titulo) VALUES (?)");
         }
-        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(1, $titulo);
         
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
                 echo "<p> Cargo cadastrado com sucesso!</p>";
-                $id_Cargo = null;
-                $nome = null;
+                $id_Livro = null;
+                $titulo = null;
             } else {
                 echo "<p>Erro no cadastro do cargo</p>";
             }
@@ -50,15 +50,15 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 }
 
 //UPD
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
     try {
-        echo "id_Cargo :",  $id;
-        $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
-        $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
+        echo "id_Livro :",  $id;
+        $stmt = $conexao->prepare("SELECT * FROM g4_livro WHERE id_Livro= :id");
+        $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
-            $id_Cargo = $rs->$id_Cargo;
-            $nome = $rs->$nome;
+            $id_Livro = $rs->$id_Livro;
+            $titulo = $rs->$titulo;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -75,8 +75,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Cargo</span>
         </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        <input type="text" name="titulo" placeholder="Inserir" value="<?php
+        echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : '';
         ?>" class="form-control"/>
         </br>
         <button type="submit" class = "">Salvar</button>
@@ -96,16 +96,16 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                        $stmt = $conexao->prepare("SELECT * FROM g4_livro");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
-                                echo "<td>$rs->id_Cargo</td>";
-                                echo "<td>$rs->nome</td>";
+                                echo "<td>$rs->id_Livro</td>";
+                                echo "<td>$rs->titulo</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Livro.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
+                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Livro. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {
