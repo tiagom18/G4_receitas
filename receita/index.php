@@ -50,10 +50,12 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 }
 
 //UPD
+
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_receita != ""){
     try {
         echo "id_receita :",  $id;
         $stmt = $conexao->prepare("SELECT * FROM g4_receita WHERE id_receita= :id");
+       
         $stmt->bindParam(":id", $id_receita, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);

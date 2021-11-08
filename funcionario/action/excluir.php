@@ -17,7 +17,7 @@
         //Aprensentar dados do cargo selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
         $id_Funcionario=$_GET["id"];
         try {
-            $stmt = $conexao->prepare("SELECT * FROM g4_funcionario WHERE id_Funcionario= :id");
+            $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, a.id_Cargo, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario= :id");
             $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
