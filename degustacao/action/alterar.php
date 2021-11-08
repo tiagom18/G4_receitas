@@ -14,14 +14,14 @@
         //conexão
             include('..\..\model\conexao.php');
         //recuperando as informações salvas no save do index.php
-            $id_Cargo = $_GET["id"];
+            $id_Degustacao = $_GET["id"];
 
             try {
-                $stmt = $conexao->prepare("SELECT * FROM g4_Cargo WHERE id_Cargo = :id");
-                $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
+                $stmt = $conexao->prepare("SELECT * FROM g4_degustacao WHERE id_Degustacao = :id");
+                $stmt->bindParam(":id", $id_Degustacao, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
-                    $id_Cargo = $rs->id_Cargo;
+                    $id_Degustacao = $rs->id_Degustacao;
                     $nome = $rs->nome;
                    }
                 } else {
@@ -33,17 +33,17 @@
 
         //verificando o POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
+                $id_Degustacao = filter_input(INPUT_POST,'id_Degustacao');
                 $nome = filter_input(INPUT_POST,'nome');
-            } else if (!isset($id_Cargo)){
-                $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["id_Cargo"] != null) ? $_GET["id_Cargo"] : "";
+            } else if (!isset($id_Degustacao)){
+                $id_Degustacao = (isset($_GET["id_Degustacao"]) && $_GET["id_Degustacao"] != null) ? $_GET["id_Degustacao"] : "";
             }
         //    
     ?>
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Cargo) && ($id_Cargo != null || $id_Cargo != "")) ? $id_Cargo : ''; ?>"/>
+        <input type="hidden" name="id" value="<?php echo (isset($id_Degustacao) && ($id_Degustacao != null || $id_Degustacao != "")) ? $id_Degustacao : ''; ?>"/>
 
         <label for="nome">Cargo</label>
         <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
@@ -63,11 +63,11 @@
         <tbody>
             <?php
                 try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                    $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>$rs->id_Cargo</td>";
+                            echo "<td>$rs->id_Degustacao</td>";
                             echo "<td>$rs->nome</td>";
                             echo "</tr>";
                         }
