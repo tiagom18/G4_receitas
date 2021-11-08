@@ -14,15 +14,15 @@
         //conexão
             include('..\..\model\conexao.php');
         //recuperando as informações salvas no save do index.php
-            $id_Cargo = $_GET["id"];
+            $id_Medida = $_GET["id"];
 
             try {
-                $stmt = $conexao->prepare("SELECT * FROM g4_Cargo WHERE id_Cargo = :id");
-                $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
+                $stmt = $conexao->prepare("SELECT * FROM g4_medida WHERE id_Medida = :id");
+                $stmt->bindParam(":id", $id_Medida, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
-                    $id_Cargo = $rs->id_Cargo;
-                    $nome = $rs->nome;
+                    $id_Medida = $rs->id_Medida;
+                    $descricao = $rs->descricao;
                    }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
@@ -33,20 +33,20 @@
 
         //verificando o POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
-                $nome = filter_input(INPUT_POST,'nome');
-            } else if (!isset($id_Cargo)){
-                $id_Cargo = (isset($_GET["id_Cargo"]) && $_GET["id_Cargo"] != null) ? $_GET["id_Cargo"] : "";
+                $id_Medida = filter_input(INPUT_POST,'id_Medida');
+                $descricao = filter_input(INPUT_POST,'descricao');
+            } else if (!isset($id_Medida)){
+                $id_Medida = (isset($_GET["id_Medida"]) && $_GET["id_Medida"] != null) ? $_GET["id_Medida"] : "";
             }
         //    
     ?>
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Cargo) && ($id_Cargo != null || $id_Cargo != "")) ? $id_Cargo : ''; ?>"/>
+        <input type="hidden" name="id" value="<?php echo (isset($id_Medida) && ($id_Medida != null || $id_Medida != "")) ? $id_Medida : ''; ?>"/>
 
-        <label for="nome">Cargo</label>
-        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+        <label for="descricao">Cargo</label>
+        <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>
@@ -63,12 +63,12 @@
         <tbody>
             <?php
                 try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                    $stmt = $conexao->prepare("SELECT * FROM g4_medida");
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>$rs->id_Cargo</td>";
-                            echo "<td>$rs->nome</td>";
+                            echo "<td>$rs->id_Medida</td>";
+                            echo "<td>$rs->descricao</td>";
                             echo "</tr>";
                         }
                     } else {
