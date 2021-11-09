@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../includes/style.css"> 
-    <title>Cargo</title>
+    <title>Funcinario</title>
 </head>
 <body>
     <?php
@@ -17,12 +17,18 @@
             $id_Funcionario = $_GET["id"];
 
             try {
-                $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, a.id_Cargo, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id");
+                $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id");
                 $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
                     $id_Funcionario = $rs->id_Funcionario;
                     $nome = $rs->nome;
+                    $rg = $rs->rg;
+                    $data_ingresso = $rs->data_ingresso;
+                    $nome_fantasia = $rs->nome_fantasia;
+                    $Usuario = $rs->Usuario;
+                    $senha = $rs->senha;
+            
                    }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
@@ -45,14 +51,24 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Funcionario) && ($id_Funcionario != null || $id_Funcionario != "")) ? $id_Funcionario : ''; ?>"/>
 
-        <label for="nome">Cargo</label>
+        <label for="nome">Funcionario</label>
         <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+        <label for="nome">RG</label>
+        <input type="text" name="rg" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : ''; ?>" />
+        <label for="nome">data_ingresso</label>
+        <input type="text" name="data_ingresso" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : ''; ?>" />
+        <label for="nome">nome_fantasia</label>
+        <input type="text" name="nome_fantasia" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : ''; ?>" />
+        <label for="nome">Usuario</label>
+        <input type="text" name="Usuario" value="<?php echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : ''; ?>" />
+        <label for="nome">senha</label>
+        <input type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>
     <hr/>
     <!--apresenta um consultar -->
-    <h3>Cargos cadastrados</h3>
+    <h3>Funcinario cadastrados</h3>
     <table>
         <thead>
             <tr>
