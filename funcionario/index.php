@@ -29,11 +29,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Funcionario != "") {
-            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
+            $stmt = $conexão->prepare("UPDATE g4_funcionario SET (nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
             $stmt->bindParam(":id_Funcionario", $id_Funcionario);
           
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha) 
+            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome, rg, data_ingresso, nome_fantasia, Usuario, senha) 
             VALUES (:nome,:rg,:data_ingresso,:nome_fantasia,:Usuario,:senha)");
         }
         $stmt->bindParam(":nome", $nome ,PDO::PARAM_STR);
@@ -100,37 +100,49 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Nome</span>
+        <label for="nome">
+			Nome:
+		</label>
         </br>
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" />
         </br>
-        <span class="">RG</span>
+        <label for="rg">
+			RG:
+		</label>
         </br>
         <input type="text" name="rg" placeholder="Inserir" value="<?php
         echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';
         ?>" />
         </br>
-        <span class="">DATA DE INGRESSO</span>
+        <label for="data_ingresso">
+        data_ingresso:
+		</label>
         </br>
         <input type="text" name="data_ingresso" placeholder="Inserir" value="<?php
         echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';
         ?>" />
         </br>
-         <span class="">NOME FANTASIA</span>
+        <label for="nome_fantasia">
+        nome_fantasia:
+		</label>
         </br>
         <input type="text" name="nome_fantasia" placeholder="Inserir" value="<?php
         echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';
         ?>" />
         </br>
-         <span class="">USUARIO</span>
+        <label for="Usuario">
+        Usuario:
+		</label>
         </br>
         <input type="text" name="Usuario" placeholder="Inserir" value="<?php
         echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : '';
         ?>" />
         </br>
-       <span class="">SENHA</span>
+        <label for="senha">
+        senha:
+		</label>
         </br>
         <input type="text" name="senha" placeholder="Inserir" value="<?php
         echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';
