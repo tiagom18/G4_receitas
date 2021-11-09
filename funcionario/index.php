@@ -53,7 +53,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != ""){
     try {
         echo "id_Funcionario :",  $id;
-        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, a.id_Cargo, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario= :id");
+        $stmt = $conexao->prepare("SELECT * FROM g4_funcionario  WHERE id_funcionario= :id");
         $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
@@ -96,9 +96,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, a.id_Cargo, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
-                         //"SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha b.G4_Cargo_id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b a.G4_Cargo_id_Cargo = b.id_cargo";);
-                         //"SELECT a.id_Venda, b.nome, c.id_Horta, a.id_func, a.situacao, a.data_venda FROM mh_venda as a INNER JOIN mh_cliente as b on a.id_Cliente = b.id_Cliente INNER JOIN mh_horta as c on a.id_Horta = c.id_Horta;")
+                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                       
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
