@@ -16,6 +16,11 @@ include ('..\includes\header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Funcionario = filter_input(INPUT_POST,'id_Funcionario');
     $nome = filter_input(INPUT_POST,'nome');
+    $rg = filter_input(INPUT_POST,'rg');
+    $data_ingresso = filter_input(INPUT_POST,'data_ingresso');
+    $nome_fantasia = filter_input(INPUT_POST,'nome_fantasia');
+    $Usuario = filter_input(INPUT_POST,'Usuario');
+    $senha = filter_input(INPUT_POST,'senha');
 } else if (!isset($id_Funcionario)){
     $id_Funcionario = (isset($_GET["id_Funcionario"]) && $_GET["id_Funcionario"] != null) ? $_GET["id_Funcionario"] : "";
 }
@@ -24,12 +29,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Funcionario != "") {
-            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=? WHERE id_Funcionario = ?");
-            $stmt->bindParam(2, $id_Funcionario);
+            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
+            $stmt->bindParam(":id_Funcionario", $id_Funcionario);
+          
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome) VALUES (?)");
+            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha) 
+            VALUES (:nome,:rg,:data_ingresso,:nome_fantasia,:Usuario,:senha)");
         }
-        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(":nome", $nome ,PDO::PARAM_STR);
+        $stmt->bindParam(":rg", $rg,PDO::PARAM_STR);
+        $stmt->bindParam(":data_ingresso", $data_ingresso ,PDO::PARAM_STR);
+        $stmt->bindParam(":nome_fantasia", $nome_fantasia ,PDO::PARAM_STR);
+        $stmt->bindParam(":Usuario", $Usuario ,PDO::PARAM_STR);
+        $stmt->bindParam(":senha", $senha ,PDO::PARAM_STR);
+        
         
 
         if($stmt->execute())  {
@@ -37,6 +50,11 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 echo "<p> Cargo cadastrado com sucesso!</p>";
                 $id_Funcionario = null;
                 $nome = null;
+                $rg = null;
+                $data_ingresso = null;
+                $nome_fantasia = null;
+                $Usuario = null;
+                $senha = null;
             } else {
                 echo "<p>Erro no cadastro do cargo</p>";
             }
@@ -53,12 +71,21 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != ""){
     try {
         echo "id_Funcionario :",  $id;
+<<<<<<< HEAD
         $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario= :id");
+=======
+        $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, Usuario, senha FROM g4_funcionario WHERE id_funcionario= :id");
+>>>>>>> 4661c714e938f21e8819d6edd27dc4f4e2c4ad92
         $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_Funcionario = $rs->$id_Funcionario;
             $nome = $rs->$nome;
+            $rg = $rs->$rg;
+            $data_ingresso = $rs->$data_ingresso;
+            $nome_fantasia = $rs->$nome_fantasia;
+            $Usuario = $rs->$Usuario;
+            $senha = $rs->$senha;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -73,12 +100,43 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Cargo</span>
+        <span class="">Nome</span>
         </br>
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-        ?>" class="form-control"/>
+        ?>" />
         </br>
+        <span class="">RG</span>
+        </br>
+        <input type="text" name="rg" placeholder="Inserir" value="<?php
+        echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';
+        ?>" />
+        </br>
+        <span class="">DATA DE INGRESSO</span>
+        </br>
+        <input type="text" name="data_ingresso" placeholder="Inserir" value="<?php
+        echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';
+        ?>" />
+        </br>
+         <span class="">NOME FANTASIA</span>
+        </br>
+        <input type="text" name="nome_fantasia" placeholder="Inserir" value="<?php
+        echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';
+        ?>" />
+        </br>
+         <span class="">USUARIO</span>
+        </br>
+        <input type="text" name="Usuario" placeholder="Inserir" value="<?php
+        echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : '';
+        ?>" />
+        </br>
+       <span class="">SENHA</span>
+        </br>
+        <input type="text" name="senha" placeholder="Inserir" value="<?php
+        echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';
+        ?>" />
+        </br>
+        <!-- tem q fazer um form de cargo -->
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
         <hr>
@@ -90,20 +148,29 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
+                    <th>nome</th>
+                    <th>rg</th>
+                    <th>data_ingresso</th>
+                    <th>nome_fantasia</th>
+                    <th>Usuario</th>
+                    <th>senha</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, a.id_Cargo, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
-                         //"SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha b.G4_Cargo_id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b a.G4_Cargo_id_Cargo = b.id_cargo";);
-                         //"SELECT a.id_Venda, b.nome, c.id_Horta, a.id_func, a.situacao, a.data_venda FROM mh_venda as a INNER JOIN mh_cliente as b on a.id_Cliente = b.id_Cliente INNER JOIN mh_horta as c on a.id_Horta = c.id_Horta;")
+                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                       
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
                                 echo "<td>$rs->id_Funcionario</td>";
                                 echo "<td>$rs->nome</td>";
+                                echo "<td>$rs->rg</td>";
+                                echo "<td>$rs->data_ingresso</td>";
+                                echo "<td>$rs->nome_fantasia</td>";
+                                echo "<td>$rs->Usuario</td>";
+                                echo "<td>$rs->senha</td>";
                                 //Alterar 
                                 echo '<td><a href="./action/alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
                                 //excluir
