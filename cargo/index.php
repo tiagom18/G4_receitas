@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="action/style.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
     <title>Cargo</title>
 </head>
 <?php 
@@ -88,6 +88,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     <!-- Inicio - Read -->
         <table>
             <thead>
+             
                 <tr>
                     <th>Id</th>
                     <th>Descrição</th>
