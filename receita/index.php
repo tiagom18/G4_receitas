@@ -61,6 +61,16 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_receita != ""){
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_receita = $rs->$id_receita;
             $nome = $rs->$nome;
+            $data_criacao = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            $nome = $rs->$nome;
+            
+
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -81,6 +91,54 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_receita != ""){
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
         </br>
+        <span class="">ID Receita</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Data de criação</span>
+        </br>
+        <input type="date" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Modo de preparo</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Qtde por porção</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Receita inedita</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">ID Categoria</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">imagem</span>
+        </br>
+        <input type="submit" name="imagem" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Id_funcionario</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
         <hr>
@@ -92,7 +150,16 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_receita != ""){
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
+                    <th>Nome</th>
+                    <th>ID Receita</th>
+                    <th>Data de criação</th>
+                    <th>Modo de preparo</th>
+                    <th>Qtde por porção</th>
+                    <th>Receita inedita</th>
+                    <th>ID Categoria</th>
+                    <th>imagem</th>
+                    <th>Id_funcionario</th>
+                    
                 </tr>
             </thead>
             <tbody>

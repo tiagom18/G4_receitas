@@ -23,6 +23,8 @@
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
                     $id_Ingrediente = $rs->id_Ingrediente;
                     $descricao = $rs->descricao;
+                    $nome = $rs->nome;
+
                    }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
@@ -35,6 +37,7 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $id_Ingrediente = filter_input(INPUT_POST,'id_Ingrediente');
                 $descricao = filter_input(INPUT_POST,'descricao');
+                $nome = filter_input(INPUT_POST,'nome');
             } else if (!isset($id_Ingrediente)){
                 $id_Ingrediente = (isset($_GET["id_Ingrediente"]) && $_GET["id_Ingrediente"] != null) ? $_GET["id_Ingrediente"] : "";
             }
@@ -45,8 +48,12 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Ingrediente) && ($id_Ingrediente != null || $id_Ingrediente != "")) ? $id_Ingrediente : ''; ?>"/>
 
-        <label for="descricao">Ingrediente</label>
+        <label for="descricao">descricao</label>
         <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+
+        <label for="nome">nome</label>
+        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+
 
         <button type="submit" >Salvar</button>
     </form>
@@ -58,6 +65,7 @@
             <tr>
                 <th>Id</th>
                 <th>Descrição</th>
+                <th>nome</th>
             </tr>
         </thead>
         <tbody>
@@ -69,6 +77,7 @@
                             echo "<tr>";
                             echo "<td>$rs->id_Ingrediente</td>";
                             echo "<td>$rs->descricao</td>";
+                            echo "<td>$rs->nome</td>";
                             echo "</tr>";
                         }
                     } else {
