@@ -17,7 +17,7 @@
     $nome_fantasia = $_GET["nome_fantasia"];
     $Usuario = $_GET["Usuario"];
     $senha = $_GET["senha"];
-    $id_Cargo = $_GET["id_Cargo"];
+   
   
 
     include('../model/conexao.php');
@@ -29,9 +29,9 @@
     data_ingresso = :data_ingresso,
     nome_fantasia = :nome_fantasia,
     Usuario = :Usuario,
-    senha = :senha,
-    id_Cargo = :id_Cargo
-    FROM g4_funcionario as a INNER JOIN g4_cargo as b on id_Cargo = id_Cargo
+    senha = :senha
+ 
+
     WHERE id_Funcionario = :id;";
 
 
@@ -43,7 +43,7 @@
     $stmt->bindParam(":nome_fantasia", $nome_fantasia, PDO::PARAM_INT);
     $stmt->bindParam(":Usuario", $Usuario, PDO::PARAM_INT);
     $stmt->bindParam(":senha", $senha, PDO::PARAM_INT);
-    $stmt->bindParam(":id_Cargo", $id_Cargo, PDO::PARAM_INT);
+   
 
   
 
@@ -58,7 +58,7 @@
 
 ?>  
  <br>
- <a href="../index.php">Voltar</a>
+ <a href="./index.php">Voltar</a>
  
  </body>
 </html>

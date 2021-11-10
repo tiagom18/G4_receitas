@@ -26,7 +26,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Funcionario = (isset($_GET["id_Funcionario"]) && $_GET["id_Funcionario"] != null) ? $_GET["id_Funcionario"] : "";
 }
 
-//SAVE
+//SAVE - insert
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Funcionario != "") {
@@ -139,7 +139,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
         data_ingresso:
 		</label>
         </br>
-        <input type="text" name="data_ingresso" placeholder="Inserir" value="<?php
+        <input type="date" name="data_ingresso" placeholder="Inserir" value="<?php
         echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';
         ?>" />
         </br>
