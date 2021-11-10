@@ -123,49 +123,37 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
 			Nome:
 		</label>
         </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-        ?>" />
+        <input type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
         </br>
         <label for="rg">
-			RG:
+		RG:
 		</label>
         </br>
-        <input type="text" name="rg" placeholder="Inserir" value="<?php
-        echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';
-        ?>" />
+        <input type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
         </br>
         <label for="data_ingresso">
         data_ingresso:
 		</label>
         </br>
-        <input type="date" name="data_ingresso" placeholder="Inserir" value="<?php
-        echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';
-        ?>" />
+        <input type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
         </br>
         <label for="nome_fantasia">
         nome_fantasia:
 		</label>
         </br>
-        <input type="text" name="nome_fantasia" placeholder="Inserir" value="<?php
-        echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';
-        ?>" />
+        <input type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
         </br>
         <label for="Usuario">
         Usuario:
 		</label>
         </br>
-        <input type="text" name="Usuario" placeholder="Inserir" value="<?php
-        echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : '';
-        ?>" />
+        <input type="text" name="Usuario" placeholder="Inserir" value="<?php echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : '';?>" />
         </br>
         <label for="senha">
         senha:
 		</label>
         </br>
-        <input type="text" name="senha" placeholder="Inserir" value="<?php
-        echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';
-        ?>" />
+        <input type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
         </br>
         
 <select id="id_Cargo" name="id_Cargo">

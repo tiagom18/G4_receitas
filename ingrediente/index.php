@@ -16,6 +16,7 @@ include ('../includes/header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Ingrediente = filter_input(INPUT_POST,'id_Ingrediente');
     $descricao = filter_input(INPUT_POST,'descricao');
+    $nome = filter_input(INPUT_POST,'nome');
 } else if (!isset($id_Ingrediente)){
     $id_Ingrediente = (isset($_GET["id_Ingrediente"]) && $_GET["id_Ingrediente"] != null) ? $_GET["id_Ingrediente"] : "";
 }
@@ -24,12 +25,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
     try{
         if ($id_Ingrediente != "") {
-            $stmt = $conexão->prepare("UPDATE g4_ingrediente  SET descricao=? WHERE id_Ingrediente = ?");
-            $stmt->bindParam(2, $id_Ingrediente);
+            $stmt = $conexão->prepare("UPDATE g4_ingrediente  SET descricao=:descricao, nome=:nome WHERE id_Ingrediente = :id_Ingrediente");
+            $stmt->bindParam(":id_Ingrediente", $id_Ingrediente);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_ingrediente (descricao) VALUES (?)");
+            $stmt = $conexao->prepare("INSERT INTO g4_ingrediente (descricao, nome) VALUES (:descricao,:nome)");
         }
-        $stmt->bindParam(1, $descricao);
+        $stmt->bindParam(":descricao", $descricao);
+        $stmt->bindParam(":nome", $nome);
         
 
         if($stmt->execute())  {
@@ -37,6 +39,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
                 echo "<p> Ingrediente cadastrado com sucesso!</p>";
                 $id_Ingrediente = null;
                 $descricao = null;
+                $nome = null;
             } else {
                 echo "<p>Erro no cadastro do Ingrediente</p>";
             }
@@ -59,6 +62,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_Ingrediente = $rs->$id_Ingrediente;
             $descricao = $rs->$descricao;
+            $nome = $rs->$nome;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -73,10 +77,16 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Ingrediente</span>
+        <span class="">descricao</span>
         </br>
         <input type="text" name="descricao" placeholder="Inserir" value="<?php
         echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Ingrediente</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
         </br>
         <button type="submit" class = "">Salvar</button>
@@ -91,6 +101,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
                 <tr>
                     <th>Id</th>
                     <th>Descrição</th>
+                    <th>nome</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,6 +113,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
                                 echo "<tr>";
                                 echo "<td>$rs->id_Ingrediente</td>";
                                 echo "<td>$rs->descricao</td>";
+                                echo "<td>$rs->nome</td>";
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Ingrediente.'">Alterar</a></td>';
                                 //excluir
