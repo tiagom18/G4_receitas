@@ -1,1 +1,21 @@
+.teste {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    
+}
+
+.entra {
+    width: 1134px;
+    background: #C4C4C4;
+}
+
+body {
+    width: 100%;
+    font-family: Roboto;
+
+
+    color: #000000;
+}
+
 

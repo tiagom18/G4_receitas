@@ -70,54 +70,61 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
 
 ?>
 <body>
+    <div class="entra">
+        <div class="teste">
+            <div class="cargo">
+    
     <!--Inicio - Insert form-->
 
-    <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Cargo</span>
-        </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-        ?>" class="form-control"/>
-        </br>
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
-    
+                <form action="?act=save" method="POST" name="form" class="" >
+                    <span class="">Cargo</span>
+                    </br>
+                    <input type="text" name="nome" placeholder="Inserir" value="<?php
+                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+                    ?>" class="form-control"/>
+                    </br>
+                    <button type="submit" class = "">Salvar</button>
+                    <button type="reset" class = "">Cancelar</button>
+                    <hr>
+                </form>
+            </div>              
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
-        <table>
-            <thead>
-             
-                <tr>
-                    <th>Id</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>";
-                                echo "<td>$rs->id_Cargo</td>";
-                                echo "<td>$rs->nome</td>";
-                                //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
-                                echo "</tr>";
+            <div class="table_cargo">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            try {
+                                $stmt = $conexao->prepare("SELECT * FROM g4_cargo");
+                                if ($stmt->execute()) {
+                                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                        echo "<tr>";
+                                        echo "<td>$rs->id_Cargo</td>";
+                                        echo "<td>$rs->nome</td>";
+                                        //Alterar 
+                                        echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                        //excluir
+                                        echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
+                                        echo "</tr>";
+                                    }
+                                } else {
+                            echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                }
+                            } catch (PDOException $erro) {
+                                echo "Erro: " . $erro->getMessage();
                             }
-                        } else {
-                       echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                        }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
-                    }
-                ?>
-            </tbody>
-        </table>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     <!-- Fim - Read-->
+    </div>
 </body>
 </html>
