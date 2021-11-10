@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Funcionario != "") {
-            $stmt = $conexão->prepare("UPDATE g4_funcionario SET (nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
+            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
             $stmt->bindParam(":id_Funcionario", $id_Funcionario);
           
         } else {
