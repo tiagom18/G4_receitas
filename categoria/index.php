@@ -103,9 +103,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
                                 echo "<td>$rs->id_Categoria</td>";
                                 echo "<td>$rs->descricao</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
+                                echo '<td><a href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
+                                echo '<td><a href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../includes/style.css"> 
-    <title>Cargo</title>
+    <title>Restaurante</title>
 </head>
 <body>
     <?php
@@ -45,14 +45,14 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Restaurante) && ($id_Restaurante != null || $id_Restaurante != "")) ? $id_Restaurante : ''; ?>"/>
 
-        <label for="nome">Cargo</label>
+        <label for="nome">Restaurante</label>
         <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>
     <hr/>
     <!--apresenta um consultar -->
-    <h3>Cargos cadastrados</h3>
+    <h3>Restaurantes cadastrados</h3>
     <table>
         <thead>
             <tr>

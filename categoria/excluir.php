@@ -10,9 +10,9 @@
 <body>
     <?php
         //header
-            include ('..\..\includes\header.php');
+            include ('..\includes\header.php');
         //conexão
-            include('..\..\model\conexao.php');
+            include('..\model\conexao.php');
     
         //Aprensentar dados do Categoria selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
         $id_Categoria=$_GET["id"];
@@ -52,6 +52,6 @@
             }
     ?>
     <br>
-    <a href="../Categoria/../index.php">Voltar</a>
+    <a href="./index.php">Voltar</a>
 </body>
 </html>

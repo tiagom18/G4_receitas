@@ -10,9 +10,9 @@
 <body>
     <?php
         //header
-            include ('..\..\includes\header.php');
+            include ('..\includes\header.php');
         //conexão
-            include('..\..\model\conexao.php');
+            include('..\model\conexao.php');
         //recuperando as informações salvas no save do index.php
             $id_Categoria = $_GET["id"];
 

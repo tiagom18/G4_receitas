@@ -5,6 +5,7 @@
 	  <title>Cadastro de vendas - Alteração</title>
     <link rel="stylesheet" href="../../includes/style.css"> 
 	  <meta charset="utf-8">
+    
       
 	</head>
 	<body>
@@ -13,8 +14,8 @@
 // efetua alteração do curso informado em form_alteracao.php
     $id_Categoria = $_GET["id"];
     $descricao = $_GET["descricao"];
-    include('..\..\model\conexao.php');
-    include ('..\..\includes\header.php');
+    include('..\model\conexao.php');
+    include ('..\includes\header.php');
 
   try{
     $query = "UPDATE g4_categoria
@@ -37,7 +38,7 @@
 
 ?>  
  <br>
- <a href="../index.php">Ver Vendas cadastradas</a>
+ <a href="../index.php">Voltar</a>
  
  </body>
 </html>

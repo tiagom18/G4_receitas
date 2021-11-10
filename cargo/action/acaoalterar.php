@@ -37,7 +37,7 @@
 
 ?>  
  <br>
- <a href="../index.php">Ver Cargos Cadastrados</a>
+ <a href="../index.php">Voltar </a>
  
  </body>
 </html>

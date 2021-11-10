@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="action/style.css">-->
-    <title>Cargo</title>
+    <title>Ingrediente</title>
 </head>
 <?php 
 //conexão
@@ -34,11 +34,11 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Cargo cadastrado com sucesso!</p>";
+                echo "<p> Ingrediente cadastrado com sucesso!</p>";
                 $id_Ingrediente = null;
                 $descricao = null;
             } else {
-                echo "<p>Erro no cadastro do cargo</p>";
+                echo "<p>Erro no cadastro do Ingrediente</p>";
             }
         } else {
             echo "<p>Erro: Não foi possivel executar a declaração sql</p>";
@@ -73,7 +73,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Cargo</span>
+        <span class="">Ingrediente</span>
         </br>
         <input type="text" name="descricao" placeholder="Inserir" value="<?php
         echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';

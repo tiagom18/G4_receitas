@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<link rel="stylesheet" href="action/style.css">-->
-    <title>Cargo</title>
+    <title>Funcionário</title>
 </head>
 <?php 
 //conexão
@@ -117,7 +117,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
 
 <body>
     <!--Inicio - Insert form-->
-
+    <span>Funcionário</span>
     <form action="?act=save" method="POST" name="form" class="" >
         <label for="nome">
 			Nome:
