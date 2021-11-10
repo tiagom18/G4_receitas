@@ -3,29 +3,28 @@
 <html>
 	<head>
 	  <title>Cadastro de vendas - Alteração</title>
-    <link rel="stylesheet" href="../../includes/style.css"> 
+    <link rel="stylesheet" href="../includes/style.css"> 
 	  <meta charset="utf-8">
-    
       
 	</head>
 	<body>
-    <!-- centralizar tudo e cria um botão bonito de voltar-->
+    <!-- centralizar tudo e cria um botão bonito de voltar -->
 <?php 
 // efetua alteração do curso informado em form_alteracao.php
-    $id_Categoria = $_GET["id"];
-    $descricao = $_GET["descricao"];
+    $id_Livro = $_GET["id"];
+    $titulo = $_GET["titulo"];
     include('../model/conexao.php');
     include ('../includes/header.php');
 
   try{
-    $query = "UPDATE g4_categoria
-    SET descricao = :descricao
-    WHERE id_Categoria = :id;";
+    $query = "UPDATE g4_livro
+    SET titulo = :titulo
+    WHERE id_Livro = :id;";
 
     $stmt=$conexao->prepare($query);
 
-    $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
-    $stmt->bindParam(":id", $id_Categoria, PDO::PARAM_INT);
+    $stmt->bindParam(":titulo", $titulo, PDO::PARAM_STR);
+    $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
 
     $stmt->execute();
 
@@ -38,7 +37,7 @@
 
 ?>  
  <br>
- <a href="../index.php">Voltar</a>
+ <a href="./index.php">Voltar</a>
  
  </body>
 </html>

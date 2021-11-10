@@ -11,7 +11,7 @@
 //conexão
 include('../model/conexao.php');
 //header
-include ('..\includes\header.php');
+include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Referencia = filter_input(INPUT_POST,'id_Referencia');
@@ -103,9 +103,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Referencia != ""
                                 echo "<td>$rs->id_Referencia</td>";
                                 echo "<td>$rs->descricao</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Referencia.'">Alterar</a></td>';
+                                echo '<td><a href="./alterar.php?id='.$rs->id_Referencia.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Referencia. '">Excluir</a></td>';
+                                echo '<td><a href="./excluir.php?id=' .$rs->id_Referencia. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {

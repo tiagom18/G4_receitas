@@ -1,5 +1,5 @@
 <?php
-include ('..\includes\header.php');
+include ('../includes/header.php');
 
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ include ('..\includes\header.php');
 </head>
 <body>
     <div class="posicao_logo1">
-      <img src="..\inicio\LOGO-G4-RECEITAS-PRETO.png" alt="">
+      <img src="../inicio/LOGO-G4-RECEITAS-PRETO.png" alt="">
     </div>   
 </body>
 </html>

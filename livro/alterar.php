@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../includes/style.css"> 
-    <title>Categoria</title>
+    <title>Livro</title>
 </head>
 <body>
     <?php
@@ -14,15 +14,15 @@
         //conexão
             include('../model/conexao.php');
         //recuperando as informações salvas no save do index.php
-            $id_Categoria = $_GET["id"];
+            $id_Livro = $_GET["id"];
 
             try {
-                $stmt = $conexao->prepare("SELECT * FROM g4_categoria WHERE id_Categoria = :id");
-                $stmt->bindParam(":id", $id_Categoria, PDO::PARAM_INT);
+                $stmt = $conexao->prepare("SELECT * FROM g4_livro WHERE id_Livro = :id");
+                $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
-                    $id_Categoria = $rs->id_Categoria;
-                    $descricao = $rs->descricao;
+                    $id_Livro = $rs->id_Livro;
+                    $titulo = $rs->titulo;
                    }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
@@ -33,26 +33,26 @@
 
         //verificando o POST
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                $id_Categoria = filter_input(INPUT_POST,'id_Categoria');
-                $descricao = filter_input(INPUT_POST,'descricao');
-            } else if (!isset($id_Categoria)){
-                $id_Categoria = (isset($_GET["id_Categoria"]) && $_GET["id_Categoria"] != null) ? $_GET["id_Categoria"] : "";
+                $id_Livro = filter_input(INPUT_POST,'id_Livro');
+                $titulo = filter_input(INPUT_POST,'titulo');
+            } else if (!isset($id_Livro)){
+                $id_Livro = (isset($_GET["id_Livro"]) && $_GET["id_Livro"] != null) ? $_GET["id_Livro"] : "";
             }
         //    
     ?>
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Categoria) && ($id_Categoria != null || $id_Categoria != "")) ? $id_Categoria : ''; ?>"/>
+        <input type="hidden" name="id" value="<?php echo (isset($id_Livro) && ($id_Livro != null || $id_Livro != "")) ? $id_Livro : ''; ?>"/>
 
-        <label for="descricao">Categoria</label>
-        <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+        <label for="titulo">Livro</label>
+        <input type="text" name="titulo" value="<?php echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>
     <hr/>
     <!--apresenta um consultar -->
-    <h3>Categorias cadastrados</h3>
+    <h3>Livros cadastrados</h3>
     <table>
         <thead>
             <tr>
@@ -63,12 +63,12 @@
         <tbody>
             <?php
                 try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
+                    $stmt = $conexao->prepare("SELECT * FROM g4_livro");
                     if ($stmt->execute()) {
                         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                             echo "<tr>";
-                            echo "<td>$rs->id_Categoria</td>";
-                            echo "<td>$rs->descricao</td>";
+                            echo "<td>$rs->id_Livro</td>";
+                            echo "<td>$rs->titulo</td>";
                             echo "</tr>";
                         }
                     } else {

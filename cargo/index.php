@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="action/style.css" rel="stylesheet"/>
+    <link href="./style.css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargo</title>
 </head>
@@ -11,7 +11,7 @@
 //conexão
 include('../model/conexao.php');
 //header
-include ('..\includes\header.php');
+include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
@@ -108,9 +108,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                         echo "<td>$rs->id_Cargo</td>";
                                         echo "<td>$rs->nome</td>";
                                         //Alterar 
-                                        echo '<td><a href="./action/alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                        echo '<td><a href="./alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
                                         //excluir
-                                        echo '<td><a href="./action/excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
+                                        echo '<td><a href="./excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                         echo "</tr>";
                                     }
                                 } else {

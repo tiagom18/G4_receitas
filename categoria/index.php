@@ -11,7 +11,7 @@
 //conexão
 include('../model/conexao.php');
 //header
-include ('..\includes\header.php');
+include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Categoria = filter_input(INPUT_POST,'id_Categoria');

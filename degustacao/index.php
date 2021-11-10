@@ -11,7 +11,7 @@
 //conexão
 include('../model/conexao.php');
 //header
-include ('..\includes\header.php');
+include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Degustacao = filter_input(INPUT_POST,'id_Degustacao');
@@ -104,9 +104,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Degustacao != ""
                                 echo "<td>$rs->id_Degustacao</td>";
                                 echo "<td>$rs->nome</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Degustacao.'">Alterar</a></td>';
+                                echo '<td><a href="./alterar.php?id='.$rs->id_Degustacao.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Degustacao. '">Excluir</a></td>';
+                                echo '<td><a href="./excluir.php?id=' .$rs->id_Degustacao. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {

@@ -11,7 +11,7 @@
 //conexão
 include('../model/conexao.php');
 //header
-include ('..\includes\header.php');
+include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Funcionario = filter_input(INPUT_POST,'id_Funcionario');
@@ -211,9 +211,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                                 echo "<td>$rs->Usuario</td>";
                                 echo "<td>$rs->senha</td>";
                                 //Alterar 
-                                echo '<td><a href="./action/alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
+                                echo '<td><a href="./alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./action/excluir.php?id=' .$rs->id_Funcionario. '">Excluir</a></td>';
+                                echo '<td><a href="./excluir.php?id=' .$rs->id_Funcionario. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {
