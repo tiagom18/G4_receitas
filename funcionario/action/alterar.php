@@ -54,7 +54,6 @@
         }
         //    
         //pegar as opções do banco 
-
         $sql = " SELECT * FROM g4_cargo";
         try {
             $stmt = $conexao -> prepare($sql);
@@ -63,8 +62,8 @@
         }
         catch(Exception $ex){
             echo ($ex -> getMessage());
-
-    }
+    
+        }
         
     ?>
     <h1>Alterar</h1>
@@ -91,11 +90,12 @@
         <input type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
 
         <select id="id_Cargo" name="id_Cargo">
-            <option>Cargo</option>
-                <?php foreach($results as $output) {?>
-                <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
-            <?php } ?>
-        </select>
+        <option>Cargo</option>
+        <?php foreach($results as $output) {?>
+    <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+        <?php } ?>
+    </select>
+        
         <button type="submit" >Salvar</button>
     </form>
     <hr/>

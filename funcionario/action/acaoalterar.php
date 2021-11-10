@@ -25,13 +25,13 @@
 
   try{
     $query = "UPDATE g4_funcionario
-    SET nome = :nome
-    data_ingresso = :data_ingresso
-    nome_fantasia = :nome_fantasia
-    Usuario = :Usuario
-    senha = :senha
+    SET nome = :nome,
+    data_ingresso = :data_ingresso,
+    nome_fantasia = :nome_fantasia,
+    Usuario = :Usuario,
+    senha = :senha,
     id_Cargo = :id_Cargo
- 
+    FROM g4_funcionario as a INNER JOIN g4_cargo as b on id_Cargo = id_Cargo
     WHERE id_Funcionario = :id;";
 
 
