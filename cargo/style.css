@@ -144,10 +144,9 @@ buttonsubmit {
 
 .txt_cargo_cadastrado{
  
-    position: sticky;
+    position: absolute;
     width: 100%;
     bottom: 0px;
-    
 
     background: #D5F4C7;
     
