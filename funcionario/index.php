@@ -76,8 +76,6 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
     try {
         echo "id_Funcionario :",  $id;
 
-        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario= :id");
-
         $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, Usuario, senha FROM g4_funcionario WHERE id_funcionario= :id");
 
         $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
@@ -181,6 +179,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                     <th>nome_fantasia</th>
                     <th>Usuario</th>
                     <th>senha</th>
+                    <th>cargo</th>
                 </tr>
             </thead>
             <tbody>
@@ -198,6 +197,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                                 echo "<td>$rs->nome_fantasia</td>";
                                 echo "<td>$rs->Usuario</td>";
                                 echo "<td>$rs->senha</td>";
+                                echo "<td>$rs->id_Cargo</td>";
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
                                 //excluir
