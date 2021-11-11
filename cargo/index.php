@@ -86,7 +86,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                     </br>
                     <button type="reset" class = "">Cancelar</button>
                     <button type="submit" class = "">Salvar</button>
-                    <hr>
+                    
                 </form>
             </div>              
     <!--Fim - Insert form-->
