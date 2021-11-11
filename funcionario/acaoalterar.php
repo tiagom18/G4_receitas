@@ -16,7 +16,7 @@
     $rg = $_GET["rg"];
     $data_ingresso = $_GET["data_ingresso"];
     $nome_fantasia = $_GET["nome_fantasia"];
-    $Usuario = $_GET["Usuario"];
+    $usuario = $_GET["usuario"];
     $senha = $_GET["senha"];
    
   
@@ -30,7 +30,7 @@
     rg = :rg,
     data_ingresso = :data_ingresso,
     nome_fantasia = :nome_fantasia,
-    Usuario = :Usuario,
+    usuario = :usuario,
     senha = :senha
     WHERE id_Funcionario = :id;";
 
@@ -40,9 +40,9 @@
     $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
     $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
     $stmt->bindParam(":rg", $rg, PDO::PARAM_STR);
-    $stmt->bindParam(":data_ingresso", $data_ingresso, PDO::PARAM_INT);
-    $stmt->bindParam(":nome_fantasia", $nome_fantasia, PDO::PARAM_INT);
-    $stmt->bindParam(":Usuario", $Usuario, PDO::PARAM_INT);
+    $stmt->bindParam(":data_ingresso", $data_ingresso, PDO::PARAM_STR);
+    $stmt->bindParam(":nome_fantasia", $nome_fantasia, PDO::PARAM_STR);
+    $stmt->bindParam(":usuario", $usuario, PDO::PARAM_INT);
     $stmt->bindParam(":senha", $senha, PDO::PARAM_INT);
    
 

@@ -14,18 +14,18 @@ include('../model/conexao.php');
 include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $id_cozinheiro = filter_input(INPUT_POST,'id_cozinheiro');
+    $id_Receita = filter_input(INPUT_POST,'id_Receita');
     $nome = filter_input(INPUT_POST,'nome');
-} else if (!isset($id_cozinheiro)){
-    $id_cozinheiro = (isset($_GET["id_cozinheiro"]) && $_GET["id_cozinheiro"] != null) ? $_GET["id_cozinheiro"] : "";
+} else if (!isset($id_Receita)){
+    $id_Receita = (isset($_GET["id_Receita"]) && $_GET["id_Receita"] != null) ? $_GET["id_Receita"] : "";
 }
 
 //SAVE
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
-        if ($id_cozinheiro != "") {
-            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao, ind_receita_inedita=:ind_receita_inedita, id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_cozinheiro = :id_cozinheiro");
-            $stmt->bindParam(":id_cozinheiro", $id_cozinheiro);
+        if ($id_Receita != "") {
+            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao, ind_receita_inedita=:ind_receita_inedita, id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_Receita = :id_Receita");
+            $stmt->bindParam(":id_Receita", $id_Receita);
         } else {
             $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao, ind_receita_inedita, id_Categoria, id_Funcionario) 
             VALUES (:nome,:id_receita,:data_criacao,:modo_preparo,:qtde_porcao,:ind_receita_inedita,:id_Categoria,:id_Funcionario)");
@@ -46,7 +46,6 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 echo "<p> Receita cadastrado com sucesso!</p>";
                 $id_receita = null;
                 $nome = null;
-                $id_cozinheiro = null;
                 $data_criacao = null;
                 $modo_preparo = null;
                 $qtde_porcao = null;
@@ -67,15 +66,15 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
 //UPD
 
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_cozinheiro != ""){
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Receita != ""){
     try {
-        echo "id_cozinheiro :",  $id;
-        $stmt = $conexao->prepare("SELECT id_cozinheiro, id_receita, nome, data_criacao, modo_preparo, qtde_porcao, ind_receita_inedita,id_Categoria,id_Funcionario FROM g4_receita WHERE id_cozinheiro= :id");
+        echo "id_Receita :",  $id;
+        $stmt = $conexao->prepare("SELECT id_Receita, , nome, data_criacao, modo_preparo, qtde_porcao, ind_receita_inedita,id_Categoria,id_Funcionario FROM g4_receita WHERE id_Receita= :id");
        
-        $stmt->bindParam(":id", $id_cozinheiro, PDO::PARAM_INT);
+        $stmt->bindParam(":id", $id_Receita, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
-            $id_cozinheiro = $rs->id_cozinheiro;
+           
             $id_receita = $rs->$id_receita;
             $nome = $rs->$nome;
             $data_criacao = $rs->$data_criacao;
@@ -136,12 +135,7 @@ catch(Exception $ex){
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
-        </br>
-        <span class="">ID Receita</span>
-        </br>
-        <input type="text" name="id_receita" placeholder="Inserir" value="<?php
-        echo (isset($id_receita) && ($id_receita != null || $id_receita != "")) ? $id_receita : '';
-        ?>" class="form-control"/>
+        
         </br>
         <span class="">Data de criação</span>
         </br>
@@ -167,6 +161,7 @@ catch(Exception $ex){
         echo (isset($ind_receita_inedita) && ($ind_receita_inedita != null || $ind_receita_inedita != "")) ? $ind_receita_inedita : '';
         ?>" class="form-control"/>
         </br>
+        <span class="">Categoria</span>
         </br>
         <select id="id_Categoria" name="id_Categoria">
             <option>Categoria</option>
@@ -175,6 +170,7 @@ catch(Exception $ex){
         <?php } ?>
         </select>
         </br>
+        <span class="">Funcionario</span>
         </br>
         <select id="id_Funcionario" name="id_Funcionario">
             <option>Funcinario</option>
@@ -196,13 +192,11 @@ catch(Exception $ex){
                 <tr>
                     <th>Id</th>
                     <th>Nome</th>
-                    <th>ID Receita</th>
                     <th>Data de criação</th>
                     <th>Modo de preparo</th>
                     <th>Qtde por porção</th>
                     <th>Receita inedita</th>
                     <th>ID Categoria</th>
-                    <th>imagem</th>
                     <th>Id_funcionario</th>
                     
                 </tr>
@@ -214,9 +208,8 @@ catch(Exception $ex){
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
-                                echo "<td>$rs->id_cozinheiro</td>";
+                                echo "<td>$rs->id_Receita</td>";
                                 echo "<td>$rs->nome</td>";
-                                echo "<td>$rs->id_receita</td>";
                                 echo "<td>$rs->data_criacao</td>";
                                 echo "<td>$rs->modo_preparo</td>";
                                 echo "<td>$rs->qtde_porcao</td>";
@@ -226,9 +219,9 @@ catch(Exception $ex){
                                
            
                                 //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_cozinheiro.'">Alterar</a></td>';
+                                echo '<td><a href="./alterar.php?id='.$rs->id_Receita.'">Alterar</a></td>';
                                 //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_cozinheiro. '">Excluir</a></td>';
+                                echo '<td><a href="./excluir.php?id=' .$rs->id_Receita. '">Excluir</a></td>';
                                 echo "</tr>";
                             }
                         } else {

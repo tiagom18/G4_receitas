@@ -1,16 +1,12 @@
 .incluir {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-items: center;
-    
+display:flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;   
 }
 
-.entra {
-    position: absolute;
-    width: 1134px;
-    height: 41px;
-    left: 699px;
-    top: 237px;
+.titulo{
+margin: 16px auto ;
 }
 
 body {
@@ -22,7 +18,7 @@ body {
 
 h1 {
     text-align: center;
-    position: absolute;
+    
     width: 54px;
     height: 23px;
     left: 530px;
@@ -144,7 +140,7 @@ buttonsubmit {
 
 .txt_cargo_cadastrado{
  
-    position: absolute;
+    
     width: 100%;
     bottom: 0px;
 

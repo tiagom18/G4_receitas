@@ -77,7 +77,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
     <!--Inicio - Insert form-->
 
                 <form action="?act=save" method="POST" name="form" class="" >
-                    <h1>Cargo</h1>
+                    <h1 class="titulo">Cargo</h1>
                     <h2 class="txt_inclui">Incluir</h2>
                     <h3 class="txt_descricao">Descrição</h3>
                     <input type="text" name="nome" placeholder="Inserir" value="<?php

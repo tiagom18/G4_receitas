@@ -15,10 +15,10 @@
             include('../model/conexao.php');
         //recuperando as informações salvas no save do index.php
             $id_Funcionario = $_GET["id"];
-            //SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id"
+            //SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id"
 
             try {
-                $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, Usuario, senha FROM g4_funcionario  WHERE id_Funcionario= :id");
+                $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha FROM g4_funcionario  WHERE id_Funcionario= :id");
                 $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
@@ -27,7 +27,7 @@
                     $rg = $rs->rg;
                     $data_ingresso = $rs->data_ingresso;
                     $nome_fantasia = $rs->nome_fantasia;
-                    $Usuario = $rs->Usuario;
+                    $usuario = $rs->usuario;
                     $senha = $rs->senha;
                     
             
@@ -46,7 +46,7 @@
             $rg = filter_input(INPUT_POST,'rg');
             $data_ingresso = filter_input(INPUT_POST,'data_ingresso');
             $nome_fantasia = filter_input(INPUT_POST,'nome_fantasia');
-            $Usuario = filter_input(INPUT_POST,'Usuario');
+            $usuario = filter_input(INPUT_POST,'usuario');
             $senha = filter_input(INPUT_POST,'senha');
             $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
         } else if (!isset($id_Funcionario)){
@@ -83,8 +83,8 @@
         <label for="nome_fantasia">nome_fantasia</label>
         <input type="text" name="nome_fantasia" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : ''; ?>" />
 
-        <label for="Usuario">Usuario</label>
-        <input type="text" name="Usuario" value="<?php echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : ''; ?>" />
+        <label for="usuario">usuario</label>
+        <input type="text" name="usuario" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : ''; ?>" />
 
         <label for="senha">senha</label>
         <input type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
@@ -109,7 +109,7 @@
                 <th>rg</th>
                 <th>data_ingresso</th>
                 <th>nome_fantasia</th>
-                <th>Usuario</th>
+                <th>usuario</th>
                 <th>senha</th>
          
             </tr>
@@ -126,7 +126,7 @@
                             echo "<td>$rs->rg</td>";
                             echo "<td>$rs->data_ingresso</td>";
                             echo "<td>$rs->nome_fantasia</td>";
-                            echo "<td>$rs->Usuario</td>";
+                            echo "<td>$rs->usuario</td>";
                             echo "<td>$rs->senha</td>";
                             
                             echo "</tr>";

@@ -19,7 +19,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $rg = filter_input(INPUT_POST,'rg');
     $data_ingresso = filter_input(INPUT_POST,'data_ingresso');
     $nome_fantasia = filter_input(INPUT_POST,'nome_fantasia');
-    $Usuario = filter_input(INPUT_POST,'Usuario');
+    $usuario = filter_input(INPUT_POST,'usuario');
     $senha = filter_input(INPUT_POST,'senha');
     $id_Cargo = filter_input(INPUT_POST,'id_Cargo');
 } else if (!isset($id_Funcionario)){
@@ -29,20 +29,22 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 //SAVE - insert
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
+
+       
         if ($id_Funcionario != "") {
-            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, Usuario=:Usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
+            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, usuario=:usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
             $stmt->bindParam(":id_Funcionario", $id_Funcionario);
           
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome, rg, data_ingresso, nome_fantasia, Usuario, senha, id_Cargo) 
-            VALUES (:nome,:rg,:data_ingresso,:nome_fantasia,:Usuario,:senha,:id_Cargo)");
+            $stmt = $conexao->prepare("INSERT INTO g4_funcionario(nome, rg, data_ingresso, nome_fantasia, usuario, senha, id_Cargo) 
+            VALUES (:nome,:rg,:data_ingresso,:nome_fantasia,:usuario,:senha,:id_Cargo)");
         }
-     
+        
         $stmt->bindParam(":nome", $nome ,PDO::PARAM_STR);
         $stmt->bindParam(":rg", $rg,PDO::PARAM_STR);
         $stmt->bindParam(":data_ingresso", $data_ingresso ,PDO::PARAM_STR);
         $stmt->bindParam(":nome_fantasia", $nome_fantasia ,PDO::PARAM_STR);
-        $stmt->bindParam(":Usuario", $Usuario ,PDO::PARAM_STR);
+        $stmt->bindParam(":usuario", $usuario ,PDO::PARAM_STR);
         $stmt->bindParam(":senha", $senha ,PDO::PARAM_STR);
         $stmt->bindParam(":id_Cargo", $id_Cargo ,PDO::PARAM_STR);
         
@@ -56,7 +58,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 $rg = null;
                 $data_ingresso = null;
                 $nome_fantasia = null;
-                $Usuario = null;
+                $usuario = null;
                 $senha = null;
                 $id_Cargo = null;
             } else {
@@ -76,7 +78,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
     try {
         echo "id_Funcionario :",  $id;
 
-        $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, Usuario, senha FROM g4_funcionario WHERE id_funcionario= :id");
+        $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha FROM g4_funcionario WHERE id_funcionario= :id");
 
         $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
         if ($stmt->execute()) {
@@ -86,7 +88,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
             $rg = $rs->$rg;
             $data_ingresso = $rs->$data_ingresso;
             $nome_fantasia = $rs->$nome_fantasia;
-            $Usuario = $rs->$Usuario;
+            $usuario = $rs->$usuario;
             $senha = $rs->$senha;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
@@ -114,7 +116,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
 ?>
 
 <body>
-    <!--Inicio - Insert form-->
+    <!--Inicio - Insert form-->    
     <span>Funcionário</span>
     <form action="?act=save" method="POST" name="form" class="" >
         <label for="nome">
@@ -141,11 +143,11 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
         </br>
         <input type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
         </br>
-        <label for="Usuario">
-        Usuario:
+        <label for="usuario">
+        usuario:
 		</label>
         </br>
-        <input type="text" name="Usuario" placeholder="Inserir" value="<?php echo (isset($Usuario) && ($Usuario != null || $Usuario != "")) ? $Usuario : '';?>" />
+        <input type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
         </br>
         <label for="senha">
         senha:
@@ -154,7 +156,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
         <input type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
         </br>
         
-<select id="id_Cargo" name="id_Cargo">
+    <select id="id_Cargo" name="id_Cargo">
         <option>Cargo</option>
         <?php foreach($results as $output) {?>
     <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
@@ -177,7 +179,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                     <th>rg</th>
                     <th>data_ingresso</th>
                     <th>nome_fantasia</th>
-                    <th>Usuario</th>
+                    <th>usuario</th>
                     <th>senha</th>
                     <th>cargo</th>
                 </tr>
@@ -185,7 +187,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.Usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
                        
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -195,7 +197,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                                 echo "<td>$rs->rg</td>";
                                 echo "<td>$rs->data_ingresso</td>";
                                 echo "<td>$rs->nome_fantasia</td>";
-                                echo "<td>$rs->Usuario</td>";
+                                echo "<td>$rs->usuario</td>";
                                 echo "<td>$rs->senha</td>";
                                 echo "<td>$rs->id_Cargo</td>";
                                 //Alterar 
