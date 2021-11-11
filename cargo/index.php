@@ -34,7 +34,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Cargo cadastrado com sucesso!</p>";
+                echo "<p class = 'txt_cargo_cadastrado'> Cargo cadastrado com sucesso!</p>";
                 $id_Cargo = null;
                 $nome = null;
             } else {
@@ -71,31 +71,34 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
 ?>
 <body>
     <div class="entra">
-        <div class="teste">
+        <div class="incluir">
             <div class="cargo">
     
     <!--Inicio - Insert form-->
 
                 <form action="?act=save" method="POST" name="form" class="" >
-                    <span class="">Cargo</span>
-                    </br>
+                    <h1>Cargo</h1>
+                    <h2 class="txt_inclui">Incluir</h2>
+                    <h3 class="txt_descricao">Descrição</h3>
                     <input type="text" name="nome" placeholder="Inserir" value="<?php
                     echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
                     ?>" class="form-control"/>
                     </br>
-                    <button type="submit" class = "">Salvar</button>
                     <button type="reset" class = "">Cancelar</button>
+                    <button type="submit" class = "">Salvar</button>
                     <hr>
                 </form>
             </div>              
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
+    <h4 class="txt_consultar">Consultar</h4>
             <div class="table_cargo">
+                
                 <table>
                     <thead>
                         <tr>
-                            <th>Id</th>
-                            <th>Descrição</th>
+                            <th class="txt_item">ID</th>
+                            <th class="txt_item">Descrição</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -108,9 +111,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Cargo != ""){
                                         echo "<td>$rs->id_Cargo</td>";
                                         echo "<td>$rs->nome</td>";
                                         //Alterar 
-                                        echo '<td><a href="./alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
+                                        echo '<td><a class=button_alterar href="./alterar.php?id='.$rs->id_Cargo.'">Alterar</a></td>';
                                         //excluir
-                                        echo '<td><a href="./excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
+                                        echo '<td><a class=button_excluir href="./excluir.php?id=' .$rs->id_Cargo. '">Excluir</a></td>';
                                         echo "</tr>";
                                     }
                                 } else {

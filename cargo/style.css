@@ -1,4 +1,4 @@
-.teste {
+.incluir {
     display: grid;
     grid-template-columns: 1fr;
     justify-items: center;
@@ -6,16 +6,159 @@
 }
 
 .entra {
+    position: absolute;
     width: 1134px;
-    background: #C4C4C4;
+    height: 41px;
+    left: 699px;
+    top: 237px;
 }
 
 body {
+    
     width: 100%;
     font-family: Roboto;
+    color: #000000;
+}
 
+h1 {
+    text-align: center;
+    position: absolute;
+    width: 54px;
+    height: 23px;
+    left: 530px;
+    top: -63px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
 
     color: #000000;
 }
 
+.txt_inclui {
+    width: 1134px;
+    height: 41px;
+    
+    padding-left: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 40px;
+    background: #C4C4C4; 
+}
+
+ .txt_descricao {
+    padding-left: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.form-control {
+    width: 1154px;
+    height: 29px;
+    left: 185px;
+    top: 332px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+}
+
+buttonreset {
+    width: 107px;
+    height: 29px;
+    left: 1097px;
+    top: 386px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+buttonsubmit {
+    width: 89px;
+    height: 29px;
+    left: 1219px;
+    top: 386px;
+
+    border: 1px solid #000000;
+    box-sizing: border-box;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #000000;
+}
+
+.txt_consultar {
+    width: 1134px;
+    height: 41px;
+    
+    padding-left: 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 40px;
+    background: #C4C4C4; 
+}
+
+.txt_item {
+    width: 19px;
+    height: 18px;
+    left: 230px;
+    top: 603px;
+
+    padding-left: 45px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    
+    color: #000000;
+}
+
+.button_alterar {
+    color: #000000;
+}
+
+.button_excluir {
+    color: #000000;
+}
+
+.txt_cargo_cadastrado{
+ 
+    position: sticky;
+    width: 100%;
+    bottom: 0px;
+    
+
+    background: #D5F4C7;
+    
+    padding-left: 1085px ;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 70px;
+ 
+    color: #000000;
+    
+}
 
