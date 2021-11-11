@@ -27,11 +27,11 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
             $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao, ind_receita_inedita=:ind_receita_inedita, id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_cozinheiro = :id_cozinheiro");
             $stmt->bindParam(":id_cozinheiro", $id_cozinheiro);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao, qtde_porcao, ind_receita_inedita, id_Categoria, id_Funcionario) 
-            VALUES (:nome,:id_receita,:data_criacao,:qtde_porcao,:ind_receita_inedita,:id_Categoria,:id_Funcionario)");
+            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao, ind_receita_inedita, id_Categoria, id_Funcionario) 
+            VALUES (:nome,:id_receita,:data_criacao,:modo_preparo,:qtde_porcao,:ind_receita_inedita,:id_Categoria,:id_Funcionario)");
         }
+        $stmt->bindParam(":id_receita", $id_receita);
         $stmt->bindParam(":nome", $nome);
-        $stmt->bindParam(":id_cozinheiro", $id_cozinheiro);
         $stmt->bindParam(":data_criacao", $data_criacao);
         $stmt->bindParam(":modo_preparo", $modo_preparo);
         $stmt->bindParam(":qtde_porcao", $qtde_porcao);
@@ -99,12 +99,26 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_cozinheiro != ""
 //pegar as opções do banco 
 
 
-// perguntar pra ana como fazer o g4_categoria funcionar
+
+
 $sql = " SELECT * FROM g4_funcionario ";
+
 try {
     $stmt = $conexao -> prepare($sql);
     $stmt -> execute();
     $results = $stmt -> fetchAll();
+}
+catch(Exception $ex){
+    echo ($ex -> getMessage());
+
+}
+//
+$sql = " SELECT * FROM g4_categoria ";
+
+try {
+    $stmt = $conexao -> prepare($sql);
+    $stmt -> execute();
+    $results1 = $stmt -> fetchAll();
 }
 catch(Exception $ex){
     echo ($ex -> getMessage());
@@ -156,8 +170,8 @@ catch(Exception $ex){
         </br>
         <select id="id_Categoria" name="id_Categoria">
             <option>Categoria</option>
-                <?php foreach($results as $output) {?>
-            <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["nome"];?></option>
+                <?php foreach($results1 as $output) {?>
+            <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
         <?php } ?>
         </select>
         </br>
