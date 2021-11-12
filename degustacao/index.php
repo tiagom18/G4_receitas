@@ -106,6 +106,8 @@ catch(Exception $ex){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
+        <span class="">Degustação</span>
+        </br>
         <span class="">NOTA</span>
         </br>
         <input type="text" name="nota" placeholder="Inserir" value="<?php
