@@ -16,6 +16,8 @@ include ('../includes/header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Livro = filter_input(INPUT_POST,'id_Livro');
     $titulo = filter_input(INPUT_POST,'titulo');
+    $editor = filter_input(INPUT_POST,'editor');
+    $isbn = filter_input(INPUT_POST,'isbn');
 } else if (!isset($id_Livro)){
     $id_Livro = (isset($_GET["id_Livro"]) && $_GET["id_Livro"] != null) ? $_GET["id_Livro"] : "";
 }
@@ -84,13 +86,12 @@ catch(Exception $ex){
     <form action="?act=save" method="POST" name="form" class="" >
 
         <label for="titulo" >Nome do livro</label>
-        //dropbox
         <select id="titulo" name="titulo">
             <option>Escolha o livro </option>
                 <?php foreach($results as $output) {?>
             <option value="<?php $output["id_Livro"]?>"><?php echo $output["titulo"];?></option> <?php } ?>
         </select>
-
+        </br>
         <button type="submit" class = "">Editar livro</button>
         <button type="reset" class = "">Cancelar</button>
         <hr>
@@ -102,18 +103,23 @@ catch(Exception $ex){
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
+                    <th>Editor</th>
+                    <th>Título</th>
+                    <th>ISBN</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_livro");
+                        $stmt = $conexao->prepare("SELECT * FROM g4_livro WHERE id_Livro = :id");
+                        $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
                                 echo "<td>$rs->id_Livro</td>";
+                                echo "<td>$rs->editor</td>";
                                 echo "<td>$rs->titulo</td>";
+                                echo "<td>$rs->isbn</td>";
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Livro.'">Alterar</a></td>';
                                 //excluir
