@@ -23,6 +23,8 @@
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
                     $id_Livro = $rs->id_Livro;
                     $titulo = $rs->titulo;
+                    $isbn = $rs->isbn;
+                    $editor = $rs->editor;
                    }
                 } else {
                     echo "<p>Erro: Não foi possível executar a declaração sql</p>";
@@ -35,6 +37,8 @@
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $id_Livro = filter_input(INPUT_POST,'id_Livro');
                 $titulo = filter_input(INPUT_POST,'titulo');
+                $isbn = filter_input(INPUT_POST,'isbn');
+                $editor = filter_input(INPUT_POST,'editor');
             } else if (!isset($id_Livro)){
                 $id_Livro = (isset($_GET["id_Livro"]) && $_GET["id_Livro"] != null) ? $_GET["id_Livro"] : "";
             }
@@ -45,8 +49,12 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Livro) && ($id_Livro != null || $id_Livro != "")) ? $id_Livro : ''; ?>"/>
 
-        <label for="titulo">Livro</label>
+        <label for="titulo">Nome do Livro</label>
         <input type="text" name="titulo" value="<?php echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : ''; ?>" />
+        <label for="isbn">isbn</label>
+        <input type="text" name="isbn" value="<?php echo (isset($isbn) && ($isbn != null || $isbn != "")) ? $isbn : ''; ?>" />
+        <label for="editor">editor</label>
+        <input type="text" name="editor" value="<?php echo (isset($editor) && ($editor != null || $editor != "")) ? $editor : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>
@@ -57,7 +65,9 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descrição</th>
+                <th>Nome do livro</th>
+                <th>ISBN</th>
+                <th>Nome do editor</th>
             </tr>
         </thead>
         <tbody>
@@ -69,6 +79,8 @@
                             echo "<tr>";
                             echo "<td>$rs->id_Livro</td>";
                             echo "<td>$rs->titulo</td>";
+                            echo "<td>$rs->isbn</td>";
+                            echo "<td>$rs->editor</td>";
                             echo "</tr>";
                         }
                     } else {

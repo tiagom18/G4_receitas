@@ -25,7 +25,8 @@
                     echo "</br>";
                     echo "<tr>";
                     echo "<td>$rs->id_Referencia</td>";
-                    echo "<td>$rs->descricao</td>";
+                    echo "<td>$rs->data_inicio</td>";
+                    echo "<td>$rs->data_fim</td>";
                     echo "<br>";
                     //excluir
                     echo '<td><a href="?act=del&id='.$rs->id_Referencia.'">Excluir</a></td>';

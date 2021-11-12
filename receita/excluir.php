@@ -15,20 +15,20 @@
             include('../model/conexao.php');
     
         //Aprensentar dados do Receita selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
-        $id_receita=$_GET["id"];
+        $id_Receita=$_GET["id"];
         try {
-            $stmt = $conexao->prepare("SELECT * FROM g4_receita WHERE id_receita= :id");
-            $stmt->bindParam(":id", $id_receita, PDO::PARAM_INT); 
+            $stmt = $conexao->prepare("SELECT * FROM g4_receita WHERE id_Receita= :id");
+            $stmt->bindParam(":id", $id_Receita, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                     echo "VOCÊ ESTÁ TENTANDO EXCLUIR:";
                     echo "</br>";
                     echo "<tr>";
-                    echo "<td>$rs->id_receita</td>";
+                    echo "<td>$rs->id_Receita</td>";
                     echo "<td>$rs->nome</td>";
                     echo "<br>";
                     //excluir
-                    echo '<td><a href="?act=del&id='.$rs->id_receita.'">Excluir</a></td>';
+                    echo '<td><a href="?act=del&id='.$rs->id_Receita.'">Excluir</a></td>';
                     echo "</br>";
                     echo "</tr>";
                 }
@@ -40,10 +40,10 @@
         }
         // ação de exclusão
         //DEL
-            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_receita != ""){
+            if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Receita != ""){
                 try {
-                    $stmt = $conexao->prepare("DELETE FROM g4_receita WHERE id_receita= :id");
-                    $stmt->bindParam(":id", $id_receita, PDO::PARAM_INT); 
+                    $stmt = $conexao->prepare("DELETE FROM g4_receita WHERE id_Receita= :id");
+                    $stmt->bindParam(":id", $id_Receita, PDO::PARAM_INT); 
                     if($stmt->execute()) {
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
