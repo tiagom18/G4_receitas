@@ -21,12 +21,15 @@
             $stmt->bindParam(":id", $id_receita, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    echo "VOCÊ ESTÁ TENTANDO EXCLUIR:";
+                    echo "</br>";
                     echo "<tr>";
                     echo "<td>$rs->id_receita</td>";
                     echo "<td>$rs->nome</td>";
                     echo "<br>";
                     //excluir
                     echo '<td><a href="?act=del&id='.$rs->id_receita.'">Excluir</a></td>';
+                    echo "</br>";
                     echo "</tr>";
                 }
             } else {
@@ -47,7 +50,7 @@
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
                 } catch (PDOException $erro) {
-                    echo "<p>Erro:".$erro->getMessage()."</p>";
+                    echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
                 }
             }
     ?>
