@@ -23,7 +23,7 @@
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                     echo "<tr>";
                     echo "<td>$rs->id_Degustacao</td>";
-                    echo "<td>$rs->nome</td>";
+                    echo "<td>$rs->nota</td>";
                     echo "<br>";
                     //excluir
                     echo '<td><a href="?act=del&id='.$rs->id_Degustacao.'">Excluir</a></td>';

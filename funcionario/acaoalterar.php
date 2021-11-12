@@ -42,8 +42,8 @@
     $stmt->bindParam(":rg", $rg, PDO::PARAM_STR);
     $stmt->bindParam(":data_ingresso", $data_ingresso, PDO::PARAM_STR);
     $stmt->bindParam(":nome_fantasia", $nome_fantasia, PDO::PARAM_STR);
-    $stmt->bindParam(":usuario", $usuario, PDO::PARAM_INT);
-    $stmt->bindParam(":senha", $senha, PDO::PARAM_INT);
+    $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
+    $stmt->bindParam(":senha", $senha, PDO::PARAM_STR);
    
 
   

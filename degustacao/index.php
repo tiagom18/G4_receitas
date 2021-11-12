@@ -15,28 +15,38 @@ include ('../includes/header.php');
 //verificando o POST
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Degustacao = filter_input(INPUT_POST,'id_Degustacao');
-    $nome = filter_input(INPUT_POST,'nome');
+    $nota = filter_input(INPUT_POST,'nota');
+    $data_nota = filter_input(INPUT_POST,'data_nota');
+    $id_Funcionario = filter_input(INPUT_POST,'id_Funcionario');
+    $id_Receita = filter_input(INPUT_POST,'id_Receita');
 } else if (!isset($id_Degustacao)){
     $id_Degustacao = (isset($_GET["id_Degustacao"]) && $_GET["id_Degustacao"] != null) ? $_GET["id_Degustacao"] : "";
 }
 
 //SAVE
-if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
+if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nota != "") {
     try{
         if ($id_Degustacao != "") {
-            $stmt = $conexão->prepare("UPDATE g4_degustacao SET nome=? WHERE id_Degustacao = ?");
-            $stmt->bindParam(2, $id_Degustacao);
+            $stmt = $conexão->prepare("UPDATE g4_degustacao SET nota=:nota, data_nota=:data_nota WHERE id_Degustacao = :id_Degustacao");
+            $stmt->bindParam(":id_Degustacao", $id_Degustacao);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_degustacao(nome) VALUES (?)");
+            $stmt = $conexao->prepare("INSERT INTO g4_degustacao(nota, data_nota,id_Funcionario,id_Receita) VALUES (:nota,:data_nota,:id_Funcionario,:id_Receita)");
         }
-        $stmt->bindParam(1, $nome);
+        $stmt->bindParam(":nota", $nota ,PDO::PARAM_STR);
+        $stmt->bindParam(":data_nota", $data_nota ,PDO::PARAM_STR);
+        $stmt->bindParam(":id_Funcionario", $id_Funcionario ,PDO::PARAM_STR);
+        $stmt->bindParam(":id_Receita", $id_Receita ,PDO::PARAM_STR);
+
         
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
                 echo "<p> Degustação cadastrado com sucesso!</p>";
                 $id_Degustacao = null;
-                $nome = null;
+                $nota = null;
+                $data_nota = null;
+                $id_Funcionario = null;
+                $id_Receita = null;
             } else {
                 echo "<p>Erro no cadastro do Degustação</p>";
             }
@@ -58,13 +68,36 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Degustacao != ""
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_Degustacao = $rs->$id_Degustacao;
-            $nome = $rs->$nome;
+            $nota = $rs->$nota;
+            $data_nota = $data_nota;
+            $id_Funcionario = $id_Funcionario;
+            $id_Receita = $id_Receita;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
     } catch (PDOException $erro) {
         echo "<p>Erro".$erro->getMessage()."</p>";
     }
+}
+$sql = " SELECT * FROM g4_funcionario";
+try {
+    $stmt = $conexao -> prepare($sql);
+    $stmt -> execute();
+    $results = $stmt -> fetchAll();
+}
+catch(Exception $ex){
+    echo ($ex -> getMessage());
+
+}
+$sql = " SELECT * FROM g4_receita";
+try {
+    $stmt = $conexao -> prepare($sql);
+    $stmt -> execute();
+    $results1 = $stmt -> fetchAll();
+}
+catch(Exception $ex){
+    echo ($ex -> getMessage());
+
 }
 
 
@@ -73,11 +106,34 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Degustacao != ""
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Degustação</span>
+        <span class="">NOTA</span>
         </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        <input type="text" name="nota" placeholder="Inserir" value="<?php
+        echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : '';
         ?>" class="form-control"/>
+        </br>
+        <span class="">DATA DA NOTA</span>
+        </br>
+        <input type="date" name="data_nota" placeholder="Inserir" value="<?php
+        echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : '';
+        ?>" class="form-control"/>
+        </br>
+        </br>
+        <select id="id_Funcionario" name="id_Funcionario">
+        <option>ID Funcinario</option>
+        <?php foreach($results as $output) {?>
+        <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+        <?php } ?>
+        </select>
+        </br>
+        </br>
+        <select id="id_Receita" name="id_Receita">
+        <option>ID Receita</option>
+        <?php foreach($results1 as $output) {?>
+        <option value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
+        <?php } ?>
+        </select>
+        </br>
         </br>
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
@@ -90,19 +146,25 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Degustacao != ""
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
+                    <th>nota</th>
+                    <th>data da nota</th>
+                    <th>id do Funcinario</th>
+                    <th>id da Receita</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    //f.id_Funcionario, id_cozinheiro, r.nome, d.data-nota, d.nota
+                    //f.id_Funcionario, id_cozinheiro, r.nota, d.data-nota, d.nota
                     try {
-                        $stmt = $conexao->prepare("SELECT  FROM g4_degustacao");
+                        $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
                                 echo "<td>$rs->id_Degustacao</td>";
-                                echo "<td>$rs->nome</td>";
+                                echo "<td>$rs->nota</td>";
+                                echo "<td>$rs->data_nota</td>";
+                                echo "<td>$rs->id_Funcionario</td>";
+                                echo "<td>$rs->id_Receita</td>";
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Degustacao.'">Alterar</a></td>';
                                 //excluir

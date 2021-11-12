@@ -77,17 +77,18 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
+        <span class="">Ingrediente</span>
+        </br>
+        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+        ?>" class="form-control"/>
+        </br>
         <span class="">descricao</span>
         </br>
         <input type="text" name="descricao" placeholder="Inserir" value="<?php
         echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">Ingrediente</span>
-        </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-        ?>" class="form-control"/>
         </br>
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
@@ -100,8 +101,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
                     <th>nome</th>
+                    <th>Descrição</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -112,8 +114,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
                                 echo "<td>$rs->id_Ingrediente</td>";
-                                echo "<td>$rs->descricao</td>";
                                 echo "<td>$rs->nome</td>";
+                                echo "<td>$rs->descricao</td>";
+                                
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Ingrediente.'">Alterar</a></td>';
                                 //excluir

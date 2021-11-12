@@ -16,6 +16,8 @@ include ('../includes/header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Livro = filter_input(INPUT_POST,'id_Livro');
     $titulo = filter_input(INPUT_POST,'titulo');
+    $isbn = filter_input(INPUT_POST,'isbn');
+    $editor = filter_input(INPUT_POST,'editor');
 } else if (!isset($id_Livro)){
     $id_Livro = (isset($_GET["id_Livro"]) && $_GET["id_Livro"] != null) ? $_GET["id_Livro"] : "";
 }
@@ -24,12 +26,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $titulo != "") {
     try{
         if ($id_Livro != "") {
-            $stmt = $conexão->prepare("UPDATE g4_livro SET titulo=? WHERE id_Livro = ?");
-            $stmt->bindParam(2, $id_Livro);
+            $stmt = $conexão->prepare("UPDATE g4_livro SET titulo=:titulo, isbn=:isbn, editor=:editor WHERE id_Livro = :id_Livro");
+            $stmt->bindParam(":id_Livro", $id_Livro);
+            
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_livro(titulo) VALUES (?)");
+            //cria os valors abaixo
+            $stmt = $conexao->prepare("INSERT INTO g4_livro(titulo, isbn, editor) VALUES (:titulo, :isbn, :editor)");
         }
-        $stmt->bindParam(1, $titulo);
+    
+        $stmt->bindParam(":titulo", $titulo ,PDO::PARAM_STR);
+        $stmt->bindParam(":isbn", $isbn ,PDO::PARAM_STR);
+        $stmt->bindParam(":editor", $editor ,PDO::PARAM_STR);
         
 
         if($stmt->execute())  {
@@ -37,6 +44,8 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $titulo != "") {
                 echo "<p> Livro cadastrado com sucesso!</p>";
                 $id_Livro = null;
                 $titulo = null;
+                $isbn = null;
+                $editor = null;
             } else {
                 echo "<p>Erro no cadastro do Livro</p>";
             }
@@ -59,6 +68,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
             $id_Livro = $rs->$id_Livro;
             $titulo = $rs->$titulo;
+            $isbn = $rs->$isbn;
+            $editor = $rs->$editor;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -73,10 +84,22 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Livro</span>
+        <span class="">Nome do Livro</span>
         </br>
         <input type="text" name="titulo" placeholder="Inserir" value="<?php
         echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">ISBN</span>
+        </br>
+        <input type="text" name="isbn" placeholder="Inserir" value="<?php
+        echo (isset($isbn) && ($isbn != null || $isbn != "")) ? $isbn : '';
+        ?>" class="form-control"/>
+        </br>
+        <span class="">Nome do editor</span>
+        </br>
+        <input type="text" name="editor" placeholder="Inserir" value="<?php
+        echo (isset($editor) && ($editor != null || $editor != "")) ? $editor : '';
         ?>" class="form-control"/>
         </br>
         <button type="submit" class = "">Salvar</button>
@@ -90,7 +113,9 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Descrição</th>
+                    <th>Titulo</th>
+                    <th>ISBN</th>
+                    <th>editor</th>
                 </tr>
             </thead>
             <tbody>
@@ -102,6 +127,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
                                 echo "<tr>";
                                 echo "<td>$rs->id_Livro</td>";
                                 echo "<td>$rs->titulo</td>";
+                                echo "<td>$rs->isbn</td>";
+                                echo "<td>$rs->editor</td>";
                                 //Alterar 
                                 echo '<td><a href="./alterar.php?id='.$rs->id_Livro.'">Alterar</a></td>';
                                 //excluir

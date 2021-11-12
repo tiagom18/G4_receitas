@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../includes/style.css"> 
-    <title>Cargo</title>
+    <title>Funcinario</title>
 </head>
 <body>
     <?php
@@ -24,6 +24,12 @@
                     echo "<tr>";
                     echo "<td>$rs->id_Funcionario</td>";
                     echo "<td>$rs->nome</td>";
+                    echo "<td>$rs->rg</td>";
+                    echo "<td>$rs->data_ingresso</td>";
+                    echo "<td>$rs->nome_fantasia</td>";
+                    echo "<td>$rs->usuario</td>";
+                    echo "<td>$rs->senha</td>";
+                    
                     echo "<br>";
                     //excluir
                     echo '<td><a href="?act=del&id='.$rs->id_Funcionario.'">Excluir</a></td>';

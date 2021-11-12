@@ -16,6 +16,11 @@ include ('../includes/header.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $id_Receita = filter_input(INPUT_POST,'id_Receita');
     $nome = filter_input(INPUT_POST,'nome');
+    $data_criacao = filter_input(INPUT_POST,'data_criacao');
+    $modo_preparo = filter_input(INPUT_POST,'modo_preparo');
+    $qtde_porcao = filter_input(INPUT_POST,'qtde_porcao');
+    $id_Categoria = filter_input(INPUT_POST,'id_Categoria');
+    $id_Funcionario = filter_input(INPUT_POST,'id_Funcionario');
 } else if (!isset($id_Receita)){
     $id_Receita = (isset($_GET["id_Receita"]) && $_GET["id_Receita"] != null) ? $_GET["id_Receita"] : "";
 }
@@ -24,18 +29,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Receita != "") {
-            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao, ind_receita_inedita=:ind_receita_inedita, id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_Receita = :id_Receita");
+            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao,id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_Receita = :id_Receita");
             $stmt->bindParam(":id_Receita", $id_Receita);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao, ind_receita_inedita, id_Categoria, id_Funcionario) 
-            VALUES (:nome,:id_receita,:data_criacao,:modo_preparo,:qtde_porcao,:ind_receita_inedita,:id_Categoria,:id_Funcionario)");
+            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao,  id_Categoria, id_Funcionario) 
+            VALUES (:nome,:id_receita,:data_criacao,:modo_preparo,:qtde_porcao,:id_Categoria,:id_Funcionario)");
         }
         $stmt->bindParam(":id_receita", $id_receita);
         $stmt->bindParam(":nome", $nome);
         $stmt->bindParam(":data_criacao", $data_criacao);
         $stmt->bindParam(":modo_preparo", $modo_preparo);
         $stmt->bindParam(":qtde_porcao", $qtde_porcao);
-        $stmt->bindParam(":ind_receita_inedita", $ind_receita_inedita);
+       
         $stmt->bindParam(":id_Categoria", $id_Categoria);
         $stmt->bindParam(":id_Funcionario", $id_Funcionario);
 
@@ -49,7 +54,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 $data_criacao = null;
                 $modo_preparo = null;
                 $qtde_porcao = null;
-                $ind_receita_inedita = null;
+                
                 $id_Categoria  = null;
                 $id_Funcionario  = null;
             } else {
@@ -69,18 +74,17 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Receita != ""){
     try {
         echo "id_Receita :",  $id;
-        $stmt = $conexao->prepare("SELECT id_Receita, , nome, data_criacao, modo_preparo, qtde_porcao, ind_receita_inedita,id_Categoria,id_Funcionario FROM g4_receita WHERE id_Receita= :id");
+        $stmt = $conexao->prepare("SELECT id_Receita, , nome, data_criacao, modo_preparo, qtde_porcao,id_Categoria,id_Funcionario FROM g4_receita WHERE id_Receita= :id");
        
         $stmt->bindParam(":id", $id_Receita, PDO::PARAM_INT);
         if ($stmt->execute()) {
             $rs = $stmt->fetch(PDO::FETCH_OBJ);
-           
             $id_receita = $rs->$id_receita;
             $nome = $rs->$nome;
             $data_criacao = $rs->$data_criacao;
             $modo_preparo = $rs->$modo_preparo;
             $qtde_porcao = $rs->$qtde_porcao;
-            $ind_receita_inedita = $rs->$ind_receita_inedita;
+            
             $id_Categoria = $rs->$id_Categoria;
             $id_Funcionario = $rs->$id_Funcionario;
            
@@ -155,12 +159,7 @@ catch(Exception $ex){
         echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">Receita inedita</span>
-        </br>
-        <input type="text" name="ind_receita_inedita" placeholder="Inserir" value="<?php
-        echo (isset($ind_receita_inedita) && ($ind_receita_inedita != null || $ind_receita_inedita != "")) ? $ind_receita_inedita : '';
-        ?>" class="form-control"/>
-        </br>
+       
         <span class="">Categoria</span>
         </br>
         <select id="id_Categoria" name="id_Categoria">
@@ -195,7 +194,6 @@ catch(Exception $ex){
                     <th>Data de criação</th>
                     <th>Modo de preparo</th>
                     <th>Qtde por porção</th>
-                    <th>Receita inedita</th>
                     <th>ID Categoria</th>
                     <th>Id_funcionario</th>
                     
@@ -213,7 +211,6 @@ catch(Exception $ex){
                                 echo "<td>$rs->data_criacao</td>";
                                 echo "<td>$rs->modo_preparo</td>";
                                 echo "<td>$rs->qtde_porcao</td>";
-                                echo "<td>$rs->ind_receita_inedita</td>";
                                 echo "<td>$rs->id_Categoria</td>";
                                 echo "<td>$rs->id_Funcionario</td>";
                                
