@@ -80,7 +80,7 @@
         <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
 
         <label for="data_criacao">data de criação</label>
-        <input type="text" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
+        <input type="date" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
 
         <label for="modo_preparo">modo de preparo</label>
         <input type="text" name="modo_preparo" value="<?php echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : ''; ?>" />
