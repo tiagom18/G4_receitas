@@ -72,13 +72,21 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
 <body>
     <!--Inicio - Insert form-->
 
+    <span>Escolha o livro</span>
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Edição do livro</span>
+
+        <label for="titulo" >Nome do livro</label>
         </br>
-        <input type="text" name="titulo" placeholder="Inserir" value="<?php
-        echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : '';
-        ?>" class="form-control"/>
+        <input type="text" name="titulo" placeholder="Inserir" value="<?php echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : '';?>" />
         </br>
+
+        <!--dropbox de todos os funcionáros cujo cargo seja editor -->
+        
+        <label for="isbn" >ISBN</label>
+        </br>
+        <input type="text" name="isbn" placeholder="Inserir" value="<?php echo (isset($isbn) && ($isbn != null || $isbn != "")) ? $isbn : '';?>" />
+        </br>
+
         <button type="submit" class = "">Salvar</button>
         <button type="reset" class = "">Cancelar</button>
         <hr>
