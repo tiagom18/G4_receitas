@@ -13,6 +13,11 @@
 // efetua alteração do curso informado em form_alteracao.php
     $id_receita = $_GET["id"];
     $nome = $_GET["nome"];
+    $data_criacao = $_GET["data_criacao"];
+    $modo_preparo = $_GET["modo_preparo"];
+    $qtde_porcao = $_GET["qtde_porcao"];
+    $id_Categoria = $_GET["id_Categoria"];
+    $id_Funcionario = $_GET["id_Funcionario"];
     include('../model/conexao.php');
     include ('../includes/header.php');
 
