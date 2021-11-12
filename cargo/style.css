@@ -1,16 +1,15 @@
 .incluir {
-display:flex;
-align-items: center;
-justify-content: center;
-flex-direction: column;   
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;   
 }
 
-.titulo{
-margin: 16px auto ;
+.titulo {
+    margin: 16px auto ;
 }
 
 body {
-    
     width: 100%;
     font-family: Roboto;
     color: #000000;

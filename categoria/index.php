@@ -34,7 +34,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Categoria cadastrado com sucesso!</p>";
+                echo "<p class = 'txt_categoria_cadastrado'> Categoria cadastrado com sucesso!</p>";
                 $id_Categoria = null;
                 $descricao = null;
             } else {
@@ -70,53 +70,64 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
 
 ?>
 <body>
+    <div class="entra">
+        <div class="incluir">
+            <div class="categoria">
+
     <!--Inicio - Insert form-->
 
-    <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Categoria</span>
-        </br>
-        <input type="text" name="descricao" placeholder="Inserir" value="<?php
-        echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
-        ?>" class="form-control"/>
-        </br>
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
-    
+                <form action="?act=save" method="POST" name="form" class="" >
+                    <h1 class="titulo">Categoria</h1>
+                    <h2 class="txt_inclui">Incluir</h2>
+                    <h3 class="txt_descricao">Descrição</h3>
+                    <input type="text" name="descricao" placeholder="Inserir" value="<?php
+                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+                    ?>" class="form-control"/>
+                    </br>
+                    <button type="reset" class = "">Cancelar</button>
+                    <button type="submit" class = "">Salvar</button>
+                
+                </form>
+            </div>  
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Descrição</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>";
-                                echo "<td>$rs->id_Categoria</td>";
-                                echo "<td>$rs->descricao</td>";
-                                //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
-                                echo "</tr>";
+    <h4 class="txt_consultar">Consultar</h4>
+            <div class="table_categoria">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="txt_item">ID</th>
+                            <th class="txt_item">Descrição</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            try {
+                                $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
+                                if ($stmt->execute()) {
+                                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                        echo "<tr>";
+                                        echo "<td>$rs->id_Categoria</td>";
+                                        echo "<td>$rs->descricao</td>";
+                                        //Alterar 
+                                        echo '<td><a class=button_alterar href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
+                                        //excluir
+                                        echo '<td><a class=button_excluir href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
+                                        echo "</tr>";
+                                    }
+                                } else {
+                            echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                }
+                            } catch (PDOException $erro) {
+                                echo "Erro: " . $erro->getMessage();
                             }
-                        } else {
-                       echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                        }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
-                    }
-                ?>
-            </tbody>
-        </table>
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     <!-- Fim - Read-->
+    </div>
 </body>
 </html>
