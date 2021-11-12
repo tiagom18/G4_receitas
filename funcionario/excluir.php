@@ -21,6 +21,8 @@
             $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    echo "VOCÊ ESTÁ TENTANDO EXCLUIR:";
+                    echo "</br>";
                     echo "<tr>";
                     echo "<td>$rs->id_Funcionario</td>";
                     echo "<td>$rs->nome</td>";
@@ -53,7 +55,7 @@
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
                 } catch (PDOException $erro) {
-                    echo "<p>Erro:".$erro->getMessage()."</p>";
+                    echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
                 }
             }
     ?>

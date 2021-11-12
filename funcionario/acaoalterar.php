@@ -18,6 +18,7 @@
     $nome_fantasia = $_GET["nome_fantasia"];
     $usuario = $_GET["usuario"];
     $senha = $_GET["senha"];
+    $id_Cargo = $_GET["id_Cargo"];
    
   
 
@@ -31,7 +32,9 @@
     data_ingresso = :data_ingresso,
     nome_fantasia = :nome_fantasia,
     usuario = :usuario,
-    senha = :senha
+    senha = :senha,
+    id_Cargo =:id_Cargo
+    
     WHERE id_Funcionario = :id;";
 
 
@@ -44,6 +47,8 @@
     $stmt->bindParam(":nome_fantasia", $nome_fantasia, PDO::PARAM_STR);
     $stmt->bindParam(":usuario", $usuario, PDO::PARAM_STR);
     $stmt->bindParam(":senha", $senha, PDO::PARAM_STR);
+    $stmt->bindParam(":id_Cargo", $id_Cargo, PDO::PARAM_INT);
+    
    
 
   

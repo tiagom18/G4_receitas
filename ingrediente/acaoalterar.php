@@ -26,8 +26,8 @@
     $stmt=$conexao->prepare($query);
 
     $stmt->bindParam(":descricao", $descricao, PDO::PARAM_STR);
-    $stmt->bindParam(":id", $id_Ingrediente, PDO::PARAM_INT);
-    $stmt->bindParam(":nome", $nome, PDO::PARAM_INT);
+    $stmt->bindParam(":id", $id_Ingrediente, PDO::PARAM_STR);
+    $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
 
     $stmt->execute();
 
