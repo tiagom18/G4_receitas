@@ -48,7 +48,6 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $titulo != "") {
     }
 
 }
-
 //UPD
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
     try {
@@ -66,20 +65,33 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
         echo "<p>Erro".$erro->getMessage()."</p>";
     }
 }
+//pegando as informações para o dropbox
+$sql = " SELECT * FROM g4_livro";
+try {
+    $stmt = $conexao -> prepare($sql);
+    $stmt -> execute();
+    $results = $stmt -> fetchAll();
+}
+catch(Exception $ex){
+    echo ($ex -> getMessage());
 
-
+}
 ?>
 <body>
     <!--Inicio - Insert form-->
 
+    <span>Escolha o livro</span>
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Edição do livro</span>
-        </br>
-        <input type="text" name="titulo" placeholder="Inserir" value="<?php
-        echo (isset($titulo) && ($titulo != null || $titulo != "")) ? $titulo : '';
-        ?>" class="form-control"/>
-        </br>
-        <button type="submit" class = "">Salvar</button>
+
+        <label for="titulo" >Nome do livro</label>
+        //dropbox
+        <select id="titulo" name="titulo">
+            <option>Escolha o livro </option>
+                <?php foreach($results as $output) {?>
+            <option value="<?php $output["id_Livro"]?>"><?php echo $output["titulo"];?></option> <?php } ?>
+        </select>
+
+        <button type="submit" class = "">Editar livro</button>
         <button type="reset" class = "">Cancelar</button>
         <hr>
     </form>

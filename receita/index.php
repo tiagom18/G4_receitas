@@ -134,7 +134,7 @@ catch(Exception $ex){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Receita</span>
+        <span class="">Receita:</span>
         </br>
         <input type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';

@@ -84,6 +84,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
+        <span class="">Livro:</span>
+        </br>
         <span class="">Nome do Livro</span>
         </br>
         <input type="text" name="titulo" placeholder="Inserir" value="<?php

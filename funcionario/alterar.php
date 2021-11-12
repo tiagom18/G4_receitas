@@ -18,7 +18,7 @@
             //SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id"
 
             try {
-                $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha FROM g4_funcionario  WHERE id_Funcionario= :id");
+                $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha,id_Cargo FROM g4_funcionario  WHERE id_Funcionario= :id");
                 $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
@@ -29,7 +29,7 @@
                     $nome_fantasia = $rs->nome_fantasia;
                     $usuario = $rs->usuario;
                     $senha = $rs->senha;
-                    
+                    $id_Cargo = $rs-> id_Cargo;
             
                    }
                 } else {
@@ -92,7 +92,7 @@
         <select id="id_Cargo" name="id_Cargo">
             <option>Funcionario</option>
                 <?php foreach($results as $output) {?>
-                    <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+                    <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>
         </select>
         
@@ -128,6 +128,7 @@
                             echo "<td>$rs->nome_fantasia</td>";
                             echo "<td>$rs->usuario</td>";
                             echo "<td>$rs->senha</td>";
+                            echo "<td>$rs->id_Cargo</td>";
                             
                             echo "</tr>";
                         }
