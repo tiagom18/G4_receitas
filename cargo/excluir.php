@@ -28,7 +28,7 @@
                     echo "<td>$rs->nome</td>";
                     echo "<br>";
                     //excluir          
-                    echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
+                    echo '<td><a class="button_delete" href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
                     echo "</br>";
                     echo "</tr>";
                 }
@@ -58,6 +58,6 @@
             }
     ?>
     <br>
-    <a href="./index.php">CLIQUE AQUI PARA VOLTAR</a>
+    <a class="button_retornar"href="./index.php">CLIQUE AQUI PARA VOLTAR</a>
 </body>
 </html>
