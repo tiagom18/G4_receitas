@@ -9,11 +9,6 @@ body {
     margin: 0;
 }
 
-a {
-    text-decoration: none;
-    color: #fff;
-}
-
 .posicao_logo {
     display: flex;
     align-items: center;
@@ -60,11 +55,12 @@ a {
 }
 
 .txt-categorias {
+    text-decoration: none;
     padding-top: 16px;
     padding-left: 27px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     font-weight: 500;
-    color: white;
-    cursor: pointer;
+    color:rgb(255, 255, 255);
 }
+

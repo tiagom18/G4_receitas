@@ -35,7 +35,6 @@
                             <th class="txt-categorias"><a href="../degustacao/index.php">Degustação</th>
                             <th class="txt-categorias"><a href="../livro/index.php">Livro</th>
                             <th class="txt-categorias"><a href="../edicao_livro/index.php">Edição do livro</th>
-
                         </tr>
                     </thead>
                 </table>

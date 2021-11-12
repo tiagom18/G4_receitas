@@ -138,13 +138,10 @@ buttonsubmit {
     color: #000000;
 }
 
-.txt_cargo_cadastrado{
- 
-    
+.txt_cargo_cadastrado { 
+    position: absolute;
     width: 100%;
-    bottom: 0px;
-
-    background: #D5F4C7;
+    bottom: -25px;
     
     padding-left: 1085px ;
     font-family: Roboto;
@@ -152,8 +149,6 @@ buttonsubmit {
     font-weight: bold;
     font-size: 25px;
     line-height: 70px;
- 
-    color: #000000;
-    
+    background: #D5F4C7;
+    color: #000000;  
 }
-
