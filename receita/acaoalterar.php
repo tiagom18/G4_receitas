@@ -18,13 +18,23 @@
 
   try{
     $query = "UPDATE g4_receita
-    SET nome = :nome
+    SET nome = :nome,
+    data_criacao = :data_criacao,
+    modo_preparo = :modo_preparo,
+    qtde_porcao = :qtde_porcao,
+    id_Categoria = :id_Categoria,
+    id_Funcionario = :id_Funcionario
     WHERE id_receita = :id;";
 
     $stmt=$conexao->prepare($query);
 
     $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
     $stmt->bindParam(":id", $id_receita, PDO::PARAM_INT);
+    $stmt->bindParam(":data_criacao", $data_criacao, PDO::PARAM_STR);
+    $stmt->bindParam(":modo_preparo", $modo_preparo, PDO::PARAM_STR);
+    $stmt->bindParam(":qtde_porcao", $qtde_porcao, PDO::PARAM_STR);
+    $stmt->bindParam(":id_Categoria", $id_Categoria, PDO::PARAM_STR);
+    $stmt->bindParam(":id_Funcionario", $id_Funcionario, PDO::PARAM_STR);
 
     $stmt->execute();
 
