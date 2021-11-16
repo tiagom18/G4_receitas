@@ -75,6 +75,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
         <div class="box-f1">
             <div class="box-f2">
                 <h1>Categoria</h1>
+                <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
                     <label for="descricao">Descrição</label>
                     <input type="text" name="descricao" value="<?php
