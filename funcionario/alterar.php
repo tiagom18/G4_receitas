@@ -69,28 +69,28 @@
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Funcionario) && ($id_Funcionario != null || $id_Funcionario != "")) ? $id_Funcionario : ''; ?>"/>
+        <input required type="hidden" name="id" value="<?php echo (isset($id_Funcionario) && ($id_Funcionario != null || $id_Funcionario != "")) ? $id_Funcionario : ''; ?>"/>
 
-        <label for="nome">Funcionario</label>
-        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+        <label for="nome">Funcionario*</label>
+        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
 
-        <label for="rg">RG</label>
-        <input type="number" name="rg" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : ''; ?>" />
+        <label for="rg">RG*</label>
+        <input required type="number" name="rg" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : ''; ?>" />
 
-        <label for="data_ingresso">data_ingresso</label>
-        <input type="date" name="data_ingresso" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : ''; ?>" />
+        <label for="data_ingresso">data_ingresso*</label>
+        <input required type="date" name="data_ingresso" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : ''; ?>" />
 
-        <label for="nome_fantasia">nome_fantasia</label>
-        <input type="text" name="nome_fantasia" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : ''; ?>" />
+        <label for="nome_fantasia">nome_fantasia*</label>
+        <input required type="text" name="nome_fantasia" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : ''; ?>" />
 
-        <label for="usuario">usuario</label>
-        <input type="text" name="usuario" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : ''; ?>" />
+        <label for="usuario">usuario*</label>
+        <input required type="text" name="usuario" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : ''; ?>" />
 
-        <label for="senha">senha</label>
-        <input type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
+        <label for="senha">senha*</label>
+        <input required type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
 
-        <select id="id_Cargo" name="id_Cargo">
-            <option>Funcionario</option>
+        <select required id="id_Cargo" name="id_Cargo">
+            <option>Funcionario*</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>

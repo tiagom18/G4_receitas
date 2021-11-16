@@ -134,44 +134,44 @@ catch(Exception $ex){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Receita:</span>
+        <span class="">Receita*</span>
         </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        <input required type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
         
         </br>
-        <span class="">Data de criação</span>
+        <span class="">Data de criação*</span>
         </br>
-        <input type="date" name="data_criacao" placeholder="Inserir" value="<?php
+        <input required type="date" name="data_criacao" placeholder="Inserir" value="<?php
         echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">Modo de preparo</span>
+        <span class="">Modo de preparo*</span>
         </br>
-        <input type="text" name="modo_preparo" placeholder="Inserir" value="<?php
+        <input required type="text" name="modo_preparo" placeholder="Inserir" value="<?php
         echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">Qtde por porção</span>
+        <span class="">Quantidade por porção*</span>
         </br>
-        <input type="text" name="qtde_porcao" placeholder="Inserir" value="<?php
+        <input required type="text" name="qtde_porcao" placeholder="Inserir" value="<?php
         echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : '';
         ?>" class="form-control"/>
         </br>
        
-        <span class="">Categoria</span>
+        <span class="">Categoria*</span>
         </br>
-        <select id="id_Categoria" name="id_Categoria">
+        <select required id="id_Categoria" name="id_Categoria">
             <option>Categoria</option>
                 <?php foreach($results1 as $output) {?>
             <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
         <?php } ?>
         </select>
         </br>
-        <span class="">Funcionario</span>
+        <span class="">Funcionario*</span>
         </br>
-        <select id="id_Funcionario" name="id_Funcionario">
+        <select required id="id_Funcionario" name="id_Funcionario">
             <option>Funcinario</option>
                 <?php foreach($results as $output) {?>
             <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>

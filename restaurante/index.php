@@ -77,8 +77,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Restaurante != "
                 <h1>Restaurante</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
-                <label for="restaurante">Restaurante</label>
-                <input type="text" name="nome" placeholder="Inserir" value="<?php
+                <label for="restaurante">Restaurante*</label>
+                <input required type="text" name="nome" placeholder="Inserir" value="<?php
                 echo (isset($nome) && ($nome != null || $nome != "")) ? $nome: '';?>">
                 <div class="box-btn">
                     <button type="reset">Cancelar</button>

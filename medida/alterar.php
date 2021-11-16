@@ -45,8 +45,8 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Medida) && ($id_Medida != null || $id_Medida != "")) ? $id_Medida : ''; ?>"/>
 
-        <label for="descricao">Medida</label>
-        <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+        <label for="descricao">Medida*</label>
+        <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>

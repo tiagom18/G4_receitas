@@ -77,8 +77,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Medida != ""){
                 <h1>Medida</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
-                    <label for="descricao">Descrição</label>
-                    <input type="text" name="descricao" value="<?php
+                    <label for="descricao">Descrição*</label>
+                    <input required type="text" name="descricao" value="<?php
                     echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';?>">
                     <div class="box-btn">
                         <button type="reset">Cancelar</button>

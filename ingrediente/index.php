@@ -79,13 +79,15 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Ingrediente</span>
         </br>
-        <input type="text" name="nome" placeholder="Inserir" value="<?php
+        <span class="">Nome*</span>
+        </br>
+        <input required type="text" name="nome" placeholder="Inserir" value="<?php
         echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">descricao</span>
+        <span class="">Descricao*</span>
         </br>
-        <input type="text" name="descricao" placeholder="Inserir" value="<?php
+        <input required type="text" name="descricao" placeholder="Inserir" value="<?php
         echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
         ?>" class="form-control"/>
         </br>

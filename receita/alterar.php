@@ -76,26 +76,26 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Receita) && ($id_Receita != null || $id_Receita != "")) ? $id_Receita : ''; ?>"/>
 
-        <label for="nome">Receita</label>
-        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+        <label for="nome">Receita*</label>
+        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
 
-        <label for="data_criacao">data de criação</label>
-        <input type="date" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
+        <label for="data_criacao">Data de criação*</label>
+        <input required type="date" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
 
-        <label for="modo_preparo">modo de preparo</label>
-        <input type="text" name="modo_preparo" value="<?php echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : ''; ?>" />
+        <label for="modo_preparo">Modo de Preparo*</label>
+        <input required type="text" name="modo_preparo" value="<?php echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : ''; ?>" />
 
-        <label for="qtde_porcao">quantidade por porção</label>
-        <input type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
+        <label for="qtde_porcao">Quantidade por porção*</label>
+        <input required type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
 
-        <select id="id_Categoria" name="id_Categoria">
-            <option>categoria</option>
+        <select required id="id_Categoria" name="id_Categoria">
+            <option>Categoria*</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Categoria == $output["id_Categoria"]?  "selected" : ""; ?> value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
                 <?php } ?>
         </select>
-        <select id="id_Funcionario" name="id_Funcionario">
-            <option>Funcionario</option>
+        <select required id="id_Funcionario" name="id_Funcionario">
+            <option>Funcionario*</option>
                 <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>

@@ -48,12 +48,11 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Ingrediente) && ($id_Ingrediente != null || $id_Ingrediente != "")) ? $id_Ingrediente : ''; ?>"/>
 
-        <label for="descricao">descricao</label>
-        <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+        <label for="nome">Nome*</label>
+        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
 
-        <label for="nome">nome</label>
-        <input type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
-
+        <label for="descricao">Descricao*</label>
+        <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>

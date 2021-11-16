@@ -43,10 +43,11 @@
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
+        <label for="categoria">Categoria*</label>
         <input type="hidden" name="id" value="<?php echo (isset($id_Categoria) && ($id_Categoria != null || $id_Categoria != "")) ? $id_Categoria : ''; ?>"/>
 
-        <label for="descricao">Categoria</label>
-        <input type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+        <label for="descricao">Descrição*</label>
+        <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
 
         <button type="submit" >Salvar</button>
     </form>

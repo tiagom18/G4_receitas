@@ -73,21 +73,21 @@
     <form action="acaoalterar.php" method="GET">
         <input type="hidden" name="id" value="<?php echo (isset($id_Referencia) && ($id_Referencia != null || $id_Referencia != "")) ? $id_Referencia : ''; ?>"/>
         
-                <label for="data_inicio">data de inicio</label>
-                <input type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
-        
-                <label for="data_fim">data do fim</label>
-                <input type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
+        <label for="data_inicio">Data de Inicio*</label>
+        <input required type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
 
-                <select id="id_Restaurante" name="id_Restaurante">
-            <option>Funcionario</option>
+        <label for="data_fim">Data do Fim*</label>
+        <input required type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
+
+        <select required  id="id_Restaurante" name="id_Restaurante">
+            <option>Funcionario*</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Restaurante == $output["id_Restaurante"]?  "selected" : ""; ?> value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>
         </select>
 
-        <select id="id_Funcionario" name="id_Funcionario">
-            <option>Funcionario</option>
+        <select required id="id_Funcionario" name="id_Funcionario">
+            <option>Funcionario*</option>
                 <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>
