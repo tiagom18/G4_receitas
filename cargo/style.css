@@ -1,141 +1,78 @@
-.incluir {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;   
-}
-
-.titulo {
-    margin: 16px auto ;
-}
-
 body {
-    width: 100%;
-    font-family: Roboto;
-    color: #000000;
+    margin: 0px;
+    font-family: "Roboto";
 }
-
+  
+h1,
+h2 {
+    margin: 0px;
+}
+  
 h1 {
     text-align: center;
-    
-    width: 54px;
-    height: 23px;
-    left: 530px;
-    top: -63px;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
     font-size: 20px;
-    line-height: 23px;
-
-    color: #000000;
+    font-weight: 600;
 }
-
-.txt_inclui {
-    width: 1134px;
-    height: 41px;
-    
-    padding-left: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
+  
+.title-01,
+.title-02 {
+    background: #c4c4c4;
     font-size: 20px;
-    line-height: 40px;
-    background: #C4C4C4; 
+    font-weight: 600;
+    padding: 9px 0px 9px 42px;
 }
-
- .txt_descricao {
-    padding-left: 5px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
+  
+.title-01 {
+    margin-top: 25px;
+}
+  
+label {
+    display: block;
+    margin-top: 35px;
     font-size: 20px;
-    line-height: 23px;
 }
-
-.form-control {
-    width: 1154px;
-    height: 29px;
-    left: 185px;
-    top: 332px;
-
-    border: 1px solid #000000;
-    box-sizing: border-box;
+  
+input {
+    width: 100%;
+    padding: 1px 0px;
 }
-
-buttonreset {
-    width: 107px;
-    height: 29px;
-    left: 1097px;
-    top: 386px;
-
-    border: 1px solid #000000;
-    box-sizing: border-box;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-
-    color: #000000;
+  
+.box-p {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-top: 100px;
 }
-
-buttonsubmit {
-    width: 89px;
-    height: 29px;
-    left: 1219px;
-    top: 386px;
-
-    border: 1px solid #000000;
-    box-sizing: border-box;
-
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-
-    color: #000000;
+  
+.box-f1 {
+    width: 1168px;
 }
-
-.txt_consultar {
-    width: 1134px;
-    height: 41px;
-    
-    padding-left: 20px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 40px;
-    background: #C4C4C4; 
+  
+.box-btn {
+    display: flex;
+    justify-content: end;
+    margin-top: 28px;
 }
-
-.txt_item {
-    width: 19px;
-    height: 18px;
-    left: 230px;
-    top: 603px;
-
-    padding-left: 45px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-    
-    color: #000000;
+  
+.box-f3 {
+    margin-top: 12px;
 }
-
-.button_alterar {
-    color: #000000;
+  
+.title-02 {
+    margin-top: 12px;
 }
-
-.button_excluir {
-    color: #000000;
+  
+.box-f4 {
+    width: 100%;
+    margin-top: 25px;
+    border: 1px solid #000;
 }
+  
+table tbody tr td {
+    margin: 0px;
+    text-align: center;
+}
+  
 
 .txt_cargo_cadastrado { 
     position: absolute;

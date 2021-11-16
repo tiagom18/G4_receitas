@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
+    <link href="./style.css" rel="stylesheet"/>
     <title>Categoria</title>
 </head>
 <?php 
@@ -34,7 +34,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p class = 'txt_categoria_cadastrado'> Categoria cadastrado com sucesso!</p>";
+                echo "<p class = 'txt_categoria'> Categoria cadastrado com sucesso!</p>";
                 $id_Categoria = null;
                 $descricao = null;
             } else {
@@ -70,63 +70,62 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
 
 ?>
 <body>
-    <div class="entra">
-        <div class="incluir">
-            <div class="categoria">
-
     <!--Inicio - Insert form-->
-
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Categoria</h1>
                 <form action="?act=save" method="POST" name="form" class="" >
-                    <h1 class="titulo">Categoria</h1>
-                    <h2 class="txt_inclui">Incluir</h2>
-                    <h3 class="txt_descricao">Descrição</h3>
-                    <input type="text" name="descricao" placeholder="Inserir" value="<?php
-                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <button type="reset" class = "">Cancelar</button>
-                    <button type="submit" class = "">Salvar</button>
-                
+                    <label for="descricao">Descrição</label>
+                    <input type="text" name="descricao" value="<?php
+                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';?>">
+                    <div class="box-btn">
+                        <button type="reset" class = "">Cancelar</button>
+                        <button type="submit" class = "">Salvar</button>
+                    </div>
                 </form>
             </div>  
+
     <!--Fim - Insert form-->
     <!-- Inicio - Read -->
-    <h4 class="txt_consultar">Consultar</h4>
-            <div class="table_categoria">
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="txt_item">ID</th>
-                            <th class="txt_item">Descrição</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                            try {
-                                $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
-                                if ($stmt->execute()) {
-                                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                        echo "<tr>";
-                                        echo "<td>$rs->id_Categoria</td>";
-                                        echo "<td>$rs->descricao</td>";
-                                        //Alterar 
-                                        echo '<td><a class=button_alterar href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
-                                        //excluir
-                                        echo '<td><a class=button_excluir href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
-                                        echo "</tr>";
-                                    }
-                                } else {
-                            echo "Erro: Não foi possível recuperar os dados do banco de dados";
+            <div class="box-f3">
+                <h2 class="title-02">Consultar</h2>
+                <div class="box-f4">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                try {
+                                    $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
+                                    if ($stmt->execute()) {
+                                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                            echo "<tr>";
+                                            echo "<td>$rs->id_Categoria</td>";
+                                            echo "<td>$rs->descricao</td>";
+                                            //Alterar 
+                                            echo '<td><a href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
+                                            //excluir
+                                            echo '<td><a href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                echo "Erro: Não foi possível recuperar os dados do banco de dados";
                                 }
-                            } catch (PDOException $erro) {
-                                echo "Erro: " . $erro->getMessage();
-                            }
-                        ?>
-                    </tbody>
-                </table>
+                                } catch (PDOException $erro) {
+                                    echo "Erro: " . $erro->getMessage();
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+    </div>
     <!-- Fim - Read-->
     </div>
 </body>

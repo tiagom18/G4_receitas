@@ -34,7 +34,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Medida cadastrado com sucesso!</p>";
+                echo "<p class='txt_medida'> Medida cadastrado com sucesso!</p>";
                 $id_Medida = null;
                 $descricao = null;
             } else {
@@ -81,8 +81,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Medida != ""){
                     <input type="text" name="descricao" value="<?php
                     echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';?>">
                     <div class="box-btn">
-                        <button type="submit">Salvar</button>
                         <button type="reset">Cancelar</button>
+                        <button type="submit">Salvar</button>
                     </div>
                 </form>
             </div>

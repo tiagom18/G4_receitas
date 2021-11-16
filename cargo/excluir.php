@@ -46,7 +46,7 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= :id");
                     $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
                     if($stmt->execute()) {
-                        echo "<p>Registro excluido com sucesso!!</p>";
+                        echo "<p>Registro excluido com sucesso!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
@@ -58,6 +58,6 @@
             }
     ?>
     <br>
-    <a class="button_retornar"href="./index.php">CLIQUE AQUI PARA VOLTAR</a>
+    <a class="button_retornar"href="./index.php">Voltar</a>
 </body>
 </html>
