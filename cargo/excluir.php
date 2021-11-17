@@ -59,12 +59,19 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= :id");
                     $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
                     if($stmt->execute()) {
+                        echo "<script> 
+                            alert('Registro excluido com sucesso!'); 
+                            window.location.href='index.php';  
+                            </script>";
                         echo "<p class = 'txt_cargo_exlcuido'> Registro excluido com sucesso!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
                 } catch (PDOException $erro) {
-                 
+                    echo "<script> 
+                        alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA'); 
+                        window.location.href='index.php';  
+                        </script>";
                     echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
             
                 }
