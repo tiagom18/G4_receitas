@@ -16,41 +16,39 @@
     
         //Aprensentar dados do cargo selecionado para exclui para o usuário confirmar se realmente quer cancelar-->
         $id_Cargo=$_GET["id"];
-        try {
-            $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
-            $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
-            if ($stmt->execute()) {
-                while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                    echo "<div class=acao_excluir>";
-                    echo "<div class=acao_tamanho>";
-                    echo "<p class='title_excluir'> VOCÊ ESTÁ TENTANDO EXCLUIR:</p>";
-                    echo "<div class=box-f4>";
-                    echo "<thead>";
-                    echo "<tr>";
-                    echo "<th> ID</th>";
-                    echo "<th> Descrição</th>";
-                    echo "</tr>";
-                    echo "</thead>";
-                    echo "<tbody>";
-                    echo "<tr>";
-                    echo "<td>$rs->id_Cargo</td>";
-                    echo "<td>$rs->nome</td>";
-                    //excluir          
-                    echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
-                    echo "</tr>";
-                    echo "</tbody>";
-                    echo "</div>";
-                }
-            } else {
-           echo "Erro: Não foi possível recuperar os dados do banco de dados";
-            }
-        } catch (PDOException $erro) {
-            echo "Erro: " . $erro->getMessage();
-        }
     ?>
-        <a href="./index.php">Voltar</a>
-        </div>
-    </div>
+    <h3>Você está tentando excluir:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                try {
+                    $stmt = $conexao->prepare("SELECT * FROM g4_cargo WHERE id_Cargo= :id");
+                    $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
+                    if ($stmt->execute()) {
+                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<td>$rs->id_Cargo</td>";
+                            echo "<td>$rs->nome</td>";
+                            echo "</tr>";
+                            echo "</br>";
+                            echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Confirmar Exclusão</a></td>';
+                        }
+                    } else {
+                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    }
+                } catch (PDOException $erro) {
+                    echo "Erro: " . $erro->getMessage();
+                }
+            ?>
+        </tbody>
+    </table>
+
     <?php
         // ação de exclusão
         //DEL
