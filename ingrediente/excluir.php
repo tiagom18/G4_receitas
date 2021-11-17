@@ -45,6 +45,10 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_ingrediente WHERE id_Ingrediente= :id");
                     $stmt->bindParam(":id", $id_Ingrediente, PDO::PARAM_INT); 
                     if($stmt->execute()) {
+                        echo "<script> 
+                            alert('Registro excluido com sucesso!'); 
+                            window.location.href='index.php';  
+                            </script>";
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
