@@ -92,37 +92,39 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
             <div class="box-f3">
                 <h2 class="title-02">Consultar</h2>
                 <div class="box-f4">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Descrição</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                                try {
-                                    $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
-                                    if ($stmt->execute()) {
-                                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                            echo "<tr>";
-                                            echo "<td>$rs->id_Categoria</td>";
-                                            echo "<td>$rs->descricao</td>";
-                                            //Alterar 
-                                            echo '<td><a href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
-                                            //excluir
-                                            echo '<td><a href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
-                                            echo "</tr>";
-                                        }
-                                    } else {
-                                echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                                }
-                                } catch (PDOException $erro) {
-                                    echo "Erro: " . $erro->getMessage();
-                                }
-                            ?>
-                        </tbody>
-                    </table>
+                    <div class="scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    try {
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_categoria");
+                                        if ($stmt->execute()) {
+                                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                                echo "<tr>";
+                                                echo "<td>$rs->id_Categoria</td>";
+                                                echo "<td>$rs->descricao</td>";
+                                                //Alterar 
+                                                echo '<td><a href="./alterar.php?id='.$rs->id_Categoria.'">Alterar</a></td>';
+                                                //excluir
+                                                echo '<td><a href="./excluir.php?id=' .$rs->id_Categoria. '">Excluir</a></td>';
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                    }
+                                    } catch (PDOException $erro) {
+                                        echo "Erro: " . $erro->getMessage();
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

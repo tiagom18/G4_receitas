@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/>
     <title>Cargo</title>
 </head>
 <body>
@@ -21,16 +21,25 @@
             $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
             if ($stmt->execute()) {
                 while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                    echo "VOCÊ ESTÁ TENTANDO EXCLUIR:";
-                    echo "</br>";
+                    echo "<div class=acao_excluir>";
+                    echo "<div class=acao_tamanho>";
+                    echo "<p class='title_excluir'> VOCÊ ESTÁ TENTANDO EXCLUIR:</p>";
+                    echo "<div class=box-f4>";
+                    echo "<thead>";
+                    echo "<tr>";
+                    echo "<th> ID</th>";
+                    echo "<th> Descrição</th>";
+                    echo "</tr>";
+                    echo "</thead>";
+                    echo "<tbody>";
                     echo "<tr>";
                     echo "<td>$rs->id_Cargo</td>";
                     echo "<td>$rs->nome</td>";
-                    echo "<br>";
                     //excluir          
-                    echo '<td><a class="button_delete" href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
-                    echo "</br>";
+                    echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Excluir</a></td>';
                     echo "</tr>";
+                    echo "</tbody>";
+                    echo "</div>";
                 }
             } else {
            echo "Erro: Não foi possível recuperar os dados do banco de dados";
@@ -38,7 +47,11 @@
         } catch (PDOException $erro) {
             echo "Erro: " . $erro->getMessage();
         }
-       
+    ?>
+        <a href="./index.php">Voltar</a>
+        </div>
+    </div>
+    <?php
         // ação de exclusão
         //DEL
             if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id_Cargo != ""){
@@ -46,7 +59,7 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_cargo WHERE id_Cargo= :id");
                     $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT); 
                     if($stmt->execute()) {
-                        echo "<p>Registro excluido com sucesso!</p>";
+                        echo "<p class = 'txt_cargo_exlcuido'> Registro excluido com sucesso!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
@@ -57,7 +70,5 @@
                 }
             }
     ?>
-    <br>
-    <a class="button_retornar"href="./index.php">Voltar</a>
 </body>
 </html>

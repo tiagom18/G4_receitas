@@ -29,7 +29,12 @@ h1 {
 label {
   display: block;
   margin-top: 35px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
   font-size: 20px;
+  line-height: 70px;
+  color: #000000; 
 }
 
 input {
@@ -86,4 +91,11 @@ table tbody tr td {
   line-height: 70px;
   background: #D5F4C7;
   color: #000000; 
+}
+
+.scroll {
+  width: 1168px;
+  height: 250px;
+  background: rgb(255, 255, 255);
+  overflow: scroll;
 }

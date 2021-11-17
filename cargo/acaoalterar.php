@@ -3,7 +3,7 @@
 <html>
 	<head>
 	  <title>Cadastro de vendas - Alteração</title>
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/>
 	  <meta charset="utf-8">
       
 	</head>
@@ -28,13 +28,12 @@
 
     $stmt->execute();
 
-    echo "Alteração efetuada com sucesso";
+    echo "<p class = 'txt_cargo_alterado'> Alteração efetuada com sucesso!</p>";
 
   } catch (PDOException $erro) {
     echo "ERRO:". $erro->getMessage();
   }
-
-
+  
 ?>  
  <br>
  <a href="./index.php">Voltar </a>
