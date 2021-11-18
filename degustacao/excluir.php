@@ -22,7 +22,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descrição</th>
+                <th>nota</th>
+                <th>data_nota</th>
+                <th>id_Funcionario</th>
+                <th>id_Receita</th>
             </tr>
         </thead>
         <tbody>

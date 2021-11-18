@@ -22,7 +22,7 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descrição</th>
+                <th>Nome do Restaurante</th>
             </tr>
         </thead>
         <tbody>

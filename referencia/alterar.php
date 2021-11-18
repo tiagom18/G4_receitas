@@ -101,8 +101,11 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Descrição</th>
+                    <th>Id</th>
+                    <th>data_inicio</th>
+                    <th>data_fim</th>
+                    <th>id_Restaurante</th>
+                    <th>id_Funcionario</th>
             </tr>
         </thead>
         <tbody>
