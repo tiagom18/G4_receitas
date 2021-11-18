@@ -80,6 +80,7 @@
             ?>
         </tbody>
     </table>
-
+    <br>
+    <a href="./index.php">Voltar</a>
 </body>
 </html>

@@ -59,7 +59,6 @@
                     echo "Erro: " . $erro->getMessage();
                 }
             ?>
-            <php
         </tbody>
         </table>
         <?php
