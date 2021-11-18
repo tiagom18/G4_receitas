@@ -190,7 +190,7 @@ catch(Exception $ex){
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Nome</th>
+                    <th>Nome da Receita</th>
                     <th>Data de criação</th>
                     <th>Modo de preparo</th>
                     <th>Qtde por porção</th>

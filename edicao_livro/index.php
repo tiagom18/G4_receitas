@@ -80,7 +80,7 @@ catch(Exception $ex){
 }
 ?>
 <body>
-    <!--Inicio - Insert form-->
+    <!--Seleciona o livro a ser trabalhado-->
 
     <span>Escolha o livro</span>
     <form action="?act=save" method="POST" name="form" class="" >
@@ -97,34 +97,69 @@ catch(Exception $ex){
         <hr>
     </form>
     
-    <!--Fim - Insert form-->
-    <!-- Inicio - Read -->
-        <table>
+    <h3>Editar</h3>
+    <!--Mostra o Livro Selecionado -->
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Editor</th>
+                <th>Título</th>
+                <th>ISBN</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+                try {
+                    $stmt = $conexao->prepare("SELECT id_Livro, editor, titulo, isbn FROM g4_livro WHERE id_Livro = :id");
+                    $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
+                    if ($stmt->execute()) {
+                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            echo "<tr>";
+                            echo "<td>$rs->id_Livro</td>";
+                            echo "<td>$rs->editor</td>";
+                            echo "<td>$rs->titulo</td>";
+                            echo "<td>$rs->isbn</td>";
+                        }
+                    } else {
+                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    }
+                } catch (PDOException $erro) {
+                    echo "Erro: " . $erro->getMessage();
+                }
+            ?>
+        </tbody>
+    </table>
+    <!-- Apresenta todas as receitas do sistema -->
+    <table>
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Editor</th>
-                    <th>Título</th>
-                    <th>ISBN</th>
+                    <th>Nome da Receita</th>
+                    <th>Data de criação</th>
+                    <th>Modo de preparo</th>
+                    <th>Qtde por porção</th>
+                    <th>ID Categoria</th>
+                    <th>Id_funcionario</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <?php
                     try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_livro WHERE id_Livro = :id");
-                        $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
+                        $stmt = $conexao->prepare("SELECT * FROM g4_receita");
                         if ($stmt->execute()) {
                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 echo "<tr>";
-                                echo "<td>$rs->id_Livro</td>";
-                                echo "<td>$rs->editor</td>";
-                                echo "<td>$rs->titulo</td>";
-                                echo "<td>$rs->isbn</td>";
-                                //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_Livro.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_Livro. '">Excluir</a></td>';
-                                echo "</tr>";
+                                echo "<td>$rs->id_Receita</td>";
+                                echo "<td>$rs->nome</td>";
+                                echo "<td>$rs->data_criacao</td>";
+                                echo "<td>$rs->modo_preparo</td>";
+                                echo "<td>$rs->qtde_porcao</td>";
+                                echo "<td>$rs->id_Categoria</td>";
+                                echo "<td>$rs->id_Funcionario</td>";
+                               
                             }
                         } else {
                        echo "Erro: Não foi possível recuperar os dados do banco de dados";
