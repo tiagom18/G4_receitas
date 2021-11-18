@@ -106,31 +106,31 @@ catch(Exception $ex){
     <!--Inicio - Insert form-->
 
     <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Degustação</span>
+        <span class="">Degustação:</span>
         </br>
-        <span class="">NOTA*</span>
+        <span class="">NOTA</span>
         </br>
-        <input required type="text" name="nota" placeholder="Inserir" value="<?php
+        <input type="text" name="nota" placeholder="Inserir" value="<?php
         echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">DATA DA NOTA*</span>
+        <span class="">DATA DA NOTA</span>
         </br>
-        <input required type="date" name="data_nota" placeholder="Inserir" value="<?php
+        <input type="date" name="data_nota" placeholder="Inserir" value="<?php
         echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : '';
         ?>" class="form-control"/>
         </br>
         </br>
-        <select required id="id_Funcionario" name="id_Funcionario">
-        <option>ID Funcinario*</option>
+        <select id="id_Funcionario" name="id_Funcionario">
+        <option>ID Funcinario</option>
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>
         </select>
         </br>
         </br>
-        <select required id="id_Receita" name="id_Receita">
-        <option>ID Receita*</option>
+        <select id="id_Receita" name="id_Receita">
+        <option>ID Receita</option>
         <?php foreach($results1 as $output) {?>
         <option value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>

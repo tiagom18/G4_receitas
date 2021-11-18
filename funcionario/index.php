@@ -52,7 +52,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Cargo cadastrado com sucesso!</p>";
+                echo "<p> Funcionário cadastrado com sucesso!</p>";
                 $id_Funcionario = null;
                 $nome = null;
                 $rg = null;
@@ -62,7 +62,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 $senha = null;
                 $id_Cargo = null;
             } else {
-                echo "<p>Erro no cadastro do cargo</p>";
+                echo "<p>Erro no cadastro do funcionário</p>";
             }
         } else {
             echo "<p>Erro: Não foi possivel executar a declaração sql</p>";

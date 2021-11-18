@@ -110,7 +110,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Descrição</th>
+                <th>nome</th>
+                <th>data_criacao</th>
+                <th>modo_preparo</th>
+                <th>qtde_porcao</th>
+                <th>id_Categoria</th>
+                <th>id_Funcionario</th>
             </tr>
         </thead>
         <tbody>
