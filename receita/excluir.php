@@ -40,8 +40,11 @@
                             echo "<td>$rs->qtde_porcao</td>";
                             echo "<td>$rs->id_Categoria</td>";
                             echo "<td>$rs->id_Funcionario</td>";
-                          
                             echo "</tr>";
+                            //excluir
+                        echo '<td><a href="?act=del&id='.$rs->id_Receita.'">Excluir</a></td>';
+                        echo "</br>";
+                        echo "</tr>";
                         }
                     } else {
                     echo "Erro: Não foi possível recuperar os dados do banco de dados";
@@ -77,7 +80,3 @@
     <a href="./index.php">Voltar</a>
 </body>
 </html>
-//excluir
-                    echo '<td><a href="?act=del&id='.$rs->id_Receita.'">Excluir</a></td>';
-                    echo "</br>";
-                    echo "</tr>";
