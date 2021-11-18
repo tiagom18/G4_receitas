@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link rel="stylesheet" href="style.css"> 
     <title>Funcinario</title>
 </head>
 <body>
@@ -66,81 +66,95 @@
         }
         
     ?>
-    <h1>Alterar</h1>
-    <!--form-alteração-->
-    <form action="acaoalterar.php" method="GET">
-        <input required type="hidden" name="id" value="<?php echo (isset($id_Funcionario) && ($id_Funcionario != null || $id_Funcionario != "")) ? $id_Funcionario : ''; ?>"/>
 
-        <label for="nome">Funcionario*</label>
-        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+<div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Cargo</h1>
+                <h2 class="title-01">Incluir</h2>
+                <form action="?act=save" method="POST" name="form" class="" >
+                    <label for="nome">Nome:*</label>
+                    <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
 
-        <label for="rg">RG*</label>
-        <input required type="number" name="rg" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : ''; ?>" />
+                    <label for="rg">RG:*</label>
+                    <input required type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
 
-        <label for="data_ingresso">data_ingresso*</label>
-        <input required type="date" name="data_ingresso" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : ''; ?>" />
+                    <label for="data">Data de ingresso:*</label>
+                    <input required type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
 
-        <label for="nome_fantasia">nome_fantasia*</label>
-        <input required type="text" name="nome_fantasia" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : ''; ?>" />
+                    <label for="nomefantasia">Nome fantasia:*</label>
+                    <input required type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
 
-        <label for="usuario">usuario*</label>
-        <input required type="text" name="usuario" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : ''; ?>" />
+                    <label for="usuario">Usuário:*</label>
+                    <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
 
-        <label for="senha">senha*</label>
-        <input required type="text" name="senha" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : ''; ?>" />
+                    <label for="senha">Senha:*</label>
+                    <input required type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
 
-        <select required id="id_Cargo" name="id_Cargo">
-            <option>Funcionario*</option>
-                <?php foreach($results as $output) {?>
-                    <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
-                <?php } ?>
-        </select>
+                    <label for="cargo">Cargo:*</label>
+                    <select required id="id_Cargo" name="id_Cargo">
+                        <option>Cargo</option>
+                        <?php foreach($results as $output) {?>
+                            <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+                        <?php } ?>
+                    </select>
+                    <div class="box-btn">
+                        <button type="submit" class = "">Salvar</button>
+                        <button type="reset" class = "">Cancelar</button>
+                    </div>
+                </form>
+            </div>
         
-        <button type="submit" >Salvar</button>
-    </form>
-    <hr/>
-    <!--apresenta um consultar -->
-    <h3>Funcinario cadastrados</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>nome</th>
-                <th>rg</th>
-                <th>data_ingresso</th>
-                <th>nome_fantasia</th>
-                <th>usuario</th>
-                <th>senha</th>
-         
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_funcionario");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Funcionario</td>";
-                            echo "<td>$rs->nome</td>";
-                            echo "<td>$rs->rg</td>";
-                            echo "<td>$rs->data_ingresso</td>";
-                            echo "<td>$rs->nome_fantasia</td>";
-                            echo "<td>$rs->usuario</td>";
-                            echo "<td>$rs->senha</td>";
-                            echo "<td>$rs->id_Cargo</td>";
-                            
-                            echo "</tr>";
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
+        <!--Fim - Insert form-->
+        <!-- Inicio - Read -->
+            <div class="box-f3">
+                <h2 class="title-02">Consultar</h4>
+                <div class="box-f4">
+                    <div class="scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>RG</th>
+                                    <th>Data de ingresso</th>
+                                    <th>Nome fantasia</th>
+                                    <th>Usuário</th>
+                                    <th>Senha</th>
+                                    <th>Cargo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    try {
+                                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                                    
+                                        if ($stmt->execute()) {
+                                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                                echo "<tr>";
+                                                echo "<td>$rs->id_Funcionario</td>";
+                                                echo "<td>$rs->nome</td>";
+                                                echo "<td>$rs->rg</td>";
+                                                echo "<td>$rs->data_ingresso</td>";
+                                                echo "<td>$rs->nome_fantasia</td>";
+                                                echo "<td>$rs->usuario</td>";
+                                                echo "<td>$rs->senha</td>";
+                                                echo "<td>$rs->id_Cargo</td>";
+                                            }
+                                        } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                        }
+                                    } catch (PDOException $erro) {
+                                        echo "Erro: " . $erro->getMessage();
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

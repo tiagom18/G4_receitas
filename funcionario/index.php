@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
+    <link rel="stylesheet" href="style.css">
     <title>Funcionário</title>
 </head>
 <?php 
@@ -117,104 +117,99 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
 
 <body>
     <!--Inicio - Insert form-->    
-    <span>Funcionário</span>
-    <form action="?act=save" method="POST" name="form" class="" >
-        <label for="nome">
-			Nome:*
-		</label>
-        </br>
-        <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
-        </br>
-        <label for="rg">
-		RG:*
-		</label>
-        </br>
-        <input required type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
-        </br>
-        <label for="data_ingresso">
-        data_ingresso: *
-		</label>
-        </br>
-        <input required type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
-        </br>
-        <label for="nome_fantasia">
-        nome_fantasia: *
-		</label>
-        </br>
-        <input required type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
-        </br>
-        <label for="usuario">
-        usuario: *
-		</label>
-        </br>
-        <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
-        </br>
-        <label for="senha">
-        senha: *
-		</label>
-        </br>
-        <input required type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
-        </br>
-        
-    <select required id="id_Cargo" name="id_Cargo">
-        <option>Cargo</option>
-        <?php foreach($results as $output) {?>
-    <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
-        <?php } ?>
-    </select>
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Funcionário</h1>
+                <h2 class="title-01">Incluir</h2>
+                <form action="?act=save" method="POST" name="form" class="" >
+                    <label for="nome">Nome:*</label>
+                    <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
 
-    
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
-    
-    <!--Fim - Insert form-->
-    <!-- Inicio - Read -->
-        <table>
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>nome</th>
-                    <th>rg</th>
-                    <th>data_ingresso</th>
-                    <th>nome_fantasia</th>
-                    <th>usuario</th>
-                    <th>senha</th>
-                    <th>cargo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    try {
-                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
-                       
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>";
-                                echo "<td>$rs->id_Funcionario</td>";
-                                echo "<td>$rs->nome</td>";
-                                echo "<td>$rs->rg</td>";
-                                echo "<td>$rs->data_ingresso</td>";
-                                echo "<td>$rs->nome_fantasia</td>";
-                                echo "<td>$rs->usuario</td>";
-                                echo "<td>$rs->senha</td>";
-                                echo "<td>$rs->id_Cargo</td>";
-                                //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_Funcionario. '">Excluir</a></td>';
-                                echo "</tr>";
-                            }
-                        } else {
-                       echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                        }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
-                    }
-                ?>
-            </tbody>
-        </table>
+                    <label for="rg">RG:*</label>
+                    <input required type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
+
+                    <label for="data">Data de ingresso:*</label>
+                    <input required type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
+
+                    <label for="nomefantasia">Nome fantasia:*</label>
+                    <input required type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
+
+                    <label for="usuario">Usuário:*</label>
+                    <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
+
+                    <label for="senha">Senha:*</label>
+                    <input required type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
+
+                    <label for="cargo">Cargo:*</label>
+                    <select required id="id_Cargo" name="id_Cargo">
+                        <option>Cargo</option>
+                        <?php foreach($results as $output) {?>
+                            <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+                        <?php } ?>
+                    </select>
+                    <div class="box-btn">
+                        <button type="submit" class = "">Salvar</button>
+                        <button type="reset" class = "">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        
+        <!--Fim - Insert form-->
+        <!-- Inicio - Read -->
+            <div class="box-f3">
+                <h2 class="title-02">Consultar</h4>
+                <div class="box-f4">
+                    <div class="scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>RG</th>
+                                    <th>Data de ingresso</th>
+                                    <th>Nome fantasia</th>
+                                    <th>Usuário</th>
+                                    <th>Senha</th>
+                                    <th>Cargo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    try {
+                                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                                    
+                                        if ($stmt->execute()) {
+                                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                                echo "<tr>";
+                                                echo "<td>$rs->id_Funcionario</td>";
+                                                echo "<td>$rs->nome</td>";
+                                                echo "<td>$rs->rg</td>";
+                                                echo "<td>$rs->data_ingresso</td>";
+                                                echo "<td>$rs->nome_fantasia</td>";
+                                                echo "<td>$rs->usuario</td>";
+                                                echo "<td>$rs->senha</td>";
+                                                echo "<td>$rs->id_Cargo</td>";
+                                                //Alterar 
+                                                echo '<td><a href="./alterar.php?id='.$rs->id_Funcionario.'">Alterar</a></td>';
+                                                //excluir
+                                                echo '<td><a href="./excluir.php?id=' .$rs->id_Funcionario. '">Excluir</a></td>';
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                        }
+                                    } catch (PDOException $erro) {
+                                        echo "Erro: " . $erro->getMessage();
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Fim - Read-->
 </body>
 </html>
