@@ -52,12 +52,20 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_funcionario WHERE id_Funcionario= :id");
                     $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT); 
                     if($stmt->execute()) {
+                        echo "<script> 
+                            alert('Registro excluido com sucesso!'); 
+                            window.location.href='index.php';  
+                            </script>";
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
                 } catch (PDOException $erro) {
-                    echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
+                    echo "<script> 
+                        alert('IMPOSSIVEL APAGAR FUNCIONARIO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA'); 
+                        window.location.href='index.php';  
+                        </script>";
+                    echo "IMPOSSIVEL APAGAR FUNCIONARIO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
                 }
             }
     ?>

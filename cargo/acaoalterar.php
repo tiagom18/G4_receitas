@@ -3,42 +3,43 @@
 <html>
 	<head>
 	  <title>Cadastro de vendas - Alteração</title>
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/>
 	  <meta charset="utf-8">
       
 	</head>
 	<body>
     <!-- centralizar tudo e cria um botão bonito de voltar -->
-<?php 
-// efetua alteração do curso informado em form_alteracao.php
-    $id_Cargo = $_GET["id"];
-    $nome = $_GET["nome"];
-    include('../model/conexao.php');
-    include ('../includes/header.php');
+    <?php 
+    // efetua alteração do curso informado em form_alteracao.php
+        $id_Cargo = $_GET["id"];
+        $nome = $_GET["nome"];
+        include('../model/conexao.php');
+        include ('../includes/header.php');
 
-  try{
-    $query = "UPDATE g4_cargo
-    SET nome = :nome
-    WHERE id_Cargo = :id;";
+      try{
+        $query = "UPDATE g4_cargo
+        SET nome = :nome
+        WHERE id_Cargo = :id;";
 
-    $stmt=$conexao->prepare($query);
+        $stmt=$conexao->prepare($query);
 
-    $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
-    $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
+        $stmt->bindParam(":nome", $nome, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $id_Cargo, PDO::PARAM_INT);
 
-    $stmt->execute();
+        $stmt->execute();
+        
+        echo "<script> 
+          alert('Dado alterado com sucesso'); 
+          window.location.href='index.php';  
+          </script>";
 
-    echo "Alteração efetuada com sucesso";
+      } catch (PDOException $erro) {
+        echo "ERRO:". $erro->getMessage();
+      }
+      
+    ?>  
 
-  } catch (PDOException $erro) {
-    echo "ERRO:". $erro->getMessage();
-  }
-
-
-?>  
- <br>
- <a href="./index.php">Voltar </a>
- 
+    
  </body>
 </html>
 

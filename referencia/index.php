@@ -112,37 +112,37 @@ catch(Exception $ex){
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Referência:</span>
         </br>
-        <span class="">Data de incio</span>
+        <span class="">Data de incio*</span>
         </br>
-        <input type="date" name="data_inicio" placeholder="Inserir" value="<?php
+        <input required type="date" name="data_inicio" placeholder="Inserir" value="<?php
         echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">Data de termino</span>
+        <span class="">Data de termino*</span>
         </br>
-        <input type="date" name="data_fim" placeholder="Inserir" value="<?php
+        <input required type="date" name="data_fim" placeholder="Inserir" value="<?php
         echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : '';
         ?>" class="form-control"/>
         </br>
         </br>
-        <select id="id_Restaurante" name="id_Restaurante">
-        <option>id do restaurante</option>
+        <select required id="id_Restaurante" name="id_Restaurante">
+            <option>id do restaurante*</option>
         <?php foreach($results as $output) {?>
-    <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
-        <?php } ?>
-    </select>
-    </br>
-    </br>
-    <select id="id_Funcionario" name="id_Funcionario">
-        <option>id do funcionario</option>
-        <?php foreach($results1 as $output) {?>
-    <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-        <?php } ?>
-    </select>
-    </br>
-    </br>
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
+        <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
+            <?php } ?>
+        </select>
+        </br>
+        </br>
+        <select required id="id_Funcionario" name="id_Funcionario">
+            <option>id do funcionario*</option>
+            <?php foreach($results1 as $output) {?>
+        <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+            <?php } ?>
+        </select>
+        </br>
+        </br>
+            <button type="submit" class = "">Salvar</button>
+            <button type="reset" class = "">Cancelar</button>
         <hr>
     </form>
     

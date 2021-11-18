@@ -71,22 +71,22 @@
     <h1>Alterar</h1>
     <!--form-alteração-->
     <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Degustacao) && ($id_Degustacao != null || $id_Degustacao != "")) ? $id_Degustacao : ''; ?>"/>
+        <input required type="hidden" name="id" value="<?php echo (isset($id_Degustacao) && ($id_Degustacao != null || $id_Degustacao != "")) ? $id_Degustacao : ''; ?>"/>
 
         <label for="nota">nota da degustação</label>
-        <input type="text" name="nota" value="<?php echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : ''; ?>" />
+        <input required type="text" name="nota" value="<?php echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : ''; ?>" />
 
         <label for="data_nota">data da nota da degustação</label>
-        <input type="date" name="data_nota" value="<?php echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : ''; ?>" />
+        <input required type="date" name="data_nota" value="<?php echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : ''; ?>" />
 
-        <select id="id_Funcionario" name="id_Funcionario">
+        <select required id="id_Funcionario" name="id_Funcionario">
             <option>Funcionario</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>
         </select>
 
-        <select id="id_Receita" name="id_Receita">
+        <select required id="id_Receita" name="id_Receita">
             <option>Funcionario</option>
                 <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Receita == $output["id_Receita"]?  "selected" : ""; ?> value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>

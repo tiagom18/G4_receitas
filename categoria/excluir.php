@@ -45,12 +45,20 @@
                     $stmt = $conexao->prepare("DELETE FROM g4_categoria WHERE id_Categoria= :id");
                     $stmt->bindParam(":id", $id_Categoria, PDO::PARAM_INT); 
                     if($stmt->execute()) {
+                        echo "<script> 
+                            alert('Registro excluido com sucesso!'); 
+                            window.location.href='index.php';  
+                            </script>";
                         echo "<p>Registro excluido com sucesso!!</p>";
                     } else {
                         echo "<p>Erro: Não foi possível executar a declaração sql</p>";
                     }
                 } catch (PDOException $erro) {
-                    echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
+                    echo "<script> 
+                    alert('IMPOSSIVEL APAGAR CATEGORIA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA'); 
+                    window.location.href='index.php';  
+                    </script>";
+                    echo "IMPOSSIVEL APAGAR CATEGORIA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
                 }
             }
     ?>
