@@ -103,6 +103,7 @@
                         <button type="reset" class = "">Cancelar</button>
                     </div>
                 </form>
+                
             </div>
         
         <!--Fim - Insert form-->
@@ -123,6 +124,7 @@
                                     <th>Senha</th>
                                     <th>Cargo</th>
                                 </tr>
+                                
                             </thead>
                             <tbody>
                                 <?php
@@ -150,12 +152,14 @@
                                 ?>
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <h2><a href="./index.php">Voltar</a></h2>
     </div>
-    <br>
-    <a href="./index.php">Voltar</a>
+    
 </body>
 </html>
