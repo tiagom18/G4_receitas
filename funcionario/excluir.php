@@ -82,7 +82,10 @@
                         alert('IMPOSSIVEL APAGAR FUNCIONARIO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA'); 
                         window.location.href='index.php';  
                         </script>";
-                    echo "IMPOSSIVEL APAGAR FUNCIONARIO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
+                    echo "<script> 
+                    alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                    window.location.href='index.php';  
+                    </script>";
                 }
             }
     ?>

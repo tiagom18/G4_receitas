@@ -40,7 +40,10 @@
                             echo '<td><a href="?act=del&id='.$rs->id_Cargo.'">Confirmar Exclusão</a></td>';
                         }
                     } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                    echo "<script> 
+                    alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                    window.location.href='index.php';  
+                    </script>";
                     }
                 } catch (PDOException $erro) {
                     echo "Erro: " . $erro->getMessage();
