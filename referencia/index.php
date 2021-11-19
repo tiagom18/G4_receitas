@@ -132,7 +132,7 @@ catch(Exception $ex){
     
         </br>
         <select required id="id_Restaurante" name="id_Restaurante">
-            <option value="" disabled selected>id do restaurante*</option>
+            <option value="" disabled selected>id do restaurante</option>
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>
@@ -141,7 +141,7 @@ catch(Exception $ex){
         <span class="">Funcionario*</span>
         </br>
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option value="" disabled selected>id do funcionario*</option>
+            <option value="" disabled selected>id do funcionario</option>
             <?php foreach($results1 as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>
@@ -159,11 +159,11 @@ catch(Exception $ex){
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Data de incio</th>
                     <th>Data de termino</th>
-                    <th>id do restaurante</th>
-                    <th>id do funcionario</th>
+                    <th>ID do restaurante</th>
+                    <th>ID do funcionario</th>
                 </tr>
             </thead>
             <tbody>
