@@ -126,15 +126,8 @@ catch(Exception $ex){
         <span class="">Funcionario*</span>
         </br>
         <select id="id_Funcionario" name="id_Funcionario">
-<<<<<<< HEAD
+
         <option value="" disabled selected>ID Funcinario</option>
-=======
-<<<<<<< HEAD
-        <option value="" disabled selected>ID Funcionario</option>
-=======
-        <option>ID Funcionario</option>
->>>>>>> fedad53e82c4b0f02d928b12094a19b6f4c463b8
->>>>>>> bf51599f1c7a0db894a3950d518c5edf115d1c32
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>
