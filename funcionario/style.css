@@ -14,9 +14,9 @@ h1 {
   font-weight: 600;
 }
 
-select {
-  height: 24px;
-  width: 100%;
+.link-ex {
+  text-decoration: none;
+  color: #000;
 }
 
 .title-01,
