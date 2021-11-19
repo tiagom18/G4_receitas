@@ -144,7 +144,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
 
                     <label for="cargo">Cargo:*</label>
                     <select required id="id_Cargo" name="id_Cargo">
-                        <option>Cargo</option>
+                        <option value="" disabled selected>Cargo</option>
                         <?php foreach($results as $output) {?>
                             <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
                         <?php } ?>

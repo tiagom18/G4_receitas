@@ -80,14 +80,14 @@
         <input required type="date" name="data_nota" value="<?php echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : ''; ?>" />
 
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option>Funcionario</option>
+            <option value="" disabled>Funcionario</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>
         </select>
 
         <select required id="id_Receita" name="id_Receita">
-            <option>Funcionario</option>
+            <option value="" disabled>Funcionario</option>
                 <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Receita == $output["id_Receita"]?  "selected" : ""; ?> value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>

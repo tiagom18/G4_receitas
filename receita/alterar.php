@@ -89,13 +89,13 @@
         <input required type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
 
         <select required id="id_Categoria" name="id_Categoria">
-            
+        <option value="" disabled>Funcionario*</option>
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Categoria == $output["id_Categoria"]?  "selected" : ""; ?> value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
                 <?php } ?>
         </select>
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option>Funcionario*</option>
+            <option value="" disabled>Funcionario*</option>
                 <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
                 <?php } ?>

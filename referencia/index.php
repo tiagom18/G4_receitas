@@ -124,22 +124,26 @@ catch(Exception $ex){
         echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : '';
         ?>" class="form-control"/>
         </br>
+        <span class="">Restaurante*</span>
+    
         </br>
         <select required id="id_Restaurante" name="id_Restaurante">
-            <option>id do restaurante*</option>
+            <option value="" disabled selected>id do restaurante*</option>
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>
         </select>
         </br>
+        <span class="">Funcionario*</span>
         </br>
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option>id do funcionario*</option>
+            <option value="" disabled selected>id do funcionario*</option>
             <?php foreach($results1 as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>
         </select>
         </br>
+        
         </br>
             <button type="submit" class = "">Salvar</button>
             <button type="reset" class = "">Cancelar</button>

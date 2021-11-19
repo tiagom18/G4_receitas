@@ -29,10 +29,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
     try{
         if ($id_Receita != "") {
-            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao,id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_Receita = :id_Receita");
+            $stmt = $conexão->prepare("UPDATE g4_receita SET nome=:nome, id_receita=:id_receita, data_criacao=:data_criacao, qtde_porcao=:qtde_porcao, id_Categoria=:id_Categoria, id_Funcionario=:id_Funcionario   WHERE id_Receita = :id_Receita");
             $stmt->bindParam(":id_Receita", $id_Receita);
         } else {
-            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao,  id_Categoria, id_Funcionario) 
+            $stmt = $conexao->prepare("INSERT INTO g4_receita(nome, id_receita, data_criacao,modo_preparo, qtde_porcao, id_Categoria, id_Funcionario) 
             VALUES (:nome,:id_receita,:data_criacao,:modo_preparo,:qtde_porcao,:id_Categoria,:id_Funcionario)");
         }
         $stmt->bindParam(":id_receita", $id_receita);
@@ -54,7 +54,6 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
                 $data_criacao = null;
                 $modo_preparo = null;
                 $qtde_porcao = null;
-                
                 $id_Categoria  = null;
                 $id_Funcionario  = null;
             } else {
@@ -162,7 +161,7 @@ catch(Exception $ex){
         <span class="">Categoria*</span>
         </br>
         <select required id="id_Categoria" name="id_Categoria">
-            <option>Categoria</option>
+            <option value="" disabled selected>Categoria</option>
                 <?php foreach($results1 as $output) {?>
             <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
         <?php } ?>
@@ -171,7 +170,7 @@ catch(Exception $ex){
         <span class="">Funcionario*</span>
         </br>
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option>Funcinario</option>
+            <option value="" disabled selected>Funcinario</option>
                 <?php foreach($results as $output) {?>
             <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>
