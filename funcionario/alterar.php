@@ -18,7 +18,7 @@
             //SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo WHERE id_Funcionario = :id"
 
             try {
-                $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha,id_Cargo FROM g4_funcionario  WHERE id_Funcionario= :id");
+                $stmt = $conexao->prepare("SELECT * FROM g4_funcionario  WHERE id_Funcionario= :id");
                 $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
                 if ($stmt->execute()) {
                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)){
@@ -72,7 +72,8 @@
             <div class="box-f2">
                 <h1>Cargo</h1>
                 <h2 class="title-01">Incluir</h2>
-                <form action="?act=save" method="POST" name="form" class="" >
+                <form action="acaoalterar.php" method="GET" name="form" class="" >
+                    <input type="text" id="id" name="id" style="display: none;" value="<?php echo $id_Funcionario;?>">
                     <label for="nome">Nome:*</label>
                     <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
 
@@ -91,11 +92,12 @@
                     <label for="senha">Senha:*</label>
                     <input required type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
 
-                    <label for="cargo">Cargo:*</label>
+                    <label for="cargo">Cargo:</label>
+                    
                     <select required id="id_Cargo" name="id_Cargo">
-                        <option>Cargo</option>
+                    
                         <?php foreach($results as $output) {?>
-                            <option value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+                            <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
                         <?php } ?>
                     </select>
                     <div class="box-btn">
@@ -103,6 +105,7 @@
                         <button type="reset" class = "">Cancelar</button>
                     </div>
                 </form>
+                
             </div>
         
         <!--Fim - Insert form-->
@@ -123,11 +126,12 @@
                                     <th>Senha</th>
                                     <th>Cargo</th>
                                 </tr>
+                                
                             </thead>
                             <tbody>
                                 <?php
                                     try {
-                                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_funcionario");
                                     
                                         if ($stmt->execute()) {
                                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
@@ -150,11 +154,14 @@
                                 ?>
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
         </div>
+        <br>
+        <h2><a href="./index.php">Voltar</a></h2>
     </div>
-
+    
 </body>
 </html>
