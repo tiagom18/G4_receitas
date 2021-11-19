@@ -34,7 +34,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p class = 'txt_cargo_cadastrado'> Cargo cadastrado com sucesso!</p>";
+                echo "<script> 
+                alert('Cargo Cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 $id_Cargo = null;
                 $nome = null;
             } else {

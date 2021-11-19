@@ -41,7 +41,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nota != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Degustação cadastrado com sucesso!</p>";
+                echo "<script> 
+                alert(' Degustação cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 $id_Degustacao = null;
                 $nota = null;
                 $data_nota = null;
@@ -122,7 +125,7 @@ catch(Exception $ex){
         </br>
         </br>
         <select id="id_Funcionario" name="id_Funcionario">
-        <option>ID Funcinario</option>
+        <option>ID Funcionario</option>
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>

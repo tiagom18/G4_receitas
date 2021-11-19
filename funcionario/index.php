@@ -52,6 +52,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert(' Funcionário cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p> Funcionário cadastrado com sucesso!</p>";
                 $id_Funcionario = null;
                 $nome = null;

@@ -34,6 +34,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert(' Medida cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p class='txt_medida'> Medida cadastrado com sucesso!</p>";
                 $id_Medida = null;
                 $descricao = null;

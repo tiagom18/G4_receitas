@@ -48,6 +48,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert('  Receita cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p> Receita cadastrado com sucesso!</p>";
                 $id_receita = null;
                 $nome = null;
@@ -172,7 +176,7 @@ catch(Exception $ex){
         <span class="">Funcionario*</span>
         </br>
         <select required id="id_Funcionario" name="id_Funcionario">
-            <option>Funcinario</option>
+            <option>Funcionario</option>
                 <?php foreach($results as $output) {?>
             <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
             <?php } ?>

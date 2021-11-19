@@ -34,7 +34,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p class = 'txt_categoria'> Categoria cadastrado com sucesso!</p>";
+                echo "<script> 
+                alert(' Categoria cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 $id_Categoria = null;
                 $descricao = null;
             } else {
