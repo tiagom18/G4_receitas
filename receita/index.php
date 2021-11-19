@@ -88,7 +88,6 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Receita != ""){
             $data_criacao = $rs->$data_criacao;
             $modo_preparo = $rs->$modo_preparo;
             $qtde_porcao = $rs->$qtde_porcao;
-            
             $id_Categoria = $rs->$id_Categoria;
             $id_Funcionario = $rs->$id_Funcionario;
            
