@@ -175,7 +175,7 @@ catch(Exception $ex){
         </br>
         <select required id="id_Funcionario" name="id_Funcionario">
 <<<<<<< HEAD
-            <option value="" disabled selected>Funcinario</option>
+            <option value="" disabled selected>Funcionario</option>
 =======
             <option>Funcionario</option>
 >>>>>>> fedad53e82c4b0f02d928b12094a19b6f4c463b8
