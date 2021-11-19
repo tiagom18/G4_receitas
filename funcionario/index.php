@@ -32,7 +32,7 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
        
         if ($id_Funcionario != "") {
-            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, usuario=:usuario, senha=:senha   WHERE id_Funcionario = :id_Funcionario");
+            $stmt = $conexão->prepare("UPDATE g4_funcionario SET nome=:nome, rg=:rg, data_ingresso=:data_ingresso, nome_fantasia=:nome_fantasia, usuario=:usuario, senha=:senha, id_Cargo=:id_Cargo  WHERE id_Funcionario = :id_Funcionario");
             $stmt->bindParam(":id_Funcionario", $id_Funcionario);
           
         } else {
@@ -78,7 +78,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
     try {
         echo "id_Funcionario :",  $id;
 
-        $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha FROM g4_funcionario WHERE id_funcionario= :id");
+        $stmt = $conexao->prepare("SELECT id_Funcionario, nome, rg, data_ingresso, nome_fantasia, usuario, senha, id_Cargo FROM g4_funcionario WHERE id_funcionario= :id");
 
         $stmt->bindParam(":id", $id_Funcionario, PDO::PARAM_INT);
         if ($stmt->execute()) {
@@ -90,6 +90,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
             $nome_fantasia = $rs->$nome_fantasia;
             $usuario = $rs->$usuario;
             $senha = $rs->$senha;
+            $id_Cargo = $rs->$id_Cargo;
         } else {
             echo "<p>Não foi possível executar a declaração sql</p>";
         }
@@ -177,7 +178,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                             <tbody>
                                 <?php
                                     try {
-                                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_funcionario");
                                     
                                         if ($stmt->execute()) {
                                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {

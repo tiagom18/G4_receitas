@@ -89,7 +89,7 @@
         <input required type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
 
         <select required id="id_Categoria" name="id_Categoria">
-            <option>Categoria*</option>
+            
                 <?php foreach($results as $output) {?>
                     <option <?php echo $id_Categoria == $output["id_Categoria"]?  "selected" : ""; ?> value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
                 <?php } ?>
@@ -102,6 +102,7 @@
         </select>
 
         <button type="submit" >Salvar</button>
+        <button type="reset" class = "">Cancelar</button>
     </form>
     <hr/>
     <!--apresenta um consultar -->
