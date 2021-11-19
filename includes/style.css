@@ -1,66 +1,68 @@
 .container {
-    width: auto;
-    height: 146px;
-    background-color: #f24726;
+  width: auto;
+  height: 146px;
+  background-color: #f24726;
 }
 
 body {
-    width: auto;
-    margin: 0;
+  width: auto;
+  margin: 0;
 }
 
 .posicao_logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 84px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 84px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .logo {
-    position: absolute;
-    width: 115px;
-    height: 117px;
-    top: -23px;
+  position: absolute;
+  width: 115px;
+  height: 117px;
+  top: -23px;
 }
 
 .btn {
-    position: absolute;
-    top: 28px;
-    right: 67px;
-    width: 130px;
-    height: 41px;
-    background-color: white;
-    border: none;
-    border-radius: 60px;
-    cursor: pointer;
+  position: absolute;
+  top: 28px;
+  right: 67px;
+  width: 130px;
+  height: 41px;
+  background-color: white;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
 }
 
 .btn-img {
-    position: absolute;
-    top: 4px;
-    left: 29px;
+  position: absolute;
+  top: 4px;
+  left: 29px;
 }
 
 .btn-txt {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    padding-left: 32px;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  padding-left: 32px;
 }
 
 .categorias {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .txt-categorias {
-    text-decoration: none;
-    padding-top: 16px;
-    padding-left: 27px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    color:rgb(255, 255, 255);
+  padding-top: 16px;
+  padding-left: 27px;
 }
 
+.txt-categorias a {
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+}
