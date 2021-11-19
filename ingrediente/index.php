@@ -106,8 +106,8 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>nome</th>
+                    <th>ID</th>
+                    <th>Nome</th>
                     <th>Descrição</th>
                     
                 </tr>

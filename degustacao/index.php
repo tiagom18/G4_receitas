@@ -156,11 +156,11 @@ catch(Exception $ex){
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>nota</th>
-                    <th>data da nota</th>
-                    <th>id do Funcinario</th>
-                    <th>id da Receita</th>
+                    <th>ID</th>
+                    <th>Nota</th>
+                    <th>Data da nota</th>
+                    <th>ID do Funcinario</th>
+                    <th>ID da Receita</th>
                 </tr>
             </thead>
             <tbody>

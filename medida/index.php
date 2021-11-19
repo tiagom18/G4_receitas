@@ -100,7 +100,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Medida != ""){
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Descrição</th>
                                 </tr>
                             </thead>

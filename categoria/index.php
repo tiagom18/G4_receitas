@@ -99,7 +99,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Categoria != "")
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Descrição</th>
                                 </tr>
                             </thead>

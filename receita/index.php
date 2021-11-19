@@ -195,13 +195,13 @@ catch(Exception $ex){
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nome da Receita</th>
                     <th>Data de criação</th>
                     <th>Modo de preparo</th>
                     <th>Qtde por porção</th>
                     <th>ID Categoria</th>
-                    <th>Id_funcionario</th>
+                    <th>ID funcionario</th>
                     
                 </tr>
             </thead>

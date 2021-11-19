@@ -118,10 +118,10 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Livro != ""){
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Titulo</th>
                     <th>ISBN</th>
-                    <th>editor</th>
+                    <th>Editor</th>
                 </tr>
             </thead>
             <tbody>
