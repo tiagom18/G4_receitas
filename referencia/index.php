@@ -41,6 +41,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $data_inicio != "")
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert(' Referência cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p> Referência cadastrado com sucesso!</p>";
                 $id_Referencia = null;
                 $data_inicio = null;

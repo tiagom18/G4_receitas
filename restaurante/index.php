@@ -34,6 +34,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nome != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert(' Restaurante cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p class='txt_restaurante'> Restaurante cadastrado com sucesso!</p>";
                 $id_Restaurante = null;
                 $nome = null;

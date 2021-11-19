@@ -41,7 +41,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $nota != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
-                echo "<p> Degustação cadastrado com sucesso!</p>";
+                echo "<script> 
+                alert(' Degustação cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 $id_Degustacao = null;
                 $nota = null;
                 $data_nota = null;
@@ -123,7 +126,11 @@ catch(Exception $ex){
         <span class="">Funcionario*</span>
         </br>
         <select id="id_Funcionario" name="id_Funcionario">
+<<<<<<< HEAD
         <option value="" disabled selected>ID Funcinario</option>
+=======
+        <option>ID Funcionario</option>
+>>>>>>> fedad53e82c4b0f02d928b12094a19b6f4c463b8
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>

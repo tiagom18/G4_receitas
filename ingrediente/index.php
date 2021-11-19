@@ -36,6 +36,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $descricao != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert(' Ingrediente cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p> Ingrediente cadastrado com sucesso!</p>";
                 $id_Ingrediente = null;
                 $descricao = null;

@@ -38,6 +38,10 @@ if (isset($_REQUEST['act']) && $_REQUEST['act'] == "save" && $titulo != "") {
 
         if($stmt->execute())  {
             if ($stmt->rowCount() > 0) {
+                echo "<script> 
+                alert('  Edição do livro cadastrado com sucesso!'); 
+                window.location.href='index.php';  
+                </script>";
                 echo "<p> Edição do livro cadastrado com sucesso!</p>";
                 $id_Livro = null;
                 $id_Receita = null;
