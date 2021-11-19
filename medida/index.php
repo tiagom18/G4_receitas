@@ -82,7 +82,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Medida != ""){
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
                     <label for="descricao">Descrição*</label>
-                    <input required type="text" name="descricao" value="<?php
+                    <input required type="text" name="descricao"  placeholder="Inserir" value="<?php
                     echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';?>">
                     <div class="box-btn">
                         <button type="reset">Cancelar</button>
@@ -100,7 +100,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Medida != ""){
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>ID</th>
                                     <th>Descrição</th>
                                 </tr>
                             </thead>

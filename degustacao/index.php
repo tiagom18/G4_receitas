@@ -111,29 +111,39 @@ catch(Exception $ex){
     <form action="?act=save" method="POST" name="form" class="" >
         <span class="">Degustação:</span>
         </br>
-        <span class="">NOTA</span>
+        <span class="">NOTA*</span>
         </br>
         <input type="text" name="nota" placeholder="Inserir" value="<?php
         echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : '';
         ?>" class="form-control"/>
         </br>
-        <span class="">DATA DA NOTA</span>
+        <span class="">DATA DA NOTA*</span>
         </br>
         <input type="date" name="data_nota" placeholder="Inserir" value="<?php
         echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : '';
         ?>" class="form-control"/>
         </br>
+        <span class="">Funcionario*</span>
         </br>
         <select id="id_Funcionario" name="id_Funcionario">
+<<<<<<< HEAD
+        <option value="" disabled selected>ID Funcinario</option>
+=======
+<<<<<<< HEAD
+        <option value="" disabled selected>ID Funcionario</option>
+=======
         <option>ID Funcionario</option>
+>>>>>>> fedad53e82c4b0f02d928b12094a19b6f4c463b8
+>>>>>>> bf51599f1c7a0db894a3950d518c5edf115d1c32
         <?php foreach($results as $output) {?>
         <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>
         </select>
         </br>
+        <span class="">Receita*</span>
         </br>
         <select id="id_Receita" name="id_Receita">
-        <option>ID Receita</option>
+        <option value="" disabled selected>ID Receita</option>
         <?php foreach($results1 as $output) {?>
         <option value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
         <?php } ?>
@@ -150,11 +160,11 @@ catch(Exception $ex){
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>nota</th>
-                    <th>data da nota</th>
-                    <th>id do Funcinario</th>
-                    <th>id da Receita</th>
+                    <th>ID</th>
+                    <th>Nota</th>
+                    <th>Data da nota</th>
+                    <th>ID do Funcinario</th>
+                    <th>ID da Receita</th>
                 </tr>
             </thead>
             <tbody>

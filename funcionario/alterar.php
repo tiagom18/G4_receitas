@@ -90,12 +90,12 @@
                     <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
 
                     <label for="senha">Senha:*</label>
-                    <input required type="text" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
+                    <input required type="password" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
 
                     <label for="cargo">Cargo:</label>
                     
                     <select required id="id_Cargo" name="id_Cargo">
-                    
+                    <option value="" disabled>Cargo</option>
                         <?php foreach($results as $output) {?>
                             <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
                         <?php } ?>

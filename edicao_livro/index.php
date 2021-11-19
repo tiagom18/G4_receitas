@@ -121,7 +121,7 @@ catch(Exception $ex){
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Nome da Receita</th>
             </tr>
         </thead>
@@ -151,7 +151,7 @@ catch(Exception $ex){
     <table>
         <thead>
             <tr>
-                <th>Id</th>
+                <th>ID</th>
                 <th>Editor</th>
                 <th>Título</th>
                 <th>ISBN</th>
