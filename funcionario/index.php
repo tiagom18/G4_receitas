@@ -177,7 +177,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Funcionario != "
                             <tbody>
                                 <?php
                                     try {
-                                        $stmt = $conexao->prepare("SELECT a.id_Funcionario, a.nome, a.rg, a.data_ingresso, a.nome_fantasia, a.usuario, a.senha, b.id_Cargo FROM g4_funcionario as a INNER JOIN g4_cargo as b on a.id_Cargo = b.id_Cargo");
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_funcionario");
                                     
                                         if ($stmt->execute()) {
                                             while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
