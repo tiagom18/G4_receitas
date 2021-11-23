@@ -1,19 +1,16 @@
 <?php // content="text/plain; charset=utf-8"
 require_once ('jpgraph/jpgraph.php');
 require_once ('jpgraph/jpgraph_pie.php');
-
 include('../model/conexao.php');
 
+//select -> buscar informações para alimentar o grafico
 try {
-    $stmt = $conexao->prepare("select c.descricao, count(*) as qtdcategorias
-    from g4_receita r,
-        g4_categoria c 
-    where r.id_Categoria = c.id_Categoria
-    group by c.descricao");
+    $stmt = $conexao->prepare("SELECT c.descricao, count(*) AS qtdCategorias FROM g4_receita r, 
+    g4_categoria c WHERE r.id_Categoria = c.id_Categoria GROUP BY c.descricao;");
     if ($stmt->execute()) {
         $i = 0;
         while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-            $descricao[]=$rs->descriacao;
+            $descricao[]=$rs->descricao;
             $qtdCategorias[]=$rs->qtdCategorias;
             $i++;
         }
@@ -23,29 +20,20 @@ echo "Erro: Não foi possível recuperar os dados do banco de dados";
 } catch (PDOException $erro) {
     echo "Erro: " . $erro->getMessage();
 }
+$data = array(40,60,21,33);
 
-// Some data
-$data = array(40,21,17,14,23);
+$graph = new PieGraph(300,200);
+$graph->clearTheme();
+$graph->SetShadow();
 
-// Create the Pie Graph. 
-$graph = new PieGraph(350,250);
+$graph->title->Set("Quantidade de receitas por categorias");
+$graph->title->SetFont(FF_FONT1,FS_BOLD);
 
-$theme_class="DefaultTheme";
-//$graph->SetTheme(new $theme_class());
+$p1 = new PiePlot($qtdCategorias);
+$p1->SetLegends($descricao);
+$p1->SetCenter(0.4);
 
-// Set A title for the plot
-$graph->title->Set("A Simple Pie Plot");
-$graph->SetBox(true);
-
-// Create
-$p1 = new PiePlot($data);
 $graph->Add($p1);
-
-$p1->ShowBorder();
-$p1->SetColor('black');
-$p1->SetSliceColors(array('#1E90FF','#2E8B57','#ADFF2F','#DC143C','#BA55D3'));
 $graph->Stroke();
 
 ?>
-
-
