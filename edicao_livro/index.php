@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./style.css" rel="stylesheet"/>
     <title>Edição do livro</title>
 </head>
 <?php 
@@ -99,87 +100,102 @@ catch(Exception $ex){
 ?>
 <body>
     <!--Seleciona o livro a ser trabalhado-->
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Livro</h1>
+                <h2 class="title-01">Escolha o livro</h2>
+                    <span>Editar o livro</span>
+                    <form action="?act=save" method="POST" name="form" class="" >
 
-    <span>Escolha o livro</span>
-    <form action="?act=save" method="POST" name="form" class="" >
-
-        <label for="titulo" >Nome do livro</label>
-        <select id="titulo" name="titulo">
-            <option>Escolha o livro </option>
-                <?php foreach($results as $output) {?>
-            <option value="<?php $output["id_Livro"]?>"><?php echo $output["titulo"];?></option> <?php } ?>
-        </select>
-        </br>
-        <!--Opções de receita-->
-        <input>
-        <label></label>
-        <button type="submit" class = "">Editar livro</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
-    <!-- Apresenta todas as receitas do sistema -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome da Receita</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT id_Receita, nome FROM g4_receita");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Receita</td>";
-                            echo "<td>$rs->nome</td>";
-                            
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
-    
-    <h3>Editar</h3>
-    <!--Mostra o Livro Selecionado -->
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Editor</th>
-                <th>Título</th>
-                <th>ISBN</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT id_Livro, editor, titulo, isbn FROM g4_livro WHERE id_Livro = :id");
-                    $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Livro</td>";
-                            echo "<td>$rs->editor</td>";
-                            echo "<td>$rs->titulo</td>";
-                            echo "<td>$rs->isbn</td>";
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
+                        <label for="titulo" >Nome do livro*</label>
+                        <select id="titulo" name="titulo">
+                            <option>Escolha o livro </option>
+                                <?php foreach($results as $output) {?>
+                            <option value="<?php $output["id_Livro"]?>"><?php echo $output["titulo"];?></option> <?php } ?>
+                        </select>
+                        </br>
+                        <!--Opções de receita-->
+                        <input>
+                        <label></label>
+                        <div class="box-btn">
+                        <button type="submit" class = "">Editar livro</button>
+                        <button type="reset" class = "">Cancelar</button>
+                        <button type="delete" class = "">Excluir</button>
+                    </div>
+                </form>
+            </div>
+                    <!-- Apresenta todas as receitas do sistema -->
+        <div class="box-f3">
+            <h2 class="title-02">Adicionar receita</h2>
+                <div class="box-f4">
+                    <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome da Receita</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                try {
+                                    $stmt = $conexao->prepare("SELECT id_Receita, nome FROM g4_receita");
+                                    if ($stmt->execute()) {
+                                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                            echo "<tr>";
+                                            echo "<td>$rs->id_Receita</td>";
+                                            echo "<td>$rs->nome</td>";
+                                            
+                                        }
+                                    } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                    }
+                                } catch (PDOException $erro) {
+                                    echo "Erro: " . $erro->getMessage();
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                 </div>
+    </div>                    
+                    <!--Mostra o Livro Selecionado -->
+       
+            <h2 class="title-02">Editar</h4>
+                <div class="box-f4">
+                    <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Editor</th>
+                                <th>Título</th>
+                                <th>ISBN</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                try {
+                                    $stmt = $conexao->prepare("SELECT id_Livro, editor, titulo, isbn FROM g4_livro WHERE id_Livro = :id");
+                                    $stmt->bindParam(":id", $id_Livro, PDO::PARAM_INT);
+                                    if ($stmt->execute()) {
+                                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                            echo "<tr>";
+                                            echo "<td>$rs->id_Livro</td>";
+                                            echo "<td>$rs->editor</td>";
+                                            echo "<td>$rs->titulo</td>";
+                                            echo "<td>$rs->isbn</td>";
+                                        }
+                                    } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                    }
+                                } catch (PDOException $erro) {
+                                    echo "Erro: " . $erro->getMessage();
+                                }
+                            ?>
+                        </tbody>
+                    </table>
 
     <!-- Fim - Read-->
 </body>
