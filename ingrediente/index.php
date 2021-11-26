@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
+    <link href="./style.css" rel="stylesheet"/>
     <title>Ingrediente</title>
 </head>
 <?php 
@@ -79,65 +79,76 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
 ?>
 <body>
     <!--Inicio - Insert form-->
-
-    <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Ingrediente</span>
-        </br>
-        <span class="">Nome*</span>
-        </br>
-        <input required type="text" name="nome" placeholder="Inserir" value="<?php
-        echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-        ?>" class="form-control"/>
-        </br>
-        <span class="">Descricao*</span>
-        </br>
-        <input required type="text" name="descricao" placeholder="Inserir" value="<?php
-        echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
-        ?>" class="form-control"/>
-        </br>
-        </br>
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Ingrediente</h1>
+                <h2 class="title-01">Incluir</h2>
+                <form action="?act=save" method="POST" name="form" class="" >
+                    </br>
+                    <span class="Nome">Nome*</span>
+                    </br>
+                    <input required type="text" name="nome" placeholder="Inserir" value="<?php
+                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+                    ?>" class="form-control"/>
+                    </br>
+                    <span class="Descricao">Descrição*</span>
+                    </br>
+                    <input required type="text" name="descricao" placeholder="Inserir" value="<?php
+                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+                    ?>" class="form-control"/>
+                    <div class="box-btn">
+                        <button type="reset" class = "">Cancelar</button>
+                        <button type="submit" class = "">Salvar</button>
+                    </div>
+                </form>
+            </div>
     
-    <!--Fim - Insert form-->
-    <!-- Inicio - Read -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descrição</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_ingrediente");
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>";
-                                echo "<td>$rs->id_Ingrediente</td>";
-                                echo "<td>$rs->nome</td>";
-                                echo "<td>$rs->descricao</td>";
-                                
-                                //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_Ingrediente.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_Ingrediente. '">Excluir</a></td>';
-                                echo "</tr>";
-                            }
-                        } else {
-                       echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                        }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
-                    }
-                ?>
-            </tbody>
-        </table>
+        <!--Fim - Insert form-->
+        <!-- Inicio - Read -->
+        <div class="box-f3">
+                <h2 class="title-02">Consultar</h4>
+                <div class="box-f4">
+                    <div class="scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    try {
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_ingrediente");
+                                        if ($stmt->execute()) {
+                                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                                echo "<tr>";
+                                                echo "<td>$rs->id_Ingrediente</td>";
+                                                echo "<td>$rs->nome</td>";
+                                                echo "<td>$rs->descricao</td>";
+                                                //Alterar 
+                                                echo '<td><a href="./alterar.php?id='.$rs->id_Ingrediente.'">Alterar</a></td>';
+                                                //excluir
+                                                echo '<td><a href="./excluir.php?id=' .$rs->id_Ingrediente. '">Excluir</a></td>';
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                        }
+                                    } catch (PDOException $erro) {
+                                        echo "Erro: " . $erro->getMessage();
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Fim - Read-->
+    </div>
 </body>
 </html>

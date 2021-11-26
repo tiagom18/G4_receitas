@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/> 
     <title>Ingrediente</title>
 </head>
 <body>
@@ -43,52 +43,62 @@
             }
         //    
     ?>
-    <h1>Alterar</h1>
     <!--form-alteração-->
-    <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Ingrediente) && ($id_Ingrediente != null || $id_Ingrediente != "")) ? $id_Ingrediente : ''; ?>"/>
-
-        <label for="nome">Nome*</label>
-        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
-
-        <label for="descricao">Descricao*</label>
-        <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
-
-        <button type="submit" >Salvar</button>
-    </form>
-    <hr/>
-    <!--apresenta um consultar -->
-    <h3>Ingredientes cadastrados</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Descrição</th>
-                <th>nome</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_ingrediente ");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Ingrediente</td>";
-                            echo "<td>$rs->descricao</td>";
-                            echo "<td>$rs->nome</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
-    <br>
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Ingrediente</h1>
+                <h2 class="title-01">Alterar</h2>
+                <form action="acaoalterar.php" method="GET">
+                    <input type="hidden" name="id" value="<?php echo (isset($id_Ingrediente) && ($id_Ingrediente != null || $id_Ingrediente != "")) ? $id_Ingrediente : ''; ?>"/>
+                     <label for="nome">Nome*</label>
+                    <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+                    <label for="descricao">Descricao*</label>
+                    <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+                    <div class="box-btn">
+                    <button type="reset" >Cancelar</button>
+                    <button type="submit" >Salvar</button>
+                </div>
+            </form>
+        </div>
+                <!--apresenta um consultar -->
+            <div class="box-f3">
+                <h2 class="title-02">Ingredientes cadastrados</h2>
+                <div class="box-f4">
+                <div class="scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Descrição</th>
+                            <th>nome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            try {
+                                $stmt = $conexao->prepare("SELECT * FROM g4_ingrediente ");
+                                if ($stmt->execute()) {
+                                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                        echo "<tr>";
+                                        echo "<td>$rs->id_Ingrediente</td>";
+                                        echo "<td>$rs->descricao</td>";
+                                        echo "<td>$rs->nome</td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                }           
+                            } catch (PDOException $erro) {
+                                echo "Erro: " . $erro->getMessage();
+                            }
+                         ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
         <h2><a href="./index.php">Voltar</a></h2>
+
 </body>
 </html>
