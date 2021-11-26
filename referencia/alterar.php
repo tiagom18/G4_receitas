@@ -71,33 +71,43 @@
     <!--form-alteração-->
     <div class="box-p">
         <div class="box-f1">
-            <div class="box-f2">
                 <h1>Referência</h1>
                 <h2 class="title-01">Alterar</h2>
                 <form action="acaoalterar.php" method="GET">
-                    <input type="hidden" name="id" value="<?php echo (isset($id_Referencia) && ($id_Referencia != null || $id_Referencia != "")) ? $id_Referencia : ''; ?>"/>
-                    <label for="data_inicio">Data de Inicio*</label>
-                    <input required type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
-                    <label for="data_fim">Data do Fim*</label>
-                    <input required type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
-                    <select required  id="id_Restaurante" name="id_Restaurante">
-                    <option value="" disabled>Funcionario*</option>
-                    <?php foreach($results as $output) {?>
-                    <option <?php echo $id_Restaurante == $output["id_Restaurante"]?  "selected" : ""; ?> value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
-                    <?php } ?>
-                    </select>
-                    <select required id="id_Funcionario" name="id_Funcionario">
-                    <option value="" disabled>Funcionario*</option>
-                    <?php foreach($results1 as $output) {?>
-                    <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                    <?php } ?>
-                    </select>
-                    <div class="box-btn">
-                    <button type="reset" >Cancelar</button>
-                    <button type="submit" >Salvar</button>
+                    <div class="grid">
+                        <div>
+                            <input type="hidden" name="id" value="<?php echo (isset($id_Referencia) && ($id_Referencia != null || $id_Referencia != "")) ? $id_Referencia : ''; ?>"/>
+                        </div>
+                        <div>
+                            <label for="data_inicio">Data de Inicio*</label>
+                            <input required type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
+                        </div>
+                        <div>
+                            <label for="data_fim">Data do Fim*</label>
+                            <input required type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
+                        </div>
+                        <div>
+                            <select required  id="id_Restaurante" name="id_Restaurante">
+                            <option value="" disabled>Funcionario*</option>
+                            <?php foreach($results as $output) {?>
+                            <option <?php echo $id_Restaurante == $output["id_Restaurante"]?  "selected" : ""; ?> value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                        <div>
+                            <select required id="id_Funcionario" name="id_Funcionario">
+                            <option value="" disabled>Funcionario*</option>
+                            <?php foreach($results1 as $output) {?>
+                            <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                        <div class="box-btn">
+                            <button type="reset" >Cancelar</button>
+                            <button type="submit" >Salvar</button>
+                        </div>
                     </div>
                 </form>
-            </div>
                     <!--apresenta um consultar -->
                 <div class="box-f3">
                     <h2 class="title-02">Referências cadastrados</h2>
@@ -139,7 +149,7 @@
             </div>
         </div>
         <br>
-        <h2><a href="./index.php">Voltar</a></h2>
+        <a class="link-voltar" href="./index.php">Voltar</a>
         
 </body>
 </html>
