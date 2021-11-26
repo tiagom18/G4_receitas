@@ -170,7 +170,7 @@
             </div>
         </div>
         <br>
-        <h2><a href="./index.php">Voltar</a></h2>
+        <a class="link-voltar" href="./index.php">Voltar</a>
     </div>
     
 </body>

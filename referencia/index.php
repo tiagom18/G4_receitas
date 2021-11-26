@@ -118,41 +118,41 @@ catch(Exception $ex){
                 <h1>Referência</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
-                    </br>
-                    <span class="">Data de incio*</span>
-                    </br>
-                    <input required type="date" name="data_inicio" placeholder="Inserir" value="<?php
-                    echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Data de termino*</span>
-                    </br>
-                    <input required type="date" name="data_fim" placeholder="Inserir" value="<?php
-                    echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Restaurante*</span>
-                    </br>
-                    <select required id="id_Restaurante" name="id_Restaurante">
-                    <option value="" disabled selected>id do restaurante</option>
-                    <?php foreach($results as $output) {?>
-                    <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
-                    <?php } ?>
-                    </select>
-                    </br>
-                     <span class="">Funcionario*</span>
-                    </br>
-                    <select required id="id_Funcionario" name="id_Funcionario">
-                    <option value="" disabled selected>id do funcionario</option>
-                    <?php foreach($results1 as $output) {?>
-                    <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                     <?php } ?>
-                    </select>
-                    </br>
-                    </br>
-                    <div class="box-btn">
-                        <button type="reset" class = "">Cancelar</button>
-                        <button type="submit" class = "">Salvar</button>
+                    <div class="grid">
+                        <div>
+                            <span class="">Data de incio*</span>
+                            <input required type="date" name="data_inicio" placeholder="Inserir" value="<?php
+                            echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Data de termino*</span>
+                            <input required type="date" name="data_fim" placeholder="Inserir" value="<?php
+                            echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Restaurante*</span>
+                            <select required id="id_Restaurante" name="id_Restaurante">
+                            <option value="" disabled selected>id do restaurante</option>
+                            <?php foreach($results as $output) {?>
+                            <option value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="">Funcionario*</span>
+                            <select required id="id_Funcionario" name="id_Funcionario">
+                            <option value="" disabled selected>id do funcionario</option>
+                            <?php foreach($results1 as $output) {?>
+                            <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                        <div class="box-btn">
+                            <button type="reset" class = "">Cancelar</button>
+                            <button type="submit" class = "">Salvar</button>
+                        </div>
                     </div>
                 </form>
             </div>

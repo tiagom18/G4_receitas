@@ -162,3 +162,10 @@ table tbody tr td {
   grid-template-columns: 1fr 1fr;
   gap: 40px;
 }
+
+.link-voltar {
+  text-decoration: none;
+  color: #000;
+  background: #c4c4c4;
+  padding: 5px 20px;
+}

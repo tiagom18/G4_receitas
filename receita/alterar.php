@@ -75,38 +75,47 @@
     <div class="box-p">
         <div class="box-f1">
             <div class="box-f2">
-                <h1>Cargo</h1>
+                <h1>Receita</h1>
                 <h2 class="title-01">Alterar</h2>
                 <form action="acaoalterar.php" method="GET">
+                    <div class="grid">
                     <input type="hidden" name="id" value="<?php echo (isset($id_Receita) && ($id_Receita != null || $id_Receita != "")) ? $id_Receita : ''; ?>"/>
-
-                    <label for="nome">Receita*</label>
-                    <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
-
-                    <label for="data_criacao">Data de criação*</label>
-                    <input required type="date" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
-
-                    <label for="modo_preparo">Modo de Preparo*</label>
-                    <input required type="text" name="modo_preparo" value="<?php echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : ''; ?>" />
-
-                    <label for="qtde_porcao">Quantidade por porção*</label>
-                    <input required type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
-
-                    <select required id="id_Categoria" name="id_Categoria">
-                    <option value="" disabled>Funcionario*</option>
-                            <?php foreach($results as $output) {?>
-                                <option <?php echo $id_Categoria == $output["id_Categoria"]?  "selected" : ""; ?> value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
-                            <?php } ?>
-                    </select>
-                    <select required id="id_Funcionario" name="id_Funcionario">
-                        <option value="" disabled>Funcionario*</option>
-                            <?php foreach($results1 as $output) {?>
-                                <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                            <?php } ?>
-                    </select>
+                    <div>
+                        <label for="nome">Receita*</label>
+                        <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+                    </div>
+                    <div>
+                        <label for="data_criacao">Data de criação*</label>
+                        <input required type="date" name="data_criacao" value="<?php echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : ''; ?>" />
+                    </div>
+                    <div>
+                        <label for="modo_preparo">Modo de Preparo*</label>
+                        <input required type="text" name="modo_preparo" value="<?php echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : ''; ?>" />
+                    </div>
+                    <div>
+                        <label for="qtde_porcao">Quantidade por porção*</label>
+                        <input required type="text" name="qtde_porcao" value="<?php echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : ''; ?>" />
+                    </div>
+                    <div>
+                        <select required id="id_Categoria" name="id_Categoria">
+                            <option value="" disabled>Categoria*</option>
+                                <?php foreach($results as $output) {?>
+                                    <option <?php echo $id_Categoria == $output["id_Categoria"]?  "selected" : ""; ?> value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
+                                <?php } ?>
+                        </select>
+                    </div>
+                    <div>
+                        <select required id="id_Funcionario" name="id_Funcionario">
+                            <option value="" disabled>Funcionario*</option>
+                                <?php foreach($results1 as $output) {?>
+                                    <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                                <?php } ?>
+                        </select>
+                    </div>
                     <div class="box-btn">
-                    <button type="reset" >Cancelar</button>
-                    <button type="submit" >Salvar</button>
+                        <button type="reset" >Cancelar</button>
+                        <button type="submit" >Salvar</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -155,6 +164,6 @@
                 </div>
             </div>
         <br>
-        <h2><a href="./index.php">Voltar</a></h2>
+        <a class="link-voltar" href="./index.php">Voltar</a>
 </body>
 </html>

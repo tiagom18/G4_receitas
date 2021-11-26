@@ -140,54 +140,55 @@ catch(Exception $ex){
                 <h1>Receita</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
-                    <span class="">Receita*</span>
-                    </br>
-                    <input required type="text" name="nome" placeholder="Inserir" value="<?php
-                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Data de criação*</span>
-                    </br>
-                    <input required type="date" name="data_criacao" placeholder="Inserir" value="<?php
-                    echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Modo de preparo*</span>
-                    </br>
-                    <input required type="text" name="modo_preparo" placeholder="Inserir" value="<?php
-                    echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Quantidade por porção*</span>
-                    </br>
-                    <input required type="text" name="qtde_porcao" placeholder="Inserir" value="<?php
-                    echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="">Categoria*</span>
-                    </br>
-                    <select required id="id_Categoria" name="id_Categoria">
-                        <option value="" disabled selected>Categoria</option>
-                            <?php foreach($results1 as $output) {?>
-                        <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
-                    <?php } ?>
-                    </select>
-                    </br>
-                    <span class="">Funcionario*</span>
-                    </br>
-                    <select required id="id_Funcionario" name="id_Funcionario">
-                        <option value="" disabled selected>Funcinario</option>
-                        <option value="" disabled selected>Funcionario</option>
-                        <option>Funcionario</option>
-                            <?php foreach($results as $output) {?>
-                        <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                        <?php } ?>
-                    </select>
-                    </br>
-                    </br>
-                    <div class="box-btn">
-                        <button type="reset" class = "">Cancelar</button>
-                        <button type="submit" class = "">Salvar</button>
+                    <div class="grid">
+                        <div>
+                            <span class="">Receita*</span>
+                            <input required type="text" name="nome" placeholder="Inserir" value="<?php
+                            echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Data de criação*</span>
+                            <input required type="date" name="data_criacao" placeholder="Inserir" value="<?php
+                            echo (isset($data_criacao) && ($data_criacao != null || $data_criacao != "")) ? $data_criacao : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Modo de preparo*</span>
+                            <input required type="text" name="modo_preparo" placeholder="Inserir" value="<?php
+                            echo (isset($modo_preparo) && ($modo_preparo != null || $modo_preparo != "")) ? $modo_preparo : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Quantidade por porção*</span>
+                            <input required type="text" name="qtde_porcao" placeholder="Inserir" value="<?php
+                            echo (isset($qtde_porcao) && ($qtde_porcao != null || $qtde_porcao != "")) ? $qtde_porcao : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="">Categoria*</span>
+                            <select required id="id_Categoria" name="id_Categoria">
+                                <option value="" disabled selected>Categoria</option>
+                                    <?php foreach($results1 as $output) {?>
+                                <option value="<?php echo $output["id_Categoria"];?>"><?php echo $output["descricao"];?></option>
+                            <?php } ?>
+                            </select>
+                        </div>
+                        <div>
+                            <span class="">Funcionario*</span>
+                            <select required id="id_Funcionario" name="id_Funcionario">
+                                <option value="" disabled selected>Funcinario</option>
+                                <option value="" disabled selected>Funcionario</option>
+                                <option>Funcionario</option>
+                                    <?php foreach($results as $output) {?>
+                                <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="box-btn">
+                            <button type="reset" class = "">Cancelar</button>
+                            <button type="submit" class = "">Salvar</button>
+                        </div>
                     </div>
                 </form>
             </div>
