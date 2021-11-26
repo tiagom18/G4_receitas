@@ -85,21 +85,23 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id_Ingrediente != "
                 <h1>Ingrediente</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="?act=save" method="POST" name="form" class="" >
-                    </br>
-                    <span class="Nome">Nome*</span>
-                    </br>
-                    <input required type="text" name="nome" placeholder="Inserir" value="<?php
-                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-                    ?>" class="form-control"/>
-                    </br>
-                    <span class="Descricao">Descrição*</span>
-                    </br>
-                    <input required type="text" name="descricao" placeholder="Inserir" value="<?php
-                    echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
-                    ?>" class="form-control"/>
-                    <div class="box-btn">
-                        <button type="reset" class = "">Cancelar</button>
-                        <button type="submit" class = "">Salvar</button>
+                    <div class="grid">
+                        <div>
+                            <span class="Nome">Nome*</span>
+                            <input required type="text" name="nome" placeholder="Inserir" value="<?php
+                            echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div>
+                            <span class="Descricao">Descrição*</span>
+                            <input required type="text" name="descricao" placeholder="Inserir" value="<?php
+                            echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : '';
+                            ?>" class="form-control"/>
+                        </div>
+                        <div class="box-btn">
+                            <button type="reset" class = "">Cancelar</button>
+                            <button type="submit" class = "">Salvar</button>
+                        </div>
                     </div>
                 </form>
             </div>

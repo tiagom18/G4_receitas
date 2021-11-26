@@ -70,39 +70,49 @@
 <div class="box-p">
         <div class="box-f1">
             <div class="box-f2">
-                <h1>Cargo</h1>
+                <h1>Funcionário</h1>
                 <h2 class="title-01">Incluir</h2>
                 <form action="acaoalterar.php" method="GET" name="form" class="" >
-                    <input type="text" id="id" name="id" style="display: none;" value="<?php echo $id_Funcionario;?>">
-                    <label for="nome">Nome:*</label>
-                    <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
-
-                    <label for="rg">RG:*</label>
-                    <input required type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
-
-                    <label for="data">Data de ingresso:*</label>
-                    <input required type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
-
-                    <label for="nomefantasia">Nome fantasia:*</label>
-                    <input required type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
-
-                    <label for="usuario">Usuário:*</label>
-                    <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
-
-                    <label for="senha">Senha:*</label>
-                    <input required type="password" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
-
-                    <label for="cargo">Cargo:</label>
-                    
-                    <select required id="id_Cargo" name="id_Cargo">
-                    <option value="" disabled>Cargo</option>
-                        <?php foreach($results as $output) {?>
-                            <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
-                        <?php } ?>
-                    </select>
-                    <div class="box-btn">
-                        <button type="submit" class = "">Salvar</button>
-                        <button type="reset" class = "">Cancelar</button>
+                    <div class="grid">
+                        <div>
+                            <input type="text" id="id" name="id" style="display: none;" value="<?php echo $id_Funcionario;?>">
+                            <label for="nome">Nome:*</label>
+                            <input required type="text" name="nome" placeholder="Inserir" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';?>" />
+                        </div>
+                        <div>
+                            <label for="rg">RG:*</label>
+                            <input required type="text" name="rg" placeholder="Inserir" value="<?php echo (isset($rg) && ($rg != null || $rg != "")) ? $rg : '';?>" />
+                        </div>
+                        <div>
+                            <label for="data">Data de ingresso:*</label>
+                            <input required type="date" name="data_ingresso" placeholder="Inserir" value="<?php echo (isset($data_ingresso) && ($data_ingresso != null || $data_ingresso != "")) ? $data_ingresso : '';?>" />
+                        </div>
+                        <div>
+                            <label for="nomefantasia">Nome fantasia:*</label>
+                            <input required type="text" name="nome_fantasia" placeholder="Inserir" value="<?php echo (isset($nome_fantasia) && ($nome_fantasia != null || $nome_fantasia != "")) ? $nome_fantasia : '';?>" />
+                        </div>
+                        <div>
+                            <label for="usuario">Usuário:*</label>
+                            <input required type="text" name="usuario" placeholder="Inserir" value="<?php echo (isset($usuario) && ($usuario != null || $usuario != "")) ? $usuario : '';?>" />
+                        </div>
+                        <div>
+                            <label for="senha">Senha:*</label>
+                            <input required type="password" name="senha" placeholder="Inserir" value="<?php echo (isset($senha) && ($senha != null || $senha != "")) ? $senha : '';?>" />
+                        </div>
+                        <div>
+                            <label for="cargo">Cargo:</label>
+                            
+                            <select required id="id_Cargo" name="id_Cargo">
+                            <option value="" disabled>Cargo</option>
+                                <?php foreach($results as $output) {?>
+                                    <option <?php echo $id_Cargo == $output["id_Cargo"]?  "selected" : ""; ?> value="<?php echo $output["id_Cargo"];?>"><?php echo $output["nome"];?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                        <div class="box-btn">
+                            <button type="submit" class = "">Salvar</button>
+                            <button type="reset" class = "">Cancelar</button>
+                        </div>
                     </div>
                 </form>
                 

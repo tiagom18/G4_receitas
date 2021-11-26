@@ -50,17 +50,23 @@
                 <h1>Ingrediente</h1>
                 <h2 class="title-01">Alterar</h2>
                 <form action="acaoalterar.php" method="GET">
-                    <input type="hidden" name="id" value="<?php echo (isset($id_Ingrediente) && ($id_Ingrediente != null || $id_Ingrediente != "")) ? $id_Ingrediente : ''; ?>"/>
-                     <label for="nome">Nome*</label>
-                    <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
-                    <label for="descricao">Descricao*</label>
-                    <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
-                    <div class="box-btn">
-                    <button type="reset" >Cancelar</button>
-                    <button type="submit" >Salvar</button>
-                </div>
-            </form>
-        </div>
+                    <div>
+                        <div class="grid">
+                            <div>
+                                <label for="nome">Nome*</label>
+                                <input required type="text" name="nome" value="<?php echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : ''; ?>" />
+                            </div>
+                            <div>
+                                <label for="descricao">Descricao*</label>
+                                <input required type="text" name="descricao" value="<?php echo (isset($descricao) && ($descricao != null || $descricao != "")) ? $descricao : ''; ?>" />
+                            </div>
+                        <div class="box-btn">
+                            <button type="reset" >Cancelar</button>
+                            <button type="submit" >Salvar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
                 <!--apresenta um consultar -->
             <div class="box-f3">
                 <h2 class="title-02">Ingredientes cadastrados</h2>
@@ -98,7 +104,7 @@
             </div>
         </div>
         <br>
-        <h2><a href="./index.php">Voltar</a></h2>
+        <a class="link-voltar" href="./index.php">Voltar</a>
 
 </body>
 </html>

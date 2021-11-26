@@ -59,9 +59,11 @@ input {
 }
 
 .box-btn {
+  height: 30px;
   display: flex;
   justify-content: end;
   margin-top: 28px;
+  align-self: end;
 }
 
 .box-f3 {
@@ -153,4 +155,10 @@ table tbody tr td {
   height: 250px;
   background: rgb(255, 255, 255);
   overflow: scroll;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
 }

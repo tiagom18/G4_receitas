@@ -43,15 +43,15 @@ label {
 }
 .Nome,
 .Descricao {
-    display: block;
-    margin-top: 35px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 70px;
-    color: #000000;
-  }
+  display: block;
+  margin-top: 35px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 70px;
+  color: #000000;
+}
 
 input {
   width: 100%;
@@ -70,6 +70,7 @@ input {
 }
 
 .box-btn {
+  grid-column: 2;
   display: flex;
   justify-content: end;
   margin-top: 28px;
@@ -164,4 +165,17 @@ table tbody tr td {
   height: 250px;
   background: rgb(255, 255, 255);
   overflow: scroll;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.link-voltar {
+  text-decoration: none;
+  color: #000;
+  background: #c4c4c4;
+  padding: 5px 20px;
 }
