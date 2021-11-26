@@ -44,7 +44,7 @@
     <div class="box-p">
         <div class="box-f1">
             <div class="box-f2">
-                <h1>Cargo</h1>
+                <h1>Restaurante</h1>
                 <h2 class="title-01">Alterar</h2>
                 <form action="acaoalterar.php" method="GET">
                     <input type="hidden" name="id" value="<?php echo (isset($id_Restaurante) && ($id_Restaurante != null || $id_Restaurante != "")) ? $id_Restaurante : ''; ?>"/>
@@ -58,7 +58,7 @@
         </div>
                 <!--apresenta um consultar -->
             <div class="box-f3">
-                <h2 class="title-02">Cargos cadastrados</h2>
+                <h2 class="title-02">Restaurantes cadastrados</h2>
                 <div class="box-f4">
                 <div class="scroll">
                 <table>

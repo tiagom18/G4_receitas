@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/>  
     <title>Referência</title>
 </head>
 <body>
@@ -68,70 +68,78 @@
          }
          
     ?>
-    <h1>Alterar</h1>
     <!--form-alteração-->
-    <form action="acaoalterar.php" method="GET">
-        <input type="hidden" name="id" value="<?php echo (isset($id_Referencia) && ($id_Referencia != null || $id_Referencia != "")) ? $id_Referencia : ''; ?>"/>
-        
-        <label for="data_inicio">Data de Inicio*</label>
-        <input required type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
-
-        <label for="data_fim">Data do Fim*</label>
-        <input required type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
-
-        <select required  id="id_Restaurante" name="id_Restaurante">
-            <option value="" disabled>Funcionario*</option>
-                <?php foreach($results as $output) {?>
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Referência</h1>
+                <h2 class="title-01">Alterar</h2>
+                <form action="acaoalterar.php" method="GET">
+                    <input type="hidden" name="id" value="<?php echo (isset($id_Referencia) && ($id_Referencia != null || $id_Referencia != "")) ? $id_Referencia : ''; ?>"/>
+                    <label for="data_inicio">Data de Inicio*</label>
+                    <input required type="date" name="data_inicio" value="<?php echo (isset($data_inicio) && ($data_inicio != null || $data_inicio != "")) ? $data_inicio : ''; ?>" />
+                    <label for="data_fim">Data do Fim*</label>
+                    <input required type="date" name="data_fim" value="<?php echo (isset($data_fim) && ($data_fim != null || $data_fim != "")) ? $data_fim : ''; ?>" />
+                    <select required  id="id_Restaurante" name="id_Restaurante">
+                    <option value="" disabled>Funcionario*</option>
+                    <?php foreach($results as $output) {?>
                     <option <?php echo $id_Restaurante == $output["id_Restaurante"]?  "selected" : ""; ?> value="<?php echo $output["id_Restaurante"];?>"><?php echo $output["nome"];?></option>
-                <?php } ?>
-        </select>
-
-        <select required id="id_Funcionario" name="id_Funcionario">
-            <option value="" disabled>Funcionario*</option>
-                <?php foreach($results1 as $output) {?>
+                    <?php } ?>
+                    </select>
+                    <select required id="id_Funcionario" name="id_Funcionario">
+                    <option value="" disabled>Funcionario*</option>
+                    <?php foreach($results1 as $output) {?>
                     <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                <?php } ?>
-        </select>
-              
-        <button type="submit" >Salvar</button>
-    </form>
-    <hr/>
-    <!--apresenta um consultar -->
-    <h3>Referências cadastrados</h3>
-    <table>
-        <thead>
-            <tr>
-                    <th>Id</th>
-                    <th>data_inicio</th>
-                    <th>data_fim</th>
-                    <th>id_Restaurante</th>
-                    <th>id_Funcionario</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_referencia");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Referencia</td>";
-                            echo "<td>$rs->data_inicio</td>";
-                            echo "<td>$rs->data_fim</td>";
-                            echo "<td>$rs->id_Restaurante</td>";
-                            echo "<td>$rs->id_Funcionario</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
-    <br>
+                    <?php } ?>
+                    </select>
+                    <div class="box-btn">
+                    <button type="reset" >Cancelar</button>
+                    <button type="submit" >Salvar</button>
+                    </div>
+                </form>
+            </div>
+                    <!--apresenta um consultar -->
+                <div class="box-f3">
+                    <h2 class="title-02">Referências cadastrados</h2>
+                    <div class="box-f4">
+                    <div class="scroll">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>data_inicio</th>
+                                <th>data_fim</th>
+                                <th>id_Restaurante</th>
+                                <th>id_Funcionario</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                try {
+                                    $stmt = $conexao->prepare("SELECT * FROM g4_referencia");
+                                    if ($stmt->execute()) {
+                                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                            echo "<tr>";
+                                            echo "<td>$rs->id_Referencia</td>";
+                                            echo "<td>$rs->data_inicio</td>";
+                                            echo "<td>$rs->data_fim</td>";
+                                            echo "<td>$rs->id_Restaurante</td>";
+                                            echo "<td>$rs->id_Funcionario</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                    }
+                                } catch (PDOException $erro) {
+                                    echo "Erro: " . $erro->getMessage();
+                                }
+                            ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
         <h2><a href="./index.php">Voltar</a></h2>
+        
 </body>
 </html>
