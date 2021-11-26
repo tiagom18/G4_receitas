@@ -34,11 +34,11 @@ label {
   font-weight: bold;
   font-size: 20px;
   line-height: 70px;
-  color: #000000; 
+  color: #000000;
 }
 
 input {
-  width: 100%;
+  width: 20%;
   padding: 1px 0px;
 }
 
@@ -82,15 +82,15 @@ table tbody tr td {
   position: absolute;
   width: 100%;
   bottom: -25px;
-  
-  padding-left: 1085px ;
+
+  padding-left: 1085px;
   font-family: Roboto;
   font-style: normal;
   font-weight: bold;
   font-size: 25px;
   line-height: 70px;
-  background: #D5F4C7;
-  color: #000000; 
+  background: #d5f4c7;
+  color: #000000;
 }
 
 .scroll {
