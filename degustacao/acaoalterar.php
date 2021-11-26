@@ -3,7 +3,7 @@
 <html>
 	<head>
 	  <title>Cadastro de vendas - Alteração</title>
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/>
 	  <meta charset="utf-8">
       
 	</head>

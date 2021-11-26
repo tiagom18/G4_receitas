@@ -58,7 +58,7 @@
         </div>
                 <!--apresenta um consultar -->
             <div class="box-f3">
-                <h2 class="title-02">Cargos cadastrados</h2>
+                <h2 class="title-02">Medidas cadastrados</h2>
                 <div class="box-f4">
                 <div class="scroll">
                 <table>

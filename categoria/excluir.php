@@ -51,7 +51,7 @@
                                             }
                                         } else {
                                         echo "<script> 
-                                        alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                                        alert('IMPOSSIVEL APAGAR CATEGORIA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
                                         window.location.href='index.php';  
                                         </script>";
                                         }

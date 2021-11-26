@@ -53,7 +53,7 @@
                                             echo "</tr>";
                                             echo "</br>";
                                             echo "<td>
-                                            <button><a href='?act=del&id=".$rs->id_Cargo."'>Confirmar Exclusão</a></button>
+                                            <button><a href='?act=del&id=".$rs->id_Receita."'>Confirmar Exclusão</a></button>
                                             </td>";
                                             echo "<td>
                                             <button><a href='./index.php'>Voltar</a></button>
@@ -61,7 +61,7 @@
                                         }
                                     } else {
                                     echo "<script> 
-                                    alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                                    alert('IMPOSSIVEL APAGAR RECEITA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
                                     window.location.href='index.php';  
                                     </script>";
                                     }

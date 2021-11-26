@@ -58,7 +58,7 @@
         </div>
                 <!--apresenta um consultar -->
             <div class="box-f3">
-                <h2 class="title-02">Categoria cadastrados</h2>
+                <h2 class="title-02">Categorias cadastrados</h2>
                 <div class="box-f4">
                 <div class="scroll">
                 <table>

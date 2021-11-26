@@ -51,7 +51,7 @@
                                         }
                                     } else {
                                     echo "<script> 
-                                    alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                                    alert('IMPOSSIVEL APAGAR MEDIDA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
                                     window.location.href='index.php';  
                                     </script>";
                                     }
@@ -82,10 +82,10 @@
                             }
                         } catch (PDOException $erro) {
                             echo "<script> 
-                                alert('IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
+                                alert('IMPOSSIVEL APAGAR MEDIDA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA!'); 
                                 window.location.href='index.php';  
                                 </script>";
-                            echo "IMPOSSIVEL APAGAR CARGO POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
+                            echo "IMPOSSIVEL APAGAR MEDIDA POIS ESTÁ SENDO USADO EM OUTRA PÁGINA ";
                         }
                     }
             ?>

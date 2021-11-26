@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<link rel="stylesheet" href="action/style.css">-->
+    <link href="./style.css" rel="stylesheet"/>
     <title>Degustação</title>
 </head>
 <?php 
@@ -107,87 +107,96 @@ catch(Exception $ex){
 ?>
 <body>
     <!--Inicio - Insert form-->
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Degustação</h1>
+                <h2 class="title-01">Incluir</h2>
+                <form action="?act=save" method="POST" name="form" class="" >
+                    </br>
+                    <span class="">NOTA*</span>
+                    </br>
+                    <input type="text" name="nota" placeholder="Inserir" value="<?php
+                    echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : '';
+                    ?>" class="form-control"/>
+                    </br>
+                    <span class="">DATA DA NOTA*</span>
+                    </br>
+                    <input type="date" name="data_nota" placeholder="Inserir" value="<?php
+                    echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : '';
+                    ?>" class="form-control"/>
+                    </br>
+                    <span class="">Funcionario*</span>
+                    </br>
+                    <select id="id_Funcionario" name="id_Funcionario">
 
-    <form action="?act=save" method="POST" name="form" class="" >
-        <span class="">Degustação:</span>
-        </br>
-        <span class="">NOTA*</span>
-        </br>
-        <input type="text" name="nota" placeholder="Inserir" value="<?php
-        echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : '';
-        ?>" class="form-control"/>
-        </br>
-        <span class="">DATA DA NOTA*</span>
-        </br>
-        <input type="date" name="data_nota" placeholder="Inserir" value="<?php
-        echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : '';
-        ?>" class="form-control"/>
-        </br>
-        <span class="">Funcionario*</span>
-        </br>
-        <select id="id_Funcionario" name="id_Funcionario">
-
-        <option value="" disabled selected>ID Funcinario</option>
-        <?php foreach($results as $output) {?>
-        <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-        <?php } ?>
-        </select>
-        </br>
-        <span class="">Receita*</span>
-        </br>
-        <select id="id_Receita" name="id_Receita">
-        <option value="" disabled selected>ID Receita</option>
-        <?php foreach($results1 as $output) {?>
-        <option value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
-        <?php } ?>
-        </select>
-        </br>
-        </br>
-        <button type="submit" class = "">Salvar</button>
-        <button type="reset" class = "">Cancelar</button>
-        <hr>
-    </form>
+                    <option value="" disabled selected>ID Funcinario</option>
+                    <?php foreach($results as $output) {?>
+                    <option value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                    <?php } ?>
+                    </select>
+                    </br>
+                    <span class="">Receita*</span>
+                    </br>
+                    <select id="id_Receita" name="id_Receita">
+                    <option value="" disabled selected>ID Receita</option>
+                    <?php foreach($results1 as $output) {?>
+                    <option value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
+                    <?php } ?>
+                    </select>
+                    </br>
+                    </br>
+                    <div class="box-btn">
+                        <button type="reset" class = "">Cancelar</button>
+                        <button type="submit" class = "">Salvar</button>
+                    </div>
+                </form>
+            </div>
     
-    <!--Fim - Insert form-->
-    <!-- Inicio - Read -->
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nota</th>
-                    <th>Data da nota</th>
-                    <th>ID do Funcinario</th>
-                    <th>ID da Receita</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    //f.id_Funcionario, id_cozinheiro, r.nota, d.data-nota, d.nota
-                    try {
-                        $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
-                        if ($stmt->execute()) {
-                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                                echo "<tr>";
-                                echo "<td>$rs->id_Degustacao</td>";
-                                echo "<td>$rs->nota</td>";
-                                echo "<td>$rs->data_nota</td>";
-                                echo "<td>$rs->id_Funcionario</td>";
-                                echo "<td>$rs->id_Receita</td>";
-                                //Alterar 
-                                echo '<td><a href="./alterar.php?id='.$rs->id_Degustacao.'">Alterar</a></td>';
-                                //excluir
-                                echo '<td><a href="./excluir.php?id=' .$rs->id_Degustacao. '">Excluir</a></td>';
-                                echo "</tr>";
-                            }
-                        } else {
-                       echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                        }
-                    } catch (PDOException $erro) {
-                        echo "Erro: " . $erro->getMessage();
-                    }
-                ?>
-            </tbody>
-        </table>
+        <!--Fim - Insert form-->
+        <!-- Inicio - Read -->
+        <div class="box-f3">
+                <h2 class="title-02">Consultar</h4>
+                <div class="box-f4">
+                    <div class="scroll">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nota</th>
+                                    <th>Data da nota</th>
+                                    <th>ID do Funcinario</th>
+                                    <th>ID da Receita</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    //f.id_Funcionario, id_cozinheiro, r.nota, d.data-nota, d.nota
+                                    try {
+                                        $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
+                                        if ($stmt->execute()) {
+                                            while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                                echo "<tr>";
+                                                echo "<td>$rs->id_Degustacao</td>";
+                                                echo "<td>$rs->nota</td>";
+                                                echo "<td>$rs->data_nota</td>";
+                                                echo "<td>$rs->id_Funcionario</td>";
+                                                echo "<td>$rs->id_Receita</td>";
+                                                //Alterar 
+                                                echo '<td><a href="./alterar.php?id='.$rs->id_Degustacao.'">Alterar</a></td>';
+                                                //excluir
+                                                echo '<td><a href="./excluir.php?id=' .$rs->id_Degustacao. '">Excluir</a></td>';
+                                                echo "</tr>";
+                                            }
+                                        } else {
+                                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                        }
+                                    } catch (PDOException $erro) {
+                                        echo "Erro: " . $erro->getMessage();
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
     <!-- Fim - Read-->
 </body>
 </html>

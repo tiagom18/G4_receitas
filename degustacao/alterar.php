@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../includes/style.css"> 
+    <link href="./style.css" rel="stylesheet"/> 
     <title>Degustação</title>
 </head>
 <body>
@@ -68,70 +68,81 @@
     
         }
     ?>
-    <h1>Alterar</h1>
     <!--form-alteração-->
-    <form action="acaoalterar.php" method="GET">
-        <input required type="hidden" name="id" value="<?php echo (isset($id_Degustacao) && ($id_Degustacao != null || $id_Degustacao != "")) ? $id_Degustacao : ''; ?>"/>
+    <div class="box-p">
+        <div class="box-f1">
+            <div class="box-f2">
+                <h1>Degustação</h1>
+                <h2 class="title-01">Alterar</h2>
+                <form action="acaoalterar.php" method="GET">
+                    <input required type="hidden" name="id" value="<?php echo (isset($id_Degustacao) && ($id_Degustacao != null || $id_Degustacao != "")) ? $id_Degustacao : ''; ?>"/>
 
-        <label for="nota">nota da degustação</label>
-        <input required type="text" name="nota" value="<?php echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : ''; ?>" />
+                    <label for="nota">Nota da Degustação*</label>
+                    <input required type="text" name="nota" value="<?php echo (isset($nota) && ($nota != null || $nota != "")) ? $nota : ''; ?>" />
 
-        <label for="data_nota">data da nota da degustação</label>
-        <input required type="date" name="data_nota" value="<?php echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : ''; ?>" />
+                    <label for="data_nota">Data da Nota da Degustação*</label>
+                    <input required type="date" name="data_nota" value="<?php echo (isset($data_nota) && ($data_nota != null || $data_nota != "")) ? $data_nota : ''; ?>" />
 
-        <select required id="id_Funcionario" name="id_Funcionario">
-            <option value="" disabled>Funcionario</option>
-                <?php foreach($results as $output) {?>
-                    <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
-                <?php } ?>
-        </select>
+                    <select required id="id_Funcionario" name="id_Funcionario">
+                        <option value="" disabled>Funcionario</option>
+                            <?php foreach($results as $output) {?>
+                                <option <?php echo $id_Funcionario == $output["id_Funcionario"]?  "selected" : ""; ?> value="<?php echo $output["id_Funcionario"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                    </select>
 
-        <select required id="id_Receita" name="id_Receita">
-            <option value="" disabled>Funcionario</option>
-                <?php foreach($results1 as $output) {?>
-                    <option <?php echo $id_Receita == $output["id_Receita"]?  "selected" : ""; ?> value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
-                <?php } ?>
-        </select>
-
-        <button type="submit" >Salvar</button>
-    </form>
-    <hr/>
-    <!--apresenta um consultar -->
-    <h3>Degustaçãos cadastrados</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>nota</th>
-                <th>data_nota</th>
-                <th>id_Funcionario</th>
-                <th>id_Receita</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-                try {
-                    $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
-                    if ($stmt->execute()) {
-                        while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
-                            echo "<tr>";
-                            echo "<td>$rs->id_Degustacao</td>";
-                            echo "<td>$rs->nota</td>";
-                            echo "<td>$rs->data_nota</td>";
-                            echo "<td>$rs->id_Funcionario</td>";
-                            echo "<td>$rs->id_Receita</td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                    echo "Erro: Não foi possível recuperar os dados do banco de dados";
-                    }
-                } catch (PDOException $erro) {
-                    echo "Erro: " . $erro->getMessage();
-                }
-            ?>
-        </tbody>
-    </table>
-    <br>
+                    <select required id="id_Receita" name="id_Receita">
+                        <option value="" disabled>Funcionario</option>
+                            <?php foreach($results1 as $output) {?>
+                                <option <?php echo $id_Receita == $output["id_Receita"]?  "selected" : ""; ?> value="<?php echo $output["id_Receita"];?>"><?php echo $output["nome"];?></option>
+                            <?php } ?>
+                    </select>
+                    <div class="box-btn">
+                    <button type="reset" >Cancelar</button>
+                    <button type="submit" >Salvar</button>
+                </div>
+            </form>
+        </div>
+                <!--apresenta um consultar -->
+   >        <div class="box-f3">
+                <h2 class="title-02">Degustações cadastrados</h2>
+                <div class="box-f4">
+                <div class="scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>nota</th>
+                            <th>data_nota</th>
+                            <th>id_Funcionario</th>
+                            <th>id_Receita</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            try {
+                                $stmt = $conexao->prepare("SELECT * FROM g4_degustacao");
+                                if ($stmt->execute()) {
+                                    while ($rs = $stmt->fetch(PDO::FETCH_OBJ)) {
+                                        echo "<tr>";
+                                        echo "<td>$rs->id_Degustacao</td>";
+                                        echo "<td>$rs->nota</td>";
+                                        echo "<td>$rs->data_nota</td>";
+                                        echo "<td>$rs->id_Funcionario</td>";
+                                        echo "<td>$rs->id_Receita</td>";
+                                        echo "</tr>";
+                                    }
+                                } else {
+                                echo "Erro: Não foi possível recuperar os dados do banco de dados";
+                                }
+                            } catch (PDOException $erro) {
+                                echo "Erro: " . $erro->getMessage();
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <br>
         <h2><a href="./index.php">Voltar</a></h2>
 </body>
 </html>

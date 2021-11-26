@@ -121,7 +121,7 @@
         <!--Fim - Insert form-->
         <!-- Inicio - Read -->
             <div class="box-f3">
-                <h2 class="title-02">Consultar</h4>
+                <h2 class="title-02">Funcionários cadastrados</h4>
                 <div class="box-f4">
                     <div class="scroll">
                         <table>
