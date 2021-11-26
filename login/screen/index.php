@@ -28,11 +28,11 @@
                 <form action="../actions/login.php" method="POST">
                     <div class="cont-form">
                         <div class="login_form_quadrado">
-                            <label for="funcionario">ID Funcionário</label>
+                            <label for="funcionario">ID Funcionário*</label>
                             <input id="funcionario" name="funcionario" placeholder="Digite seu ID" type="text" maxlength="35" value="" required>
                         </div>
                         <div class="login_form_quadrado1">
-                            <label for="senha">Senha</label>
+                            <label for="senha">Senha*</label>
                             <input id="senha" name="senha" placeholder="Digite sua senha" type="password" maxlength="15" minlength="6" value="" required>
                         </div>  
                     </div>
